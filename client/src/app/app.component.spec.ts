@@ -1,35 +1,54 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
+import { NavbarComponent} from './components/navbar/navbar.component';
 import { AppComponent } from './app.component';
+import {CommonModule} from "@angular/common";
+import {AngularMaterialModule} from "./angular-material/angular-material.module";
+import {NgModule} from "@angular/core";
+import {of} from "rxjs/observable/of";
+import {City} from "./classes/city";
+
+
+@NgModule({
+  declarations: [NavbarComponent],
+  entryComponents: [NavbarComponent],
+  exports: [NavbarComponent],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+  ],
+})
+class TestModule { }
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let app;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, TestModule],
+      providers: [],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'src'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('src');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    app = fixture.debugElement.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('src app is running!');
   });
+
+  it('should create the app', async(() => {
+    expect(app).toBeTruthy();
+  }));
+
+  it(`should have as title 'KinéSolution'`, async(() => {
+    expect(app.title).toEqual('KinéSolution');
+  }));
+  it('should ngOnInit() call', async(() => {
+    component.ngOnInit();
+    expect(component).toBeTruthy();
+  }));
 });
