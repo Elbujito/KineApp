@@ -7,26 +7,20 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/catch';
 import {environment} from '../../environments/environment';
 
-import {Patients} from '../classes/patients';
+import {Patient} from '../classes/patient';
 
 @Injectable()
 export class PatientsService {
 
-  patientsUrl = environment.apiUrl + 'patients/';
+  patientUrl = environment.apiUrl + 'patient/';
 
   constructor(private http: Http) {
   }
 
-  getAllPatients(): Observable<Patients[]> {
-    return this.http.get(this.patientsUrl)
-      .map(res => res.json().data.items as Patients[]).catch(this.handleError);
+  getAllPatients(): Observable<Patient[]> {
+    return this.http.get(this.patientUrl)
+      .map(res => res.json().data.items as Patient[]).catch(this.handleError);
   }
-
-  getPatientsByBilans(patientId): Observable<Patients[]> {
-    return this.http.get(this.patientsUrl + patientId + '/patients/')
-      .map(res => res.json().data.items as Patients[]).catch(this.handleError);
-  }
-
 
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :

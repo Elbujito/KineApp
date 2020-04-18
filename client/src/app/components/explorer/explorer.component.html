@@ -1,0 +1,39 @@
+<section id="explore-page" style="height: calc(100vh - 56px)">
+  <div class="explore-page-bg">
+    <mat-card class="explore-card">
+      <mat-card-content>
+        <form>
+          <mat-form-field class="input">
+            <mat-select required placeholder="Select your patient" [formControl]="pokemonControl">
+              <mat-optgroup *ngFor="let patient of patients" [label]="patient.name">
+                <mat-option [value]="patient"
+                            (click)="queryPatient = patient;">-- All in {{ patient.name }} --
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <br>
+        <div style="text-align: center;">
+          <button mat-raised-button color="primary" (click)="exploreBilans()"
+                  [disabled]="!(queryPatient) "
+          >Find
+          </button>
+          <mat-icon color="primary"
+                    matTooltip="To explore please select a patient"
+                    *ngIf="!(queryPatient)">help
+          </mat-icon>
+        </div>
+  <div id="state" *ngIf="!queryPatient" style="padding: 50px;">
+  </div>
+  <div id="search-component-spinner" *ngIf="explorerStarted">
+    <mat-spinner></mat-spinner>
+  </div>
+      </mat-card-content>
+</mat-card>
+  </div>
+</section>
+
+<div id="explorer-result-component">
+  <app-result-cards [bilans]="explorerResult"></app-result-cards>
+</div>

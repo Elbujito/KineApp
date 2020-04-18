@@ -13,14 +13,19 @@ import {AppComponent} from './app.component';
 import {CoreComponent} from './core/core.component';
 
 import {PatientsService} from './services/patients.service';
+import {EventsService} from "./services/events.service";
+import {BilansService} from "./services/bilans.service";
 
 import {ROUTES} from './app.routes';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AboutComponent} from './components/about/about.component';
 import {SupportComponent} from './components/support/support.component';
 import {FooterComponent} from './components/footer/footer.component'
+import {LoginComponent} from './components/login/login.component';
 
-import {EventsService} from "./services/events.service";
+import {BilanDialogComponent} from './components/bilan-dialog/bilan-dialog.component';
+import {ResultCardsComponent} from './components/result-cards/result-cards.component';
+import {ExplorerComponent} from './components/explorer/explorer.component';
 
 @NgModule({
   imports: [
@@ -35,7 +40,8 @@ import {EventsService} from "./services/events.service";
   ],
   providers: [
     PatientsService,
-    EventsService
+    EventsService,
+    BilansService
   ],
   declarations: [
     AppComponent,
@@ -43,9 +49,14 @@ import {EventsService} from "./services/events.service";
     AboutComponent,
     SupportComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    ResultCardsComponent,
+    BilanDialogComponent,
+    ExplorerComponent
   ],
   bootstrap: [AppComponent],
+  entryComponents: [BilanDialogComponent]
 })
 
 export class AppModule {
