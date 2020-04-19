@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:9000/kinesolution/',
+  apiUrl: 'http://localhost:9000/medinotes/',
 };
 
 /*

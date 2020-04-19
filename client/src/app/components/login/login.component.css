@@ -27,6 +27,11 @@
   min-width: 300px;
 }
 
+#search-component-spinner {
+  display: flex;
+  justify-content: center;
+}
+
 mat-card-title, mat-card-subtitle
 {
   text-align: left;

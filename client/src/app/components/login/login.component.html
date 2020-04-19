@@ -20,6 +20,9 @@
           <p *ngIf="error" class="error">
             {{ error }}
           </p>
+          <div id="search-component-spinner" *ngIf="loginStarted">
+            <mat-spinner></mat-spinner>
+          </div>
           <div class="button">
             <button type="submit" mat-button>Login</button>
           </div>

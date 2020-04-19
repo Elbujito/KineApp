@@ -15,6 +15,9 @@ import {CoreComponent} from './core/core.component';
 import {PatientsService} from './services/patients.service';
 import {EventsService} from "./services/events.service";
 import {BilansService} from "./services/bilans.service";
+import {ErrorService} from "./services/error.service";
+import {AuthenticationService} from "./services/auth.service";
+import {UsersService} from "./services/users.service";
 
 import {ROUTES} from './app.routes';
 import {NotFoundComponent} from './components/not-found/not-found.component';
@@ -41,7 +44,10 @@ import {ExplorerComponent} from './components/explorer/explorer.component';
   providers: [
     PatientsService,
     EventsService,
-    BilansService
+    BilansService,
+    ErrorService,
+    UsersService,
+    AuthenticationService
   ],
   declarations: [
     AppComponent,
