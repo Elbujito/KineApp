@@ -11,7 +11,7 @@ declare let ga: Function;
 
 export class AppComponent implements OnInit {
 
-  title = 'KinéSolution';
+  title = 'MédiNotes';
 
   constructor(private router: Router, private eventsService: EventsService) {
     router.events.forEach((event: NavigationEvent) => {
@@ -26,9 +26,6 @@ export class AppComponent implements OnInit {
 
     }
 
-  /**
-   * ngOnInit
-   */
   ngOnInit() {
   }
 }

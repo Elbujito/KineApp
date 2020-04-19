@@ -1,35 +1,29 @@
-<section id="landing-page" style="height: calc(100vh - 56px)">
-  <div class="title-subtitle-div">
-    <div class="animatedLeft fadeInLeft">
-      <p class="title-bold">Kiné</p>
-      <p class="title-thin"> Solution </p>
-    </div>
-    <div class="animatedRight fadeInRight">
-      <p class="subtitle-landing">pour un suivi plus simple de ses patients</p>
-    </div>
+<div class="login-background">
     <mat-card class="login-card">
+      <mat-card-header>
+        <div mat-card-avatar class="logo"></div>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-subtitle>Connect to your account</mat-card-subtitle>
+      </mat-card-header>
       <mat-card-content>
-            <form action="http://localhost:3000/api/auth/login" id="login_form" method="post">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <label class="mdl-textfield__label" for="username">Username</label>
-                <div class="input_field">
-                <input class="mdl-textfield__input" type="text" name="username" id="username">
-                </div>
-              </div>
-              <br>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <label class="mdl-textfield__label" for="password">Password</label>
-                <div class="input_field">
-                  <input class="mdl-textfield__input" type="password" name="password" id="password">
-              </div>
-              </div>
-            </form>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <p>
+            <mat-form-field>
+              <input type="text" required matInput placeholder="Username" formControlName="username">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input type="password" required matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+          </p>
+          <p *ngIf="error" class="error">
+            {{ error }}
+          </p>
+          <div class="button">
+            <button type="submit" mat-button>Login</button>
+          </div>
+        </form>
       </mat-card-content>
-      <mat-card-actions>
-        <ul class="actions">
-          <li><a id="big-green-button" class="button big special scrolly"  routerLink="/core">Login</a></li>
-        </ul>
-      </mat-card-actions>
     </mat-card>
   </div>
-</section>
