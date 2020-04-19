@@ -3,15 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.application.kine</groupId>
-        <artifactId>kine</artifactId>
+        <groupId>com.application.medinotes</groupId>
+        <artifactId>medinotes</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>kine-ui</artifactId>
+    <artifactId>medinotes-ui</artifactId>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>kine-server</artifactId>
+            <artifactId>medinotes-server</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
@@ -35,7 +35,7 @@
                             <arguments>
                                 <argument>-Dspring.profiles.active=test</argument>
                                 <argument>-jar</argument>
-                                <argument>${basedir}/../server/target/kine-server-${project.version}.jar</argument>
+                                <argument>${basedir}/../server/target/medinotes-server-${project.version}.jar</argument>
                             </arguments>
                             <async>true</async>
                         </configuration>

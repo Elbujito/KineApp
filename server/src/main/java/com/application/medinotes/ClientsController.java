@@ -1,7 +1,7 @@
-package com.application.kine;
+package com.application.medinotes;
 
-import  com.application.kine.models.Clients;
-import  com.application.kine.repositories.ClientsRepository;
+import  com.application.medinotes.models.Clients;
+import  com.application.medinotes.repositories.ClientsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

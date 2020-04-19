@@ -1,6 +1,6 @@
-package com.application.kine.repositories;
+package com.application.medinotes.repositories;
 
-import com.application.kine.models.Clients;
+import com.application.medinotes.models.Clients;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

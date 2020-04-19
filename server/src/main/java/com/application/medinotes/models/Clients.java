@@ -1,4 +1,4 @@
-package com.application.kine.models;
+package com.application.medinotes.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
