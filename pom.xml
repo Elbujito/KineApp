@@ -17,6 +17,7 @@
     <modules>
         <module>client</module>
         <module>server</module>
+		<module>auth</module>
         <module>doc</module>
     </modules>
     <properties>

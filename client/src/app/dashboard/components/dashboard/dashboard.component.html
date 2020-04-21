@@ -1,0 +1,21 @@
+<div class="dashboard-page" style="height: 80vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My dashboard</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a href="#" mat-list-item>Patients</a>
+        <a href="#" mat-list-item>Consultation</a>
+        <a (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="nav-container" fxFlexFill></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

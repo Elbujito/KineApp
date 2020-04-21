@@ -15,7 +15,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/")
 public class UsersController {
     @Autowired
     private UsersRepository repository;
