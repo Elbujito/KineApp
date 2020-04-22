@@ -1,7 +1,6 @@
 import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '@angular/router';
 import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-
 import { AuthService } from '../../services/index';
 import {
     LoginPassword,

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule, AuthServiceConfiguration } from './auth/index';
-import { DashboardModule } from './dashboard/index';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
@@ -28,7 +28,8 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
         HttpClientModule,
         AuthModule,
 		DashboardModule,
-        AppRoutingModule
+        AppRoutingModule,
+        AngularMaterialModule
     ],
     providers: [
         { provide: AuthServiceConfiguration, useFactory: authServiceConfiguration }

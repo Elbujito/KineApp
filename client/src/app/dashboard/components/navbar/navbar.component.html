@@ -1,22 +1,14 @@
 <mat-toolbar class="topnav" id="myTopnav">
   <a routerLink="/">MédiNotes</a>
-  <div id="navigation">
-    <a routerLink="about">Qui somme nous ? </a>
-    <a routerLink="support">Support </a>
-  </div>
-  <button class="icon" mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu" id="mobile-menu">
-    <button mat-menu-item routerLink="about">
-      <span>Qui sommes nous ?</span>
+    <div id="navigation">
+      <a routerLink="/about">Qui somme nous ? </a>
+    </div>
+    <button class="icon" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
     </button>
-  </mat-menu>
-  <mat-menu #menu="matMenu" id="mobile-menu">
-    <button mat-menu-item routerLink="support">
-      <span>Support</span>
-    </button>
-  </mat-menu>
+   <mat-menu #menu="matMenu" id="mobile-menu">
+      <button mat-menu-item routerLink="/about">
+        <span>Qui sommes nous ?</span>
+      </button>
+    </mat-menu>
 </mat-toolbar>
-
-

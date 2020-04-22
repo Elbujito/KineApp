@@ -13,6 +13,6 @@ export class SwitchComponent {
     switchUser() {
         this.authService.logout();
         this.authService.redirectUrl = this.router.url;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
     }
 }

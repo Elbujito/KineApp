@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
-
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthService } from './services/index';
@@ -31,7 +30,7 @@ export function getToken(): string {
             }
         })
     ],
-    exports: [UsernamePipe, SwitchComponent],
+    exports: [UsernamePipe, SwitchComponent, LoginComponent],
     declarations: [
         LoginComponent,
         PasswordComponent,

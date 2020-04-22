@@ -7,7 +7,7 @@ import { ChangePassword, Connector } from '../../models/index';
 @Component({
     selector: 'auth-reset',
     templateUrl: 'password.component.html',
-    styleUrls: ['../style.scss']
+    styleUrls: ['password.component.css']
 })
 export class PasswordComponent implements OnInit {
     changePassword: ChangePassword;
