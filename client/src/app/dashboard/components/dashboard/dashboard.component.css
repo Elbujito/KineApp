@@ -15,3 +15,33 @@
   background-position: center;
   overflow: auto;
 }
+
+.header-profile {
+    background-color: #444;
+    height: 170px;
+}
+
+.profile {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.profile .name {
+    color: #FFF;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}

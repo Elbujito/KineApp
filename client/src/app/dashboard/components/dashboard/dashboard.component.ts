@@ -1,6 +1,7 @@
 import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '@angular/router';
 import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { User, AuthService } from '../../../auth';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,13 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export class DashboardComponent implements OnInit {
 
-constructor() {}
+    user: User;
 
-ngOnInit()
-{
-}
+    constructor(private service: AuthService) {
+    }
+
+    ngOnInit(): void {
+        this.user = this.service.getUser();
+    }
 
 }

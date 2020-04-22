@@ -7,15 +7,22 @@
       <span>My dashboard</span>
     </mat-toolbar-row>
   </mat-toolbar>
-
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav>
+      <div class="header-profile">
+          <div class="profile">
+            <img class="profile-picture" src="../../../assets/img/user.jpg" />
+            <h3 class="name">{{user.name}}</h3>
+          </div>
+      </div>
       <mat-nav-list>
         <a href="#" mat-list-item>Patients</a>
         <a href="#" mat-list-item>Consultation</a>
         <a href="#" mat-list-item> <auth-switch>Logout</auth-switch></a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content class="nav-container" fxFlexFill></mat-sidenav-content>
+    <mat-sidenav-content class="nav-container" fxFlexFill>
+
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
