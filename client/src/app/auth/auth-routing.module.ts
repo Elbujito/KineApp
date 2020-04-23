@@ -17,7 +17,7 @@ const routes: Routes = [
     {
         path: 'password',
         component: PasswordComponent,
-        canActivate: [LoggedOffGuard]
+        canActivate: [LoggedGuard]
     },
     {
         path: 'logout',

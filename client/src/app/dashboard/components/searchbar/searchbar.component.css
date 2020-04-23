@@ -1,0 +1,21 @@
+.search-card
+{
+
+  width: 300px;
+  margin: 10px auto;
+}
+
+.mat-card-content
+{
+  display: flex;
+  align-item: center;
+}
+
+.searchbar-form {
+}
+
+.mat-raised-button
+{
+ margin-left: 10px;
+ height: 40px;
+}

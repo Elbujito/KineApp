@@ -16,8 +16,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>client</module>
-        <module>server</module>
-		<module>auth</module>
+		<module>server</module>
         <module>doc</module>
     </modules>
     <properties>

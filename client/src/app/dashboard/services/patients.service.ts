@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import { Observable, of} from 'rxjs';
-import 'rxjs/Rx';
-import { map } from 'rxjs/operators';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/catch';
+import { HttpClient } from '@angular/common/http';
+import { throwError as observableThrowError, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 
 import {Patient} from '../models/patient.model';
@@ -12,22 +9,31 @@ import {Patient} from '../models/patient.model';
 @Injectable()
 export class PatientsService {
 
-  patientUrl = environment.apiUrl + 'patient/';
-
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
-  getAllPatients(): Observable<Patient[]> {
-    return this.http.get(this.patientUrl)
-      .map(res => res.json().data.items as Patient[]).catch(this.handleError);
-  }
+   getAllPatients(): Observable<Patient[]> {
+          return this.get('/auth/patients');
+          }
 
-  private handleError(error: any) {
-    const errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+  private get(route: string): Observable<any> {
+          return this.http.get<Response>(environment.apiUrl + route).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+          );
+   }
+
+   private extractData(res: Response) {
+          return res || {};
+   }
+
+    private handleError(error: any): Observable<never> {
+        if (error.error) {
+            const errMsg = (error.error && error.error.message)
+                || (error.status ? `${error.status} - ${error.statusText}` : 'Server error');
+            return observableThrowError(errMsg);
+        }
+    }
 
 
 }

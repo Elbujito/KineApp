@@ -29,9 +29,7 @@
           <select *ngIf="connectors?.length > 1" name="connector" [(ngModel)]="loginPassword.connector" required>
             <option *ngFor="let connector of connectors" [ngValue]="connector.id">{{connector.name}}</option>
           </select>
-          <a routerLink="/password">Change password</a>
         </form>
-
       </mat-card-content>
     </mat-card>
   </div>

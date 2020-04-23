@@ -19,7 +19,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {BilanDialogComponent} from './components/bilan-dialog/bilan-dialog.component';
 import {ResultCardsComponent} from './components/result-cards/result-cards.component';
 import {HomeComponent} from './components/home/home.component';
-
+import { SearchBarComponent } from './components/searchbar/searchbar.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
@@ -46,7 +46,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     ResultCardsComponent,
     BilanDialogComponent,
     DashboardComponent,
-	HomeComponent
+	  HomeComponent,
+	  SearchBarComponent
   ],
   exports: [
       NotFoundComponent,

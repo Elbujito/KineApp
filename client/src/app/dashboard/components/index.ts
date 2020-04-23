@@ -6,3 +6,4 @@ export * from './navbar/navbar.component';
 export * from './not-found/not-found.component';
 export * from './result-cards/result-cards.component';
 export * from './home/home.component';
+export * from './searchbar/searchbar.component';
