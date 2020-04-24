@@ -1,8 +1,7 @@
 .search-card
 {
-
-  width: 300px;
   margin: 10px auto;
+  width: 300px;
 }
 
 .mat-card-content
@@ -11,11 +10,47 @@
   align-item: center;
 }
 
-.searchbar-form {
+#search-component-spinner
+{
+  display: flex;
+  justify-content: center;
+}
+
+.bgsearch
+{
+  display: flex;
+  justify-content: center;
+}
+
+.bgfilter {
+
+}
+
+.newUser
+{
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.help
+{
+  margin-left: 10px;
+  margin-top: 20px;
+  background-color: #AA00FF;
+  color: white;
+}
+
+.bgfilter
+{
+
 }
 
 .mat-raised-button
 {
  margin-left: 10px;
  height: 40px;
+}
+
+.bilan
+{
 }

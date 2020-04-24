@@ -30,7 +30,7 @@ export function getToken(): string {
             }
         })
     ],
-    exports: [UsernamePipe, SwitchComponent, LoginComponent],
+    exports: [UsernamePipe, SwitchComponent, LoginComponent, PasswordComponent],
     declarations: [
         LoginComponent,
         PasswordComponent,

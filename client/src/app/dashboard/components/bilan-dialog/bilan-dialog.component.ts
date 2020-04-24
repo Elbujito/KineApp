@@ -14,28 +14,19 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 
 export class BilanDialogComponent implements OnInit {
-  bilan: Bilan;
+  bilan: Bilan = new Bilan;
 
   constructor(
   private bilansService: BilansService,
   public dialogRef: MatDialogRef<BilanDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
-  /**
-   * onNoClick close dialog
-   */
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  /**
-   * ngOnInit Sets the {@link Bilan} instance representing course
-   * given by his id.
-   */
   ngOnInit() {
-    this.bilansService.getBilanById(this.data.bilan_id).subscribe(bilan => {
-      this.bilan = bilan;
-    });
   }
 
   setMainImgToDefault() {

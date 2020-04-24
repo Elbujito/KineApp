@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router, Event as NavigationEvent} from "@angular/router";
-import {EventsService} from "./dashboard/services/events.service";
 
 @Component({
     selector: 'app-root',
@@ -10,7 +9,7 @@ import {EventsService} from "./dashboard/services/events.service";
 
 export class AppComponent implements OnInit {
 
-constructor(private router: Router, private eventsService: EventsService) {}
+constructor(private router: Router) {}
 
     ngOnInit()
     {

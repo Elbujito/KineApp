@@ -8,6 +8,7 @@ import com.auth.model.login.ChangePassword;
 import com.auth.model.login.LoginPassword;
 import com.auth.model.rest.Connector;
 import com.auth.model.rest.Patient;
+import com.auth.model.rest.Bilan;
 import com.auth.model.user.User;
 import feign.Headers;
 import feign.Param;
@@ -47,4 +48,10 @@ public interface AuthClient {
 
     @RequestLine("GET /patients")
     List<Patient> getPatients();
+
+    @RequestLine("GET /bilans")
+    List<Bilan> getBilans();
+
+    @RequestLine("GET /bilans/{id}")
+    List<Bilan> getBilansByPatientId(@Param("id") String id);
 }

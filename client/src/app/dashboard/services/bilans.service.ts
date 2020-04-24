@@ -1,44 +1,55 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import { Observable, of} from 'rxjs';
-import 'rxjs/Rx';
-import { map } from 'rxjs/operators';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/catch';
+import { HttpClient } from '@angular/common/http';
+import { throwError as observableThrowError, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 
 import {Bilan} from '../models/bilan.model';
+import {Patient} from '../models/patient.model';
 
 @Injectable()
 export class BilansService {
 
-  bilanUrl = environment.apiUrl + 'bilan/';
-  patientUrl = environment.apiUrl + 'patient/';
+  constructor(private http: HttpClient) {
+  }
 
-  constructor(private http: Http) {
-     }
+   getAllBilans(): Observable<Bilan[]> {
+          return this.get('/auth/bilans');
+          }
 
-     getAllBilans(): Observable<Bilan[]> {
-       return this.http.get(this.bilanUrl)
-         .map(res => res.json().data.items as Bilan[]).catch(this.handleError);
-     }
-
-   getBilansByPatient(patientId): Observable<Bilan[]> {
-      return this.http.get(this.patientUrl + patientId + '/bilans/')
-        .map(res => res.json().data.items as Bilan[]).catch(this.handleError);
+   getBilansByPatientId(patient: Patient): Observable<Bilan[]> {
+       return this.get('/auth/bilans/'+patient.id);
    }
 
-    getBilanById(id): Observable<Bilan> {
-       return this.http.get(this.bilanUrl + id)
-         .map(res => res.json().data.items[0] as Bilan).catch(this.handleError);
+  private get(route: string): Observable<any> {
+          return this.http.get<Response>(environment.apiUrl + route).pipe(
+              map(this.extractData),
+              catchError(this.handleError)
+          );
+   }
+
+   private post(route: string, data: string): Observable<any> {
+           return this.http
+               .post<Response>(environment.apiUrl + route, data)
+               .pipe(
+                   map(this.extractData),
+                   catchError(this.handleError),
+               );
+   }
+
+   private extractData(res: Response) {
+          return res || {};
+   }
+
+    private handleError(error: any): Observable<never> {
+        if (error.error) {
+            const errMsg = (error.error && error.error.message)
+                || (error.status ? `${error.status} - ${error.statusText}` : 'Server error');
+            return observableThrowError(errMsg);
+        }
     }
 
-  private handleError(error: any) {
-    const errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+
 
 
 }

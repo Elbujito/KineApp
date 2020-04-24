@@ -7,3 +7,7 @@ export * from './not-found/not-found.component';
 export * from './result-cards/result-cards.component';
 export * from './home/home.component';
 export * from './searchbar/searchbar.component';
+export * from './profile/profile.component';
+export * from './patient-list/patient-list.component';
+export * from './layout/layout.component';
+export * from './profile-details/profile-details.component';

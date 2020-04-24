@@ -1,6 +1,8 @@
 package com.auth.rest;
 
-
+import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.Arrays;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -49,6 +51,7 @@ import com.auth.model.provider.connector.IAuthConnectorProvider;
 import com.auth.model.provider.roles.IAuthRolesProvider;
 import com.auth.model.rest.Connector;
 import com.auth.model.rest.Patient;
+import com.auth.model.rest.Bilan;
 import com.auth.model.user.User;
 import com.auth.provider.token.IAuthTokenProvider;
 import io.jsonwebtoken.Claims;
@@ -60,6 +63,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import static java.lang.String.format;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
+
 
 
 @RestController
@@ -295,7 +299,7 @@ public final class Auth implements AuthClient {
     @GetMapping("/patients")
     public List<Patient> getPatients() {
 
-        List<Patient> patients = new ArrayList() {
+        List<Patient> patients = new ArrayList<Patient>() {
             {
                 add(new Patient("1","Adrien Roques", "25"));
                 add(new Patient("2","Rafael Cecotti", "23"));
@@ -304,11 +308,49 @@ public final class Auth implements AuthClient {
             }};
 
         try {
-            return patients;
+            return patients.stream().collect(Collectors.toList());
         }
         catch (Exception e) {
             throw e;
         }
+    }
+
+    @Override
+    @GetMapping("/bilans")
+    public List<Bilan> getBilans() {
+
+        List<Bilan> bilans = new ArrayList<Bilan>() {
+            {
+                add(new Bilan("1","1", "Bilan 1","06/10/20","Adrien va bien"));
+                add(new Bilan("2","2", "Bilan 2","10/11/20","Rafael va moins bien"));
+                add(new Bilan("3","3",  "Bilan 3",  "05/08/20","Thomas va très bien"));
+                add(new Bilan("4","4","Bilan 4", "021/10/20","Victor va pas bien"));
+            }};
+
+        try {
+            return bilans;
+        }
+        catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    @GetMapping("/bilans/{id}")
+    public List<Bilan> getBilansByPatientId(@PathVariable String id) {
+        LOG.warn("Patient id is : ", id);
+        List<Bilan> bilans = new ArrayList<Bilan>() {
+            {
+                add(new Bilan("1", "1", "Bilan 1","06/10/20","Adrien va bien"));
+                add(new Bilan("2", "2", "Bilan 2","10/11/20","Rafael va moins bien"));
+                add(new Bilan("3","3",  "Bilan 3",  "05/08/20","Thomas va très bien"));
+                add(new Bilan("4", "4","Bilan 4", "021/10/20","Victor va pas bien"));
+                add(new Bilan("5", "1", "Bilan 5","06/10/20","Adrien va bien"));
+                add(new Bilan("6", "1", "Bilan 6","10/11/20","Adrien va moins bien"));
+                add(new Bilan("7","3",  "Bilan 7",  "05/08/20","Thomas va très bien"));
+                add(new Bilan("8", "4","Bilan 8", "021/10/20","Victor va pas bien"));
+            }};
+        return bilans.stream().filter(bilan -> (bilan.getPatientId() == id)).collect(Collectors.toList());
     }
 
     public IAuthConnectorProvider getConnector(String connectorId) {

@@ -1,35 +1,3 @@
 <div class="dashboard-page" style="height: 80vh;">
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>My dashboard</span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-sidenav-container fxFlexFill>
-    <mat-sidenav #sidenav>
-      <div class="header-profile">
-          <div class="profile">
-            <img class="profile-picture" src="../../../assets/img/user.jpg" />
-            <h3 class="name">{{user.name}}</h3>
-            <a routerLink="/password">Change password</a>
-          </div>
-      </div>
-      <mat-nav-list>
-        <a href="#" mat-list-item>Patients</a>
-        <a href="#" mat-list-item>Consultation</a>
-        <a href="#" mat-list-item>
-        <mat-icon>logout
-          <auth-switch></auth-switch>
-        </mat-icon>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="nav-container" fxFlexFill>
-      <div class="search">
-        <app-searchbar></app-searchbar>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <app-searchbar></app-searchbar>
 </div>

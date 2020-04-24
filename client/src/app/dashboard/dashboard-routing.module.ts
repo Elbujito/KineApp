@@ -5,7 +5,10 @@ import {
     HomeComponent,
     AboutComponent,
     NotFoundComponent,
-    DashboardComponent
+    DashboardComponent,
+    PatientListComponent,
+	LayoutComponent,
+	ProfileComponent
 } from './components/index';
 
 import { LoggedGuard, LoggedOffGuard } from '../auth/guards/index';
@@ -14,20 +17,49 @@ const routes: Routes = [
   {
       path: 'home',
       component: HomeComponent,
-      canActivate: [LoggedOffGuard],
       children: []
+  },
+  {
+        path: '',
+        component: HomeComponent,
+        children: []
   },
   {
       path: 'dashboard',
-      component: DashboardComponent,
+      component: LayoutComponent,
+      children: [
+        { path: '', component: DashboardComponent },
+      ],
       canActivate: [LoggedGuard],
+  },
+  {
+        path: 'profile',
+        component: LayoutComponent,
+        children: [
+          { path: '', component: ProfileComponent },
+        ],
+        canActivate: [LoggedGuard],
+  },
+  {
+      path: 'layout',
+      component: LayoutComponent,
       children: []
   },
   {
-    path: 'about',
-    component: AboutComponent,
-    children: []
+      path: 'about',
+      component: LayoutComponent,
+      children: [
+        { path: '', component: AboutComponent },
+      ],
   },
+  {
+      path: 'patients',
+      component: LayoutComponent,
+      children: [
+        { path: '', component: PatientListComponent },
+      ],
+      canActivate: [LoggedGuard],
+   },
 ];
 
 @NgModule({

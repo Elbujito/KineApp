@@ -9,8 +9,11 @@ import {AngularMaterialModule} from '../angular-material/angular-material.module
 import {AuthModule} from '../auth/auth.module';
 import {PatientsService} from './services/patients.service';
 import {BilansService} from "./services/bilans.service";
-import {EventsService} from "./services/events.service";
 
+import {LayoutComponent} from './components/layout/layout.component';
+import {PatientListComponent} from './components/patient-list/patient-list.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {ProfileDetailsComponent} from './components/profile-details/profile-details.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AboutComponent} from './components/about/about.component';
 import {FooterComponent} from './components/footer/footer.component'
@@ -21,6 +24,7 @@ import {ResultCardsComponent} from './components/result-cards/result-cards.compo
 import {HomeComponent} from './components/home/home.component';
 import { SearchBarComponent } from './components/searchbar/searchbar.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+
 
 @NgModule({
   imports: [
@@ -35,8 +39,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   ],
   providers: [
     PatientsService,
-    BilansService,
-    EventsService
+    BilansService
   ],
   declarations: [
     NotFoundComponent,
@@ -47,7 +50,11 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     BilanDialogComponent,
     DashboardComponent,
 	  HomeComponent,
-	  SearchBarComponent
+	  SearchBarComponent,
+	  ProfileComponent,
+	  ProfileDetailsComponent,
+	  PatientListComponent,
+	  LayoutComponent
   ],
   exports: [
       NotFoundComponent,
