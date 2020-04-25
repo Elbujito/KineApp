@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AboutRoutingModule } from './about-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 import { AboutHomeComponent } from './index';
+
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   declarations: [AboutHomeComponent],
@@ -13,7 +14,7 @@ import { AboutHomeComponent } from './index';
     CommonModule,
     SharedModule,
     AboutRoutingModule,
-	AngularMaterialModule
+	MaterialModule
   ]
 })
 export class AboutModule { }

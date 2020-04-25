@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { LayoutComponent, NotFoundComponent, ConfirmDialogComponent } from './index';
 import { UsernamePipe } from './pipes/index';
 
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -13,13 +13,13 @@ import { UsernamePipe } from './pipes/index';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-	AngularMaterialModule
+	  MaterialModule
   ],
   declarations: [
     ConfirmDialogComponent,
     LayoutComponent,
-	NotFoundComponent,
-	UsernamePipe
+	  NotFoundComponent,
+	  UsernamePipe
   ],
   exports: [
     FormsModule,

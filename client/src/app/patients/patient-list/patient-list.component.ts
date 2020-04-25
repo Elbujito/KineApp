@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
-import { MatDialog, MatDialogConfig} from "@angular/material";
+import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { Observable } from 'rxjs';
 
 import { Patient } from '../../shared/models/index';

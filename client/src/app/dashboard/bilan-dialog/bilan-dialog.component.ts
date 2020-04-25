@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BilansService} from '../../core/services/index';
 import {Bilan} from '../../shared/models/index';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({

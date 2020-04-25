@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 import { ProfileComponent, ProfileDetailsComponent } from './index';
 
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     ProfileRoutingModule,
     SharedModule,
 	AuthModule,
-	AngularMaterialModule
+	MaterialModule
   ],
   declarations: [
     ProfileComponent,

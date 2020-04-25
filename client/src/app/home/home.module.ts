@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 import { HomeRoutingModule } from './home-routing.module';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 import { HomeComponent, NavbarComponent, FooterComponent } from './index';
+
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { HomeComponent, NavbarComponent, FooterComponent } from './index';
     HomeRoutingModule,
 	AuthModule,
     SharedModule,
-	AngularMaterialModule
+	MaterialModule
   ],
   declarations: [
     HomeComponent,

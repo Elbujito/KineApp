@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 import { AuthService } from '../core/services/index';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent, LogoutComponent, PasswordComponent,SwitchComponent } from './index';
 
+import { MaterialModule } from '../material.module';
+
 @NgModule({
     imports: [
         CommonModule,
-        AngularMaterialModule,
         FormsModule,
-        AuthRoutingModule
+        AuthRoutingModule,
+		MaterialModule
 		],
     exports: [SwitchComponent, LoginComponent, PasswordComponent],
     declarations: [
