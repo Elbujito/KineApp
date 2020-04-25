@@ -11,3 +11,5 @@ export * from './profile/profile.component';
 export * from './patient-list/patient-list.component';
 export * from './layout/layout.component';
 export * from './profile-details/profile-details.component';
+export * from './patient-dialog/patient-dialog.component';
+export * from './confirmation-dialog/confirmation-dialog.component';

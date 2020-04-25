@@ -7,7 +7,7 @@
       <mat-icon>menu</mat-icon>
     </button>
 
-    <a class="navbar-brand" [routerLink]="['/']" matTooltip="Home">
+    <a class="navbar-brand" (click)="switchUser()" matTooltip="Home">
       <h1>
         MédiNotes
       </h1>

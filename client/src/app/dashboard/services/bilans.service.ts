@@ -14,11 +14,11 @@ export class BilansService {
   }
 
    getAllBilans(): Observable<Bilan[]> {
-          return this.get('/auth/bilans');
+          return this.get('/bilan/all');
           }
 
    getBilansByPatientId(patient: Patient): Observable<Bilan[]> {
-       return this.get('/auth/bilans/'+patient.id);
+       return this.get('/bilans/'+patient.id);
    }
 
   private get(route: string): Observable<any> {

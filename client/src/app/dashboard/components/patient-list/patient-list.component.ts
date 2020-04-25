@@ -1,27 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '@angular/router';
+import { ViewChild, OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import {Observable} from 'rxjs';
 
-export interface PatientElement {
-  prenom: string;
-  name: string;
-  weight: number;
-  age: string;
-}
-
-const ELEMENT_DATA: PatientElement[] = [
-  { prenom: 'Adrien', name: 'Roques', weight: 65, age: '25' },
-  { prenom: 'Thomas', name: 'Top', weight: 70, age: '19' },
-  { prenom: 'Benoit', name: 'Tiro', weight: 56, age: '43' },
-  { prenom: 'Jerome', name: 'Calcin', weight: 76, age: '54' },
-  { prenom: 'Jo', name: 'Sytrac', weight: 81, age: '56' },
-  { prenom: 'Clément', name: 'Rivat', weight: 54, age: '16' },
-  { prenom: 'Romane', name: 'Tori', weight: 32, age: '85' },
-  { prenom: 'Clement', name: 'Magiie', weight: 15, age: '13' },
-  { prenom: 'Hugo', name: 'Flurat', weight: 18, age: '89' },
-  { prenom: 'Adrien', name: 'Tolo', weight: 20, age: '35' },
-];
+import { Patient } from '../../models/patient.model';
+import {PatientsService} from '../../services/patients.service';
+import {PatientDialogComponent} from '../patient-dialog/patient-dialog.component';
+import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-patient-list',
@@ -29,16 +18,43 @@ const ELEMENT_DATA: PatientElement[] = [
   styleUrls: ['./patient-list.component.css']
 })
 export class PatientListComponent implements OnInit {
-  displayedColumns: string[] = ['prenom', 'name', 'weight', 'age'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['firstname', 'name', 'age', 'weight', 'email', 'edit', 'remove'];
+  patients: Patient[];
+  dataSource = new MatTableDataSource(this.patients);
+
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(
-
-  ) { }
-
-  ngOnInit() {
-    this.dataSource.sort = this.sort;
+  constructor(private router: Router, private dialog: MatDialog, private patientsService: PatientsService)
+  {
   }
+
+  ngOnInit()
+  {
+
+   this.patientsService.getAllPatients().subscribe((patients: Patient[]) => {
+                                                               this.patients = patients;
+                                                             });
+    this.dataSource = new MatTableDataSource(this.patients);
+    this.dataSource.sort = this.sort;
+}
+
+   openDialog() {
+   this.dialog.open(PatientDialogComponent, {
+             width: '', data: {id: 'id'}}
+   );
+
+       /*dialogRef.afterClosed().subscribe(
+        data => this.patientsService.addNewPatient(data)
+       );*/
+    }
+
+    remove(patient: Patient)
+    {
+     this.dialog.open(ConfirmationDialogComponent);
+    }
+
+    edit(patient: Patient)
+    {
+     }
 }

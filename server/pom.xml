@@ -6,15 +6,15 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
     <groupId>com.application.auth</groupId>
-    <artifactId>auth-application</artifactId>
+    <artifactId>server-application</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <modules>
-        <module>auth-common</module>
-        <module>auth-client</module>
-        <module>auth-common-spring</module>
-        <module>auth-server</module>
+        <module>server-common</module>
+        <module>server-client</module>
+        <module>server-common-spring</module>
+        <module>server-server</module>
     </modules>
 
     <properties>

@@ -1,4 +1,6 @@
 import {NgModule} from '@angular/core';
+import {MatDialogModule} from '@angular/material';
+import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -20,15 +22,20 @@ import {FooterComponent} from './components/footer/footer.component'
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {BilanDialogComponent} from './components/bilan-dialog/bilan-dialog.component';
+import {PatientDialogComponent} from './components/patient-dialog/patient-dialog.component';
 import {ResultCardsComponent} from './components/result-cards/result-cards.component';
 import {HomeComponent} from './components/home/home.component';
 import { SearchBarComponent } from './components/searchbar/searchbar.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
   imports: [
     BrowserModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpModule,
@@ -36,6 +43,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 	  DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule
   ],
   providers: [
     PatientsService,
@@ -54,7 +62,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 	  ProfileComponent,
 	  ProfileDetailsComponent,
 	  PatientListComponent,
-	  LayoutComponent
+	  LayoutComponent,
+	  PatientDialogComponent,
+	  ConfirmationDialogComponent
   ],
   exports: [
       NotFoundComponent,
@@ -63,9 +73,11 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
       FooterComponent,
       ResultCardsComponent,
       BilanDialogComponent,
-      DashboardComponent
+      DashboardComponent,
+      PatientListComponent,
+      LayoutComponent
     ],
-  entryComponents: []
+  entryComponents: [PatientDialogComponent, ConfirmationDialogComponent]
 })
 
 export class DashboardModule {

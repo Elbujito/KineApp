@@ -13,8 +13,12 @@ export class PatientsService {
   }
 
    getAllPatients(): Observable<Patient[]> {
-          return this.get('/auth/patients');
+          return this.get('/patient/all');
           }
+
+   addNewPatient(data: any)
+   {
+   }
 
   private get(route: string): Observable<any> {
           return this.http.get<Response>(environment.apiUrl + route).pipe(
