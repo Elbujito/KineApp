@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardRoutingModule } from './dashboard-routing.module';
+
 import { SharedModule } from '../shared/shared.module';
+import { AuthModule } from '../auth/auth.module';
+import { HomeRoutingModule } from './home-routing.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
-import { BilanDialogComponent, DashboardComponent, SearchBarComponent} from './index';
+import { HomeComponent, NavbarComponent, FooterComponent } from './index';
 
 @NgModule({
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    HomeRoutingModule,
+	AuthModule,
     SharedModule,
 	AngularMaterialModule
   ],
   declarations: [
-    DashboardComponent,
-	SearchBarComponent,
-	BilanDialogComponent
+    HomeComponent,
+	NavbarComponent,
+	FooterComponent
   ],
-  entryComponents: [BilanDialogComponent
+  entryComponents: [
   ]
 })
-export class DashboardModule { }
+export class HomeModule { }

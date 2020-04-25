@@ -1,13 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { AppRoutingModule } from './app-routing.module';
-import { AuthModule, AuthServiceConfiguration } from './auth/index';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AuthServiceConfiguration } from './shared/models/index';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './home/home.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AboutModule } from './about/about.module';
+import { PatientsModule } from './patients/patients.module';
+import { ProfileModule } from './profile/profile.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+
+import { environment } from '../environments/environment';
+
+export function getToken(): string {
+    return localStorage.getItem('token');
+}
 
 export function authServiceConfiguration(): AuthServiceConfiguration {
     return {
@@ -25,11 +38,21 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
     ],
     imports: [
         BrowserModule,
-        HttpClientModule,
-        AuthModule,
+        BrowserAnimationsModule,
+		SharedModule,
+        CoreModule,
+		AppRoutingModule,
+		HomeModule,
+		AboutModule,
+		AuthModule,
+		PatientsModule,
+		ProfileModule,
 		DashboardModule,
-        AppRoutingModule,
-        AngularMaterialModule
+		JwtModule.forRoot({
+            config: {
+                tokenGetter: getToken
+            }
+        })
     ],
     providers: [
         { provide: AuthServiceConfiguration, useFactory: authServiceConfiguration }

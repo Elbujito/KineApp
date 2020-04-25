@@ -1,46 +1,56 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent, NotFoundComponent, AboutComponent, HomeComponent } from './dashboard/index';
-import { LoggedGuard, LoggedOffGuard} from './auth/index';
 
-export const routes = [
-  {
-      path: '',
-      component: HomeComponent,
-      canActivate: [LoggedOffGuard]
-  },
-  {
-          path: 'login',
-          component: HomeComponent,
-          canActivate: [LoggedOffGuard]
-  },
-  {
-        path: 'home',
-        component: HomeComponent,
+import { LoggedGuard, LoggedOffGuard } from './core/guards/index';
+
+const appRoutes: Routes = [
+    {
+        path: 'dashboard',
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        canActivate: [LoggedGuard]
+    },
+    {
+        path: 'profile',
+        loadChildren: './profile/profile.module#ProfileModule',
+        canActivate: [LoggedGuard]
+    },
+	{
+        path: 'patients',
+        loadChildren: './patients/patients.module#PatientsModule',
+        canActivate: [LoggedGuard]
+    },
+    {
+        path: 'account',
+        loadChildren: './account/account.module#AccountModule',
+        canActivate: [LoggedGuard]
+    },
+    {
+        path: 'about',
+        loadChildren: './about/about.module#AboutModule',
+        canActivate: [LoggedGuard]
+    },
+	{
+        path: '',
+        loadChildren: './home/home.module#HomeModule',
         canActivate: [LoggedOffGuard]
-   },
-   {
-           path: 'about',
-           component: AboutComponent,
-  },
-  {
-        path: 'not-found',
-        component: NotFoundComponent,
-        children: []
-  },
-  {
-    path: '**',
-    redirectTo: 'not-found',
-    pathMatch: 'full'
-  }
+    },
+	{
+        path: 'login',
+        loadChildren: './home/home.module#HomeModule',
+        canActivate: [LoggedOffGuard]
+    },
+    {
+        path: '**',
+        redirectTo: 'home',
+        pathMatch: 'full'
+    }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(appRoutes)
     ],
-    exports: [
-        RouterModule
-    ]
+    exports: [RouterModule],
+    providers: []
 })
 export class AppRoutingModule { }
