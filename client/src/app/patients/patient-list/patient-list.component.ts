@@ -42,13 +42,7 @@ export class PatientListComponent implements OnInit {
 }
 
    openDialog() {
-   this.dialog.open(PatientDialogComponent, {
-             width: '', data: {id: 'id'}}
-   );
-
-       /*dialogRef.afterClosed().subscribe(
-        data => this.patientsService.addNewPatient(data)
-       );*/
+     this.dialog.open(PatientDialogComponent);
     }
 
     remove(patient: Patient)
@@ -58,5 +52,6 @@ export class PatientListComponent implements OnInit {
 
     edit(patient: Patient)
     {
-     }
+     this.dialog.open(PatientDialogComponent);
+    }
 }

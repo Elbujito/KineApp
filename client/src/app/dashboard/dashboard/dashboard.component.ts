@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../core/services/index';
 import { User } from '../../shared/models/index';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,11 +17,14 @@ export class DashboardComponent implements OnInit {
 
     user: User;
 
-    constructor(private service: AuthService) {
-    }
-
+    constructor(private snackBar: MatSnackBar, private service: AuthService) {}
+	
     ngOnInit(): void {
         this.user = this.service.getUser();
+		
+		this.snackBar.open('Welcome back '+this.user.name+ ' !','Close', {
+			  duration: 2000,
+		});
     }
 
 }

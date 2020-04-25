@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AboutHomeComponent } from './about/index'
+
 import { LoggedGuard, LoggedOffGuard } from './core/guards/index';
 
 const appRoutes: Routes = [
@@ -28,6 +30,11 @@ const appRoutes: Routes = [
         path: 'about',
         loadChildren: './about/about.module#AboutModule',
         canActivate: [LoggedGuard]
+    },
+    {
+          path: 'contact',
+          component: AboutHomeComponent,
+          children: []
     },
 	{
         path: '',

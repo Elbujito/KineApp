@@ -1,13 +1,22 @@
-<!-- <h2 mat-dialog-title>Add new Patient</h2>
+<h2 mat-dialog-title>Add new Patient</h2>
 <mat-dialog-content [formGroup]="form">
     <mat-form-field>
-        <input matInput
-                placeholder="Patient Description"
-               formControlName="description">
+      <input type="text" matInput placeholder="FirstName"  formControlName="firstname"  required>
     </mat-form-field>
+  <mat-form-field>
+      <input type="text" matInput placeholder="Name"  formControlName="name" required>
+    </mat-form-field>
+  <mat-form-field>
+      <input type="text" matInput placeholder="Age"  formControlName="age" required>
+  </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Weigth"  formControlName="weight" required>
+    </mat-form-field>
+      <mat-form-field>
+      <input type="text" matInput placeholder="Email"  formControlName="email" required>
+      </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
-</mat-dialog-actions> -->
-<div></div>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true">Save</button>
+</mat-dialog-actions>

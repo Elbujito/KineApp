@@ -1,8 +1,4 @@
 .mat-form-field {
     display: block;
-}
-
-textarea {
-    height: 100px;
-    resize: vertical;
+    width: 400px;
 }

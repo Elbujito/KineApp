@@ -15,7 +15,6 @@ import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 export class PatientDialogComponent implements OnInit {
   patient: Patient = new Patient();
   form: FormGroup;
-  description:string;
 
     constructor(
     private patientsService: PatientsService,
@@ -24,10 +23,6 @@ export class PatientDialogComponent implements OnInit {
     }
 
   ngOnInit() {
-  }
-
-  setMainImgToDefault() {
-    this.patient.img = "http://howmadareyou.com/wp-content/themes/MAD/images/default_profile_image.png";
   }
 
   save() {
