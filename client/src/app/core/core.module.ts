@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule} from '@angular/common/http';
 
-import {AuthService, PatientsService , BilansService } from './services/index';
+import {AuthService, PatientsService , BilansService, UserService, AlertService } from './services/index';
 import {throwIfAlreadyLoaded, AdminGuard, LoggedGuard, LoggedOffGuard } from './guards/index';
 
 @NgModule({
@@ -18,7 +18,9 @@ import {throwIfAlreadyLoaded, AdminGuard, LoggedGuard, LoggedOffGuard } from './
 	LoggedOffGuard,
 	AuthService,
 	PatientsService,
-	BilansService
+	BilansService,
+	UserService,
+	AlertService
   ],
   exports: [
   ]

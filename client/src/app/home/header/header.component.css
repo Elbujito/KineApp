@@ -1,0 +1,51 @@
+#content {
+  padding: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spacer-light {
+  margin: 0 10px;
+}
+
+.mat-toolbar.mat-primary {
+    background: -webkit-linear-gradient(left, rgb(116, 153, 227), rgb(57, 162, 136)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgb(116, 153, 227), rgb(57, 162, 136)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgb(116, 153, 227), rgb(57, 162, 136)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgb(116, 153, 227), rgb(57, 162, 136)); /* Standard syntax */
+}
+
+.mat-toolbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 22px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+span a, span a:hover {
+  text-decoration: none;
+  color:rgba(255,255,255,.87);
+}
+
+mat-icon {
+  margin-right: 0px!important;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color:rgba(0,0,0,.87);
+}
+
+.mat-icon {
+  text-decoration: none;
+  color:rgba(255,255,255,.87);
+}
+
+.login, .logout, .home, .contact{
+  color: #333;
+}

@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+
+  <a routerLink="/">MédiNotes</a>
+
+  <span class="spacer"></span>
+
+  <span class="spacer-light"></span>
+
+  <div *ngIf="!authService.isAuthenticated();">
+    <button type="button" routerLink="/login" mat-icon-button>
+      <mat-icon>lock_open</mat-icon>
+    </button>
+  </div>
+
+</mat-toolbar>
+
+
