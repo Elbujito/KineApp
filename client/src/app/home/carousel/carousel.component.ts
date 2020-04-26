@@ -18,4 +18,5 @@ const IMAGES: Image[] = [
   { 'title': 'Real time IA edidemic prediction', 'url': '../../assets/img/ordi2.jpg' },
   { 'title': 'Keep your notes around the world', 'url': '../../assets/img/dsh.jpg' },
   { 'title': 'Secure stored HDS Datas ', 'url': '../../assets/img/hds.jpg' },
+  { 'title': '100% made in France by the French Tech ', 'url': '../../assets/img/FrenchTechToulouse.jpg' }
 ];

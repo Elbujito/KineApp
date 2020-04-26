@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
 
-  <a routerLink="/">MédiNotes</a>
+  <img routerLink="/" class="img-fluid" src="../../assets/img/logo.jpg">
 
   <span class="spacer"></span>
 
   <span class="spacer-light"></span>
 
-  <div *ngIf="!authService.isAuthenticated();">
+  <div>
     <button type="button" routerLink="/login" mat-icon-button>
       <mat-icon>lock_open</mat-icon>
     </button>
