@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 import { HomeRoutingModule } from './home-routing.module';
 
-import { HomeComponent, FooterComponent, ContactComponent, HeaderComponent} from './index';
+import { HomeComponent, ContactComponent, CarouselComponent} from './index';
 
 import { MaterialModule } from '../material.module';
 
@@ -19,9 +19,8 @@ import { MaterialModule } from '../material.module';
   ],
   declarations: [
     HomeComponent,
-	FooterComponent,
 	ContactComponent,
-	HeaderComponent
+	CarouselComponent
   ],
   entryComponents: [
   ]

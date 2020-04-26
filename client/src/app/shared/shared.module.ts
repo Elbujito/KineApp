@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutComponent, NotFoundComponent, ConfirmDialogComponent} from './index';
+import { LayoutComponent, NotFoundComponent, ConfirmDialogComponent, HeaderComponent, FooterComponent} from './index';
 import { UsernamePipe, TitleCasePipeComponent } from './pipes/index';
 
 import { MaterialModule } from '../material.module';
@@ -20,7 +20,9 @@ import { MaterialModule } from '../material.module';
     LayoutComponent,
 	  NotFoundComponent,
 	  UsernamePipe,
-	  TitleCasePipeComponent
+	  TitleCasePipeComponent,
+	  	FooterComponent,
+		HeaderComponent
   ],
   exports: [
     FormsModule,
@@ -29,7 +31,9 @@ import { MaterialModule } from '../material.module';
     ConfirmDialogComponent,
 	NotFoundComponent,
 	UsernamePipe,
-  	  TitleCasePipeComponent
+  	TitleCasePipeComponent,
+	FooterComponent,
+	HeaderComponent
   ],
   entryComponents: [
     ConfirmDialogComponent

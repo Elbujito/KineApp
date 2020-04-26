@@ -1,11 +1,17 @@
- .home-page
+.home-page
  {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background: url(../../../assets/img/comp_cof_overlay.jpg) no-repeat center center fixed;
+  background: url(../../../assets/img/banner2.jpg) no-repeat center center fixed;
   overflow: auto;
    max-width: 100%;
    width: 100%;
    min-height: 100vh !important;
+}
+
+.buttonStarted
+{
+  display: flex;
+  justify-content: center;
 }

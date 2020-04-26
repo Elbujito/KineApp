@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     },
 	{
         path: 'login',
-        loadChildren: './home/home.module#HomeModule',
+        loadChildren: './auth/auth.module#AuthModule',
         canActivate: [LoggedOffGuard]
     },
     {

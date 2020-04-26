@@ -7,13 +7,15 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent, LogoutComponent, PasswordComponent,SwitchComponent } from './index';
 
 import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         AuthRoutingModule,
-		MaterialModule
+        SharedModule,
+		    MaterialModule
 		],
     exports: [SwitchComponent, LoginComponent, PasswordComponent],
     declarations: [
