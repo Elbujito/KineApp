@@ -1,11 +1,16 @@
 <mat-toolbar color="primary">
 
   <img routerLink="/" class="img-fluid" src="../../assets/img/logo.jpg">
+  <h1><app-titlecase-pipe></app-titlecase-pipe></h1>
 
   <span class="spacer"></span>
 
   <span class="spacer-light"></span>
-
+  <div>
+  <button routerLink="/contact" mat-icon-button>
+    <mat-icon >mail_outline</mat-icon>
+  </button>
+  </div>
   <div>
     <button type="button" routerLink="/login" mat-icon-button>
       <mat-icon>lock_open</mat-icon>

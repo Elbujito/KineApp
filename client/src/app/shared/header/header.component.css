@@ -4,7 +4,7 @@
 
 .img-fluid {
   max-width: 4% !important;
-  margin-right: 17% !important;
+  margin-right: 10px !important;
     border-radius: 30px;
 }
 
@@ -40,6 +40,12 @@
 span a, span a:hover {
   text-decoration: none;
   color:rgba(255,255,255,.87);
+}
+
+.title
+{
+  display: flex;
+  justify-content: center;
 }
 
 mat-icon {

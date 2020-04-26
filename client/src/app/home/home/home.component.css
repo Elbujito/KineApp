@@ -10,6 +10,11 @@
    min-height: 100vh !important;
 }
 
+.bgca
+{
+  margin-top: 20px;
+}
+
 .buttonStarted
 {
   display: flex;
