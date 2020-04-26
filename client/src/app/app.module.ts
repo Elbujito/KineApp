@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AboutModule } from './about/about.module';
+import { HelpModule } from './help/help.module';
 import { PatientsModule } from './patients/patients.module';
 import { ProfileModule } from './profile/profile.module';
 import { AuthModule } from './auth/auth.module';
@@ -44,6 +45,7 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
 		AppRoutingModule,
 		HomeModule,
 		AboutModule,
+		HelpModule,
 		AuthModule,
 		PatientsModule,
 		ProfileModule,

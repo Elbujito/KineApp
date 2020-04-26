@@ -27,6 +27,11 @@ const appRoutes: Routes = [
     {
         path: 'about',
         loadChildren: './about/about.module#AboutModule',
+        canActivate: [LoggedOffGuard]
+    },
+	{
+        path: 'help',
+        loadChildren: './help/help.module#HelpModule',
         canActivate: [LoggedGuard]
     },
 	{
