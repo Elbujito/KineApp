@@ -2,7 +2,7 @@ import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '
 import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { AuthService, AuthFirebaseService} from '../../core/services/index';
+import { AuthService, AuthFirebaseService} from '../../shared/services/index';
 import {
     LoginPassword,
     Connector,
@@ -16,7 +16,6 @@ import {
 })
 export class AuthFirebaseComponent {
     loginPassword: LoginPassword;
-    loginStarted: Boolean;
     errorMsg: string = null;
     connectors: Connector[];
     productInformations: ProductInformations;
@@ -37,14 +36,10 @@ export class AuthFirebaseComponent {
     }
 
     onSuccess() {
-    this.loginStarted = true;
-        this.authService
-            .login(this.loginPassword)
-            .subscribe(
-                //this.router.navigateByUrl(this.authService.redirectUrl),
-                error => (this.errorMsg = error)
-            );
-     this.loginStarted = false;
-     this.authFirebaseService.onSuccess();
+      this.authService.login(this.loginPassword)
+        .subscribe(
+        error => (this.errorMsg = error)
+        );
+      this.authFirebaseService.onSuccess();
     }
 }

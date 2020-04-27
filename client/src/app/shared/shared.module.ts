@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule} from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutComponent, NotFoundComponent, HeaderComponent, HeaderMainComponent, FooterComponent} from './index';
+
+import { LayoutComponent, NotFoundComponent, HeaderComponent, FooterComponent} from './components/index';
 import { UsernamePipe, TitleCasePipeComponent } from './pipes/index';
+
+import { AuthService, AuthFirebaseService, PatientsService , BilansService, AlertService, UserFirebaseService } from './services/index';
+import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard } from './guards/index';
 
 import { MaterialModule } from '../material.module';
 
@@ -15,28 +20,38 @@ import { MaterialModule } from '../material.module';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-	  MaterialModule
+	  MaterialModule,
+	  HttpClientModule
   ],
   declarations: [
     LayoutComponent,
 	  NotFoundComponent,
-	  UsernamePipe,
-	  TitleCasePipeComponent,
-	  	FooterComponent,
+	 	FooterComponent,
 		HeaderComponent,
-		HeaderMainComponent
+		UsernamePipe,
+    TitleCasePipeComponent
   ],
+  providers: [
+  	LoggedGuard,
+  	LoggedOffGuard,
+  	AuthFirebaseGuard,
+  	AuthService,
+  	PatientsService,
+  	BilansService,
+  	AlertService,
+  	AuthFirebaseService,
+  	UserFirebaseService
+    ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-	NotFoundComponent,
-	UsernamePipe,
+	  NotFoundComponent,
+	  UsernamePipe,
   	TitleCasePipeComponent,
-	FooterComponent,
-	HeaderComponent,
-	HeaderMainComponent
+	  FooterComponent,
+	  HeaderComponent
   ],
   entryComponents: []
 })
-export class SharedModule { }
+export class SharedModule {}

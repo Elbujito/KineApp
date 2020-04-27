@@ -2,7 +2,7 @@ import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '
 import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { AuthService } from '../../core/services/index';
+import { AuthService } from '../../shared/services/index';
 import {
     LoginPassword,
     Connector,

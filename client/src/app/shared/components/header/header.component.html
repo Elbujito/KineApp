@@ -1,0 +1,21 @@
+<mat-toolbar style="background-color: transparent;">
+  <div fxShow="true" fxHide.lt-md fxFlex fxLayout>
+    <div fxFlex fxLayoutAlign="flex-start center">
+    </div>
+    <div fxFlex fxLayoutAlign="center center">
+      <img routerLink="/" class="imgMain" src="../../assets/img/logo.jpg">
+      <h1 style="transform: scale(1.2); margin-left: 20px; color: white;" routerLink="/">
+        <app-titlecase-pipe></app-titlecase-pipe>
+      </h1>
+    </div>
+    <div fxFlex fxLayoutAlign="flex-end center">
+      <div class="abonner">
+        <button type="button" routerLink="/register" mat-raised-button>S'abonner</button>
+      </div>
+      <div class="loginButton">
+        <button style="margin-left: 30px; " type="button" routerLink="/login" mat-raised-button>Se connecter</button>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+

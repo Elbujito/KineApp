@@ -14,7 +14,7 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     SharedModule,
     HelpRoutingModule,
-	MaterialModule
+	  MaterialModule
   ]
 })
 export class HelpModule { }

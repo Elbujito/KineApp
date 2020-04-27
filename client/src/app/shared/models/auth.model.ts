@@ -1,8 +1,3 @@
-/**
- * Authentication Service Configuration
- * @param baseUrl - Base URL used for auth.
- * @param productInformations - (Optional) Custom product informations (name, version) which will be displayed on login page.
- */
 export class AuthServiceConfiguration {
     baseUrl = '/auth';
     productInformations?: ProductInformations;

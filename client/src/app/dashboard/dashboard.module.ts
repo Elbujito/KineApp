@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { BilanDialogComponent, DashboardComponent, SearchBarComponent} from './index';
+import { DashboardComponent, SearchBarComponent} from './index';
 
 import { MaterialModule } from '../material.module';
 
@@ -12,14 +12,9 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-	MaterialModule
+	  MaterialModule
   ],
-  declarations: [
-    DashboardComponent,
-	SearchBarComponent,
-	BilanDialogComponent
-  ],
-  entryComponents: [BilanDialogComponent
-  ]
+  declarations: [DashboardComponent, SearchBarComponent],
+  entryComponents: []
 })
 export class DashboardModule { }

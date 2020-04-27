@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent, LogoutComponent, PasswordComponent, AuthFirebaseComponent} from './index';
-import { LoggedGuard, LoggedOffGuard } from '../core/guards/index';
+import { LoggedGuard, LoggedOffGuard } from '../shared/guards/index';
 
 const routes: Routes = [
     {

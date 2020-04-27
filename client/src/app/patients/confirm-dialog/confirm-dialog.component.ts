@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import {PatientsService} from '../../core/services/patients.service';
+import {PatientsService} from '../../shared/services/patients.service';
 import {Patient} from '../../shared/models/patient.model';
 import { NgForm } from '@angular/forms';
 

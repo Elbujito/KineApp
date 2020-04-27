@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../core/services/index';
+import { AuthService } from '../../shared/services/index';
 
 @Component({
     selector: 'auth-switch',

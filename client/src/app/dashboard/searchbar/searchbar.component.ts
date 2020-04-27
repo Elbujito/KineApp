@@ -4,8 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
-import {PatientsService, BilansService} from '../../core/services/index';
-
+import {PatientsService, BilansService} from '../../shared/services/index';
 import {Patient, Bilan} from '../../shared/models/index'
 
 @Component({
@@ -17,19 +16,12 @@ import {Patient, Bilan} from '../../shared/models/index'
 export class SearchBarComponent implements OnInit {
   control = new FormControl();
   patients: Patient[] = [];
-  bilans: Bilan[] = [];
   filteredPatients: Observable<Patient[]>;
-  searchStarted: Boolean;
   patientSearch: Patient;
-  bilan: Bilan = new Bilan();
 
-  constructor(private router: Router, private bilansService: BilansService, private patientsService: PatientsService) {}
+  constructor(private router: Router, private patientsService: PatientsService) {}
 
   ngOnInit() {
-    this.bilansService.getAllBilans().subscribe(bilans => {
-                  this.bilans = bilans;
-    });
-
     this.patientsService.getAllPatients().subscribe(patients => {
                 this.patients = patients;
     });
@@ -55,16 +47,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   submit() {
-      this.searchStarted = true;
-          this.bilansService.getBilansByPatientId(this.patientSearch).subscribe(bilans => {
-            this.bilans = bilans;
-          });
-
-       this.searchStarted = false;
   }
-
-    setMainImgToDefault() {
-      this.bilan.backgroundImg = "http://howmadareyou.com/wp-content/themes/MAD/images/default_profile_image.png";
-    }
 }
 

@@ -4,9 +4,9 @@
   -o-background-size: cover;
   background: url(../../../assets/img/landing2.jpg) no-repeat center center fixed;
   overflow: auto;
-   max-width: 100%;
-   width: 100%;
-   min-height: 100vh !important;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh !important;
 }
 
 .bgauth

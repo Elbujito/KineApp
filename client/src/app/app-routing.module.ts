@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard} from './core/guards/index';
+import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard} from './shared/guards/index';
 
 const appRoutes: Routes = [
     {

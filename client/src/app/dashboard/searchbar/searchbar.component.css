@@ -10,20 +10,10 @@
   align-item: center;
 }
 
-#search-component-spinner
-{
-  display: flex;
-  justify-content: center;
-}
-
 .bgsearch
 {
   display: flex;
   justify-content: center;
-}
-
-.bgfilter {
-
 }
 
 .newUser
@@ -40,17 +30,8 @@
   color: white;
 }
 
-.bgfilter
-{
-
-}
-
 .mat-raised-button
 {
  margin-left: 10px;
  height: 40px;
-}
-
-.bilan
-{
 }

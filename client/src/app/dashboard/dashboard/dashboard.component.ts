@@ -1,9 +1,5 @@
 import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '@angular/router';
 import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-
-import { AuthService } from '../../core/services/index';
-import { User } from '../../shared/models/index';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,11 +9,8 @@ import { User } from '../../shared/models/index';
 
 export class DashboardComponent implements OnInit {
 
-    user: User;
-
-    constructor(private service: AuthService) {}
+    constructor() {}
 
     ngOnInit(): void {
-        this.user = this.service.getUser();
     }
 }

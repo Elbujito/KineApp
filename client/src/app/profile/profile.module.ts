@@ -3,25 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
-import { ProfileComponent, ProfileDetailsComponent } from './index';
-
 import { MaterialModule } from '../material.module';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+
+import { ProfileComponent } from './index';
 
 @NgModule({
   imports: [
     CommonModule,
     ProfileRoutingModule,
     SharedModule,
-	AuthModule,
-	MaterialModule,
-	NgxAuthFirebaseUIModule
+	  AuthModule,
+	  MaterialModule,
+	  NgxAuthFirebaseUIModule
   ],
-  declarations: [
-    ProfileComponent,
-	ProfileDetailsComponent
-  ],
-  entryComponents: [
-  ]
+  declarations: [ProfileComponent],
+  entryComponents: []
 })
 export class ProfileModule { }

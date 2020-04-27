@@ -1,4 +1,4 @@
-import {PatientsService} from '../../core/services/patients.service';
+import {PatientsService} from '../../shared/services/patients.service';
 import {Patient} from '../../shared/models/patient.model';
 
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';

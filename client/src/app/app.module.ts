@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AngularFireAuthModule } from '@angular/fire/auth';
-import {AngularFireModule } from '@angular/fire';
-import {AngularFirestoreModule } from '@angular/fire/firestore';
-
-import { AppComponent } from './app.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthServiceConfiguration } from './shared/models/index';
-import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -18,12 +17,12 @@ import { HelpModule } from './help/help.module';
 import { PatientsModule } from './patients/patients.module';
 import { ProfileModule } from './profile/profile.module';
 import { AuthModule } from './auth/auth.module';
-import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+
+import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
-const config = {
+const firebaseConfig = {
   apiKey: 'AIzaSyAeTlvXxWg5-TGzFt4zL6P_plUWGR6gs14',
   authDomain: 'medinotes-eac0b.firebaseapp.com',
   databaseURL: 'https://medinotes-eac0b.firebaseio.com',
@@ -52,13 +51,12 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
         AppComponent
     ],
     imports: [
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
 		SharedModule,
-    CoreModule,
 		AppRoutingModule,
 		HomeModule,
 		AboutModule,
@@ -72,7 +70,7 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
                 tokenGetter: getToken
             }
         }),
-		NgxAuthFirebaseUIModule.forRoot(config)
+		NgxAuthFirebaseUIModule.forRoot(firebaseConfig)
     ],
     providers: [
         { provide: AuthServiceConfiguration, useFactory: authServiceConfiguration }

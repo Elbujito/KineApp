@@ -11,12 +11,12 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     PatientsRoutingModule,
     SharedModule,
-	MaterialModule
+	  MaterialModule
   ],
   declarations: [
     PatientListComponent,
-	PatientDialogComponent,
-	ConfirmDialogComponent
+	  PatientDialogComponent,
+	  ConfirmDialogComponent
   ],
   entryComponents: [PatientDialogComponent, ConfirmDialogComponent]
 })

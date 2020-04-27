@@ -1,39 +1,39 @@
 <div class="bgfilter">
-<div class="bgsearch">
-<div>
-<mat-card class="search-card">
-<mat-card-content>
-<form #searchForm="ngForm" class="searchbar-form">
-  <mat-form-field>
-    <mat-label>Search for a patient</mat-label>
-    <input type="text" matInput [formControl]="control" [matAutocomplete]="auto"  required/>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let patient of filteredPatients | async"  (onSelectionChange)="onPatientChanged(patient)" [value]="patient.firstname">
-        {{patient.firstname}}
-        {{patient.name}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
-  <p></p>
-  <div class="button">
-    <button (click)="submit()" color="primary" [disabled]="!searchForm.form.valid" type="button" mat-raised-button>Search</button>
-  </div>
-  </mat-card-content>
-</mat-card>
-  </div>
-  <div>
-  <button class="newUser" color="primary" type="button" mat-fab>
-    <mat-icon>filter_list</mat-icon>
-  </button>
-  </div>
-  <div>
-    <button class="help" type="button" mat-fab>
-      <mat-icon>help_outline</mat-icon>
-    </button>
-  </div>
-</div>
-  <div id="search-component-spinner" *ngIf="searchStarted">
-    <mat-spinner></mat-spinner>
+  <div class="bgsearch">
+    <div>
+      <mat-card class="search-card">
+        <mat-card-content>
+          <form #searchForm="ngForm" class="searchbar-form">
+            <mat-form-field>
+              <mat-label>Search for a patient</mat-label>
+              <input type="text" matInput [formControl]="control" [matAutocomplete]="auto" required/>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let patient of filteredPatients | async"
+                            (onSelectionChange)="onPatientChanged(patient)" [value]="patient.firstname">
+                  {{patient.firstname}}
+                  {{patient.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+          <p></p>
+          <div class="button">
+            <button (click)="submit()" color="primary" [disabled]="!searchForm.form.valid" type="button"
+                    mat-raised-button>Search
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div>
+      <button class="newUser" color="primary" type="button" mat-fab>
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button class="help" type="button" mat-fab>
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
