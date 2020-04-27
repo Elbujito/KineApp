@@ -27,6 +27,7 @@
 
 .mainTitle>h3
 {
+ margin-top: 10px;
   color: #F5F5F5;
 }
 
@@ -34,6 +35,7 @@
 {
   background-color: #AA00FF;
   color: white;
+  transform: scale(1.2);
 }
 
 .mainTitle>button:hover

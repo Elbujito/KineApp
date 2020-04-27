@@ -8,12 +8,14 @@
 {
  background-color: transparent;
  color: white;
+ transform: scale(1.2);
 }
 
 .abonner>button
 {
   background-color: #AA00FF;
   color: white;
+  transform: scale(1.2);
 }
 
 .loginButton>button:hover
