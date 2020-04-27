@@ -1,0 +1,17 @@
+.login-background {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: url(../../../assets/img/landing2.jpg) no-repeat center center fixed;
+  overflow: auto;
+   max-width: 100%;
+   width: 100%;
+   min-height: 100vh !important;
+}
+
+.bgauth
+{
+  width: 600px;
+  background-color: white;
+  margin: 0 auto;
+}

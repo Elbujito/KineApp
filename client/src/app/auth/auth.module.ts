@@ -4,25 +4,32 @@ import { FormsModule } from '@angular/forms';
 
 import { AuthService } from '../core/services/index';
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent, LogoutComponent, PasswordComponent,SwitchComponent } from './index';
+import { LoginComponent, PhoneSigninComponent, LogoutComponent, AuthFirebaseComponent, PasswordComponent,SwitchComponent } from './index';
 
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import {AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
     imports: [
         CommonModule,
+        AngularFireAuthModule,
         FormsModule,
         AuthRoutingModule,
         SharedModule,
-		    MaterialModule
+		    MaterialModule,
+			 NgxAuthFirebaseUIModule
 		],
-    exports: [SwitchComponent, LoginComponent, PasswordComponent],
+    exports: [SwitchComponent, LoginComponent, PasswordComponent, AuthFirebaseComponent, PhoneSigninComponent],
     declarations: [
         LoginComponent,
         PasswordComponent,
         LogoutComponent,
-        SwitchComponent
+        SwitchComponent,
+		AuthFirebaseComponent,
+		PhoneSigninComponent
     ],
     providers: []
 })

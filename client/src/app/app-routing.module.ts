@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoggedGuard, LoggedOffGuard } from './core/guards/index';
+import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard} from './core/guards/index';
 
 const appRoutes: Routes = [
     {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
-        canActivate: [LoggedGuard]
+        canActivate: [AuthFirebaseGuard]
     },
     {
         path: 'profile',
         loadChildren: './profile/profile.module#ProfileModule',
-        canActivate: [LoggedGuard]
+        canActivate: [AuthFirebaseGuard]
     },
 	{
         path: 'patients',
         loadChildren: './patients/patients.module#PatientsModule',
-        canActivate: [LoggedGuard]
+        canActivate: [AuthFirebaseGuard]
     },
     {
         path: 'account',
         loadChildren: './account/account.module#AccountModule',
-        canActivate: [LoggedGuard]
+        canActivate: [AuthFirebaseGuard]
     },
     {
         path: 'about',
@@ -32,7 +32,7 @@ const appRoutes: Routes = [
 	{
         path: 'help',
         loadChildren: './help/help.module#HelpModule',
-        canActivate: [LoggedGuard]
+        canActivate: [AuthFirebaseGuard]
     },
 	{
         path: '',

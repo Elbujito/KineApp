@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router, Event as NavigationEvent} from "@angular/router";
+import * as firebase from 'firebase/app';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit {
 
 constructor(private router: Router) {}
 
-    ngOnInit()
-    {
+    public ngOnInit(): void {
     }
+
 }

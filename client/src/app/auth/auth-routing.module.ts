@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent, LogoutComponent, PasswordComponent} from './index';
+import { LoginComponent, LogoutComponent, PasswordComponent, AuthFirebaseComponent} from './index';
 import { LoggedGuard, LoggedOffGuard } from '../core/guards/index';
 
 const routes: Routes = [
     {
         path: 'login',
+        component: AuthFirebaseComponent,
+    },
+    {
+        path: 'loginServer',
         component: LoginComponent,
         canActivate: [LoggedOffGuard]
     },

@@ -11,4 +11,12 @@
   "name": "GUEST",
   "email": "guest@guest.com",
   "img"  : ""
-}]
+},
+{
+    "login": "admin@medinotes.fr",
+    "password": "adminadmin",
+    "name": "admin",
+    "email": "admin@medinotes.fr",
+    "img"  : ""
+}
+]
