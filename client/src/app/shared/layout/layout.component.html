@@ -7,7 +7,7 @@
       <mat-icon>menu</mat-icon>
     </button>
 
-    <a class="navbar-brand" (click)="switchUser()" matTooltip="Home">
+    <a class="navbar-brand" matTooltip="Home">
       <h1>
         MédiNotes
       </h1>
@@ -37,15 +37,11 @@
     </button>
     <mat-menu #userMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
 
-      <a mat-menu-item [routerLink]="['/profile']">
-        <mat-icon>person</mat-icon>
-        <span>Account</span>
-      </a>
 
-      <a mat-menu-item (click)="switchUser()">
-        <mat-icon>exit_to_app
+      <a mat-menu-item [routerLink]="['/profile']">
+        <mat-icon>settings
         </mat-icon>
-        <span>Log out</span>
+        <span>Settings</span>
       </a>
 
     </mat-menu>
@@ -73,14 +69,10 @@
           <p mat-line> Patients </p>
         </a>
 
-        <a mat-list-item [routerLink]="['/profile']">
-          <mat-icon mat-list-icon>person</mat-icon>
-          <p mat-line> Account </p>
-        </a>
-
-        <a mat-list-item (click)="switchUser()">
-          <mat-icon mat-list-icon>exit_to_app</mat-icon>
-          <p mat-line> Log out </p>
+        <a mat-menu-item [routerLink]="['/profile']">
+          <mat-icon>settings
+          </mat-icon>
+          <span>Settings</span>
         </a>
 
         <mat-divider></mat-divider>

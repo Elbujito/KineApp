@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule} from '@angular/common/http';
 
-import {AuthService, WindowService, AuthFirebaseService, PatientsService , BilansService, UserService, AlertService, UserFirebaseService } from './services/index';
+import {AuthService, WindowService, AuthFirebaseService, PatientsService , BilansService, AlertService, UserFirebaseService } from './services/index';
 import {throwIfAlreadyLoaded, AdminGuard, LoggedGuard, LoggedOffGuard, AuthFirebaseGuard } from './guards/index';
 
 @NgModule({
@@ -20,7 +20,6 @@ import {throwIfAlreadyLoaded, AdminGuard, LoggedGuard, LoggedOffGuard, AuthFireb
 	AuthService,
 	PatientsService,
 	BilansService,
-	UserService,
 	AlertService,
 	WindowService,
 	AuthFirebaseService,

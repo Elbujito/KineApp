@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { UserService } from '../../core/services/index';
+import { UserFirebaseService } from '../../core/services/index';
 
 @Component({
   selector: 'app-contact',
@@ -10,7 +10,7 @@ import { UserService } from '../../core/services/index';
 })
 export class ContactComponent {
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserFirebaseService) {}
 
   public onSubmit(form: NgForm) {
    /*const company = form.value.company;

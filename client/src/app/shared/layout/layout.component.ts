@@ -4,7 +4,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { Subscription } from 'rxjs';
 
-import { AuthService } from '../../core/services/index';
+import { AuthService, AuthFirebaseService } from '../../core/services/index';
 import { User } from '../models/index';
 
 @Component({
@@ -40,11 +40,5 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.changeDetectorRef.detectChanges();
-    }
-
-    switchUser() {
-            this.service.logout();
-            this.service.redirectUrl = this.router.url;
-            this.router.navigate(['']);
     }
 }

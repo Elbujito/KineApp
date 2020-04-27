@@ -6,6 +6,7 @@ import { AuthModule } from '../auth/auth.module';
 import { ProfileComponent, ProfileDetailsComponent } from './index';
 
 import { MaterialModule } from '../material.module';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { MaterialModule } from '../material.module';
     ProfileRoutingModule,
     SharedModule,
 	AuthModule,
-	MaterialModule
+	MaterialModule,
+	NgxAuthFirebaseUIModule
   ],
   declarations: [
     ProfileComponent,

@@ -3,7 +3,9 @@
     <app-header></app-header>
     <div class="bgauth">
       <ngx-auth-firebaseui
+        [guestEnabled]="false"
         (onSuccess)="onSuccess()"
+        [registrationEnabled]="false"
         appearance="outline">
       </ngx-auth-firebaseui>
     </div>

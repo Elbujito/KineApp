@@ -11,7 +11,11 @@
 
 .bgauth
 {
-  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
-  margin: 0 auto;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 20px;
 }
