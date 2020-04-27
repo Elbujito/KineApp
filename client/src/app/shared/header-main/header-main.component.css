@@ -1,0 +1,13 @@
+.buttonMain
+{
+  margin-left: 10px;
+  background-color: transparent;
+  color: white;
+  border-style: none;
+}
+
+.mat-button:hover
+{
+    color: #AB47BC;
+    font-weight: bold;
+}

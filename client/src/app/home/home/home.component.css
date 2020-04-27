@@ -3,20 +3,41 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background: url(../../../assets/img/banner2.jpg) no-repeat center center fixed;
+  background: url(../../../assets/img/landing2.jpg) no-repeat center center fixed;
   overflow: auto;
-   max-width: 100%;
+  max-width: 100%;
    width: 100%;
    min-height: 100vh !important;
 }
 
-.bgca
+.mainTitle
+ {
+   margin-top: 300px;
+   display: inline-block;
+   color: white;
+   position: relative;
+   left: 30%;
+   text-align: center;
+ }
+
+.mainTitle>h1
 {
-  margin-top: 20px;
+    color: white;
 }
 
-.buttonStarted
+.mainTitle>h3
 {
-  display: flex;
-  justify-content: center;
+  color: #F5F5F5;
 }
+
+.mainTitle>button
+{
+  background-color: #AA00FF;
+  color: white;
+}
+
+.mainTitle>button:hover
+{
+    background-color: #AB47BC;
+}
+

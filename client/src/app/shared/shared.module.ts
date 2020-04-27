@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutComponent, NotFoundComponent, HeaderComponent, FooterComponent} from './index';
+import { LayoutComponent, NotFoundComponent, HeaderComponent, HeaderMainComponent, FooterComponent} from './index';
 import { UsernamePipe, TitleCasePipeComponent } from './pipes/index';
 
 import { MaterialModule } from '../material.module';
@@ -23,7 +23,8 @@ import { MaterialModule } from '../material.module';
 	  UsernamePipe,
 	  TitleCasePipeComponent,
 	  	FooterComponent,
-		HeaderComponent
+		HeaderComponent,
+		HeaderMainComponent
   ],
   exports: [
     FormsModule,
@@ -33,7 +34,8 @@ import { MaterialModule } from '../material.module';
 	UsernamePipe,
   	TitleCasePipeComponent,
 	FooterComponent,
-	HeaderComponent
+	HeaderComponent,
+	HeaderMainComponent
   ],
   entryComponents: []
 })

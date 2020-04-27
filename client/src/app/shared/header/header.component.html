@@ -1,27 +1,31 @@
-<mat-toolbar color="primary">
 
-  <img routerLink="/" class="img-fluid" src="../../assets/img/logo.jpg">
-  <h1 routerLink="/"><app-titlecase-pipe></app-titlecase-pipe></h1>
-
-  <span class="spacer"></span>
-
-  <span class="spacer-light"></span>
-  <div>
-    <button routerLink="/about" mat-icon-button>
-      <mat-icon >help_outline</mat-icon>
-    </button>
-  </div>
-  <div>
-  <button routerLink="/contact" mat-icon-button>
-    <mat-icon >mail_outline</mat-icon>
-  </button>
-  </div>
-  <div>
-    <button type="button" routerLink="/login" mat-icon-button>
-      <mat-icon>lock_open</mat-icon>
-    </button>
+<mat-toolbar style="background-color: transparent;">
+  <div fxShow="true" fxHide.lt-md fxFlex fxLayout>
+    <div fxFlex fxLayoutAlign="flex-start center">
+      <div>
+        <button style="color:white;" routerLink="/about" mat-icon-button>
+          <mat-icon >help_outline</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button style="color:white;" routerLink="/contact" mat-icon-button>
+          <mat-icon >mail_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div fxFlex fxLayoutAlign="center center">
+      <img routerLink="/" class="imgMain" src="../../assets/img/logo.jpg">
+      <h1 style="margin-left: 10px; color: white;" routerLink="/"><app-titlecase-pipe></app-titlecase-pipe></h1>
+    </div>
+    <div fxFlex fxLayoutAlign="flex-end center">
+      <div class="abonner">
+        <button type="button" routerLink="/register" mat-raised-button>S'abonner</button>
+      </div>
+      <div class="loginButton">
+        <button style="margin-left: 10px; " type="button" routerLink="/login" mat-raised-button>Se connecter</button>
+      </div>
+    </div>
   </div>
 
 </mat-toolbar>
-
 

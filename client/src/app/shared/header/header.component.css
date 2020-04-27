@@ -1,67 +1,28 @@
-#content {
-  padding: 20px;
-}
 
-.img-fluid {
-  max-width: 4% !important;
-  margin-right: 10px !important;
-    border-radius: 30px;
-}
 
-.flex {
-  display: flex;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.spacer-light {
-  margin: 0 10px;
-}
-
-.mat-toolbar.mat-primary {
-    background: -webkit-linear-gradient(left, rgb(74, 20, 140), 	rgb(168,168,168)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, rgb(74, 20, 140), 	rgb(168,168,168)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, rgb(74, 20, 140), 	rgb(168,168,168)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, rgb(74, 20, 140), 	rgb(168,168,168)); /* Standard syntax */
-}
-
-.mat-toolbar a {
-  float: right;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 20px 22px;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-span a, span a:hover {
-  text-decoration: none;
-  color:rgba(255,255,255,.87);
-}
-
-.title
+.abonner>button:hover
 {
-  display: flex;
-  justify-content: center;
+    background-color: #6A1B9A;
+}
+.loginButton>button
+{
+ background-color: transparent;
+ color: white;
 }
 
-mat-icon {
-  margin-right: 0px!important;
+.abonner>button
+{
+  background-color: #AA00FF;
+  color: white;
 }
 
-a, a:hover {
-  text-decoration: none;
-  color:rgba(0,0,0,.87);
+.loginButton>button:hover
+{
+  background-color: rgba(255, 255, 255, .4);
 }
 
-.mat-icon {
-  text-decoration: none;
-  color:rgba(255,255,255,.87);
-}
-
-.login, .logout, .home, .contact{
-  color: #333;
+.imgMain
+{
+ border-radius: 30px;
+ max-width: 10% !important;
 }

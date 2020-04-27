@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { AboutRoutingModule } from './about-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { AboutHomeComponent } from './index';
+import { AboutHomeComponent, CarouselComponent } from './index';
 
 import { MaterialModule } from '../material.module';
 
 @NgModule({
-  declarations: [AboutHomeComponent],
+  declarations: [AboutHomeComponent, CarouselComponent],
   imports: [
     CommonModule,
     SharedModule,
