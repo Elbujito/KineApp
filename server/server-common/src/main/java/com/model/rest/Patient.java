@@ -1,36 +1,78 @@
 package com.model.rest;
+import java.io.Serializable;
+import java.util.Objects;
 
-public class Patient {
-    public String id;
+public class Patient implements Serializable {
+    public Long id;
     public String firstname;
     public String name;
     public String age;
     public String weight;
-    public String img;
     public String email;
-    public Patient() {}
-    public Patient(String id, String firstname, String name, String age,
-                   String weight, String img, String email) {
+    public String img;
+
+    public Patient(Long id, String firstname, String name, String age,
+                   String weight, String email, String img) {
+        this();
         this.id = id;
         this.firstname = firstname;
         this.name = name;
         this.age = age;
         this.weight = weight;
-        this.img = img;
         this.email = email;
+        this.img = img;
     }
-    public void setId(String id) { this.id = id; }
-    public String getId() { return this.id; }
-    public void setAge(String age) { this.age = age; }
+
+    public Patient() {
+        super();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getAge() { return age; }
-    public void setFirstname(String firstname) { this.firstname = firstname; }
     public String getFirstname() { return firstname; }
-    public void setName(String name) { this.name = name; }
     public String getName() { return name; }
-    public void setWeight(String weight) { this.weight = weight; }
     public String getWeight() { return weight; }
-    public void setImg(String img) { this.img = img; }
     public String getImg() { return img; }
-    public void setEmail(String email) { this.email = email; }
     public String getEmail() { return email; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Patient patient = (Patient) o;
+        if(patient.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), patient.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + getId() +
+                ", firstname='" + getFirstname() + "'" +
+                ", name='" + getName() + "'" +
+                ", age='" + getAge() + "'" +
+                ", weight='" + getWeight() + "'" +
+                ", email='" + getEmail() + "'" +
+                ", img='" + getImg() + "'" +
+                "}";
+    }
 }

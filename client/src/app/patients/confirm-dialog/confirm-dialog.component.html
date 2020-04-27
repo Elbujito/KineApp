@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.dialogTitle}}</h2>
+<mat-dialog-content>
+  <form class="form" (ngSubmit)="onSubmit()">
+  This will delete the patient that are currently selected on this page and cannot be undone.
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button type="submit" (click)="onSubmit()" mat-dialog-close>Delete</button>
+  <button mat-button (click)="close()" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PatientsRoutingModule } from './patients-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { PatientListComponent, PatientDialogComponent } from './index';
+import { PatientListComponent, PatientDialogComponent, ConfirmDialogComponent } from './index';
 
 import { MaterialModule } from '../material.module';
 
@@ -15,9 +15,9 @@ import { MaterialModule } from '../material.module';
   ],
   declarations: [
     PatientListComponent,
-	PatientDialogComponent
+	PatientDialogComponent,
+	ConfirmDialogComponent
   ],
-  entryComponents: [PatientDialogComponent
-  ]
+  entryComponents: [PatientDialogComponent, ConfirmDialogComponent]
 })
 export class PatientsModule { }

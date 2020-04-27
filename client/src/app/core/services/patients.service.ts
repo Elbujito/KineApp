@@ -15,10 +15,18 @@ export class PatientsService {
 
    getAllPatients(): Observable<Patient[]> {
           return this.get('/patient/all');
-          }
+    }
 
-   addNewPatient(data: any)
-   {
+   updatePatient(patient: Patient): Observable<any> {
+     return this.post('/patient/update', patient);
+   }
+
+   addPatient(patient: Patient): Observable<any> {
+        return this.post('/patient/add', patient);
+   }
+
+   removePatient(patient: Patient): Observable<any> {
+      return this.post('/patient/delete', patient);
    }
 
   private get(route: string): Observable<any> {
@@ -28,7 +36,13 @@ export class PatientsService {
           );
    }
 
+  getPatientById(patient_id: string): Observable<Patient> {
+    return this.post('/patient/find',patient_id);
+  }
+
    private extractData(res: Response) {
+   console.log("Response");
+    console.log(res);
           return res || {};
    }
 
@@ -40,5 +54,12 @@ export class PatientsService {
         }
     }
 
-
+       private post(route: string, data: string | Patient): Observable<any> {
+               return this.http
+                   .post<Response>(environment.apiUrl + route, data)
+                   .pipe(
+                       map(this.extractData),
+                       catchError(this.handleError),
+                   );
+       }
 }

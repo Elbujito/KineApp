@@ -1,22 +1,24 @@
-<h2 mat-dialog-title>Add new Patient</h2>
-<mat-dialog-content [formGroup]="form">
+<h2 mat-dialog-title>{{data.dialogTitle}}</h2>
+<mat-dialog-content>
+<form class="form" (ngSubmit)="onSubmit()" #dialogForm="ngForm">
     <mat-form-field>
-      <input type="text" matInput placeholder="FirstName"  formControlName="firstname"  required>
+      <input type="text" matInput placeholder="FirstName" [(ngModel)]="patient.firstname" id="firstname" name="firstname" required>
     </mat-form-field>
   <mat-form-field>
-      <input type="text" matInput placeholder="Name"  formControlName="name" required>
+      <input type="text" matInput placeholder="Name"  [(ngModel)]="patient.name" id="name" name="name"  required>
     </mat-form-field>
   <mat-form-field>
-      <input type="text" matInput placeholder="Age"  formControlName="age" required>
+      <input type="text" matInput placeholder="Age" [(ngModel)]="patient.age" id="age" name="age" required>
   </mat-form-field>
     <mat-form-field>
-      <input type="text" matInput placeholder="Weigth"  formControlName="weight" required>
+      <input type="text" matInput placeholder="Weigth" [(ngModel)]="patient.weight" id="weight" name="weight" required>
     </mat-form-field>
       <mat-form-field>
-      <input type="text" matInput placeholder="Email"  formControlName="email" required>
+      <input type="text" matInput placeholder="Email" [(ngModel)]="patient.email" id="email" name="email" required>
       </mat-form-field>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true">Save</button>
+  <button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="dialogForm.invalid">Save</button>
+  <button mat-button (click)="close()" mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

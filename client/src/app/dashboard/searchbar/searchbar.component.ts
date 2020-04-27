@@ -20,7 +20,7 @@ export class SearchBarComponent implements OnInit {
   bilans: Bilan[] = [];
   filteredPatients: Observable<Patient[]>;
   searchStarted: Boolean;
-  patientSearch: Patient = new Patient();
+  patientSearch: Patient;
   bilan: Bilan = new Bilan();
 
   constructor(private router: Router, private bilansService: BilansService, private patientsService: PatientsService) {}

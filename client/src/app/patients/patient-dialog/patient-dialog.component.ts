@@ -4,7 +4,7 @@ import {Patient} from '../../shared/models/patient.model';
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-patient-dialog',
@@ -13,8 +13,7 @@ import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 })
 
 export class PatientDialogComponent implements OnInit {
-  patient: Patient = new Patient();
-  form: FormGroup;
+  public patient: Patient = new Patient();
 
     constructor(
     private patientsService: PatientsService,
@@ -23,14 +22,22 @@ export class PatientDialogComponent implements OnInit {
     }
 
   ngOnInit() {
+      if(this.data.patient_id != '')
+      {
+        this.patientsService.getPatientById(this.data.patient_id).subscribe(patient => {
+          this.patient = patient;
+        });
+      }
   }
 
-  save() {
-    this.dialogRef.close(this.form.value);
-  }
+   public onSubmit() {
+      if(this.data.patient_id != '') this.patientsService.updatePatient(this.patient).subscribe(result => { });
+      else this.patientsService.addPatient(this.patient).subscribe(result => { });
+      this.dialogRef.close(true);
+   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 
 }
