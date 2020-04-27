@@ -1,5 +1,5 @@
 .form {
-  width: 500px;
+  
 }
 
 .full-width {
@@ -7,7 +7,7 @@
 }
 
 #content {
-  padding: 20px;
+
 
 
 }
@@ -23,7 +23,7 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background: url(../../../assets/img/comp_cof_overlay.jpg) no-repeat center center fixed;
+  background: url(../../../assets/img/landing2.jpg) no-repeat center center fixed;
   overflow: auto;
    max-width: 100%;
    width: 100%;
