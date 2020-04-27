@@ -8,7 +8,7 @@ export class AlertService {
 
   public showToaster(msg: string): void {
     this.snackBar.open(msg, null, {
-      duration: 3500,
+      duration: 2000,
     });
   }
 }
