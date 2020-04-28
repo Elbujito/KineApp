@@ -4,7 +4,7 @@
       <mat-card-content>
         <form #searchForm="ngForm" class="searchbar-form" (ngSubmit)="onSubmit()">
           <mat-form-field>
-            <input class="inputFiled" matInput placeholder="Search for a patient" [formControl]="control" [matAutocomplete]="auto"
+            <input class="inputFiled" matInput placeholder="Sélectionner un patient " [formControl]="control" [matAutocomplete]="auto"
                    id="displayedName" name="displayedName" ngModel required/>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let patient of filteredPatients | async"
@@ -16,18 +16,6 @@
           <button class="btnFind" mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Find</button>
         </form>
       </mat-card-content>
-      <!-- <div>
-        <div>
-          <button class="newUser" color="primary" type="button" mat-fab>
-            <mat-icon>filter_list</mat-icon>
-          </button>
-        </div>
-        <div>
-          <button class="help" type="button" mat-fab>
-            <mat-icon>help_outline</mat-icon>
-          </button>
-        </div>
-      </div> -->
     </mat-card>
   </div>
 </div>

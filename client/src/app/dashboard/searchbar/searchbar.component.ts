@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
-import {PatientsService, BilansService} from '../../shared/services/index';
+import {PatientsService, BilansService, AlertService} from '../../shared/services/index';
 import {Patient, Bilan} from '../../shared/models/index'
 
 @Component({
@@ -21,7 +21,10 @@ export class SearchBarComponent implements OnInit {
 
   @Output() patientOutput = new EventEmitter<Patient>();
 
-  constructor(private router: Router, private patientsService: PatientsService) {}
+  constructor(private router: Router,
+  private patientsService: PatientsService,
+  private alertService: AlertService
+  ) {}
 
   ngOnInit() {
     this.patientsService.getAllPatients().subscribe(patients => {
@@ -50,6 +53,7 @@ export class SearchBarComponent implements OnInit {
 
   onSubmit() {
     this.patientOutput.emit(this.patientSearch);
+    this.alertService.showToaster("Searching for your patient...");
   }
 }
 

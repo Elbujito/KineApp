@@ -4,12 +4,12 @@
     <div fxFlex="95%">
       <mat-card>
         <mat-card-content>
-          <h2>All Bilans</h2>
+          <h2>Toutes vos notes</h2>
           <mat-form-field>
-            <mat-label>Find your bilans *</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Find your bilans *">
+            <mat-label>Filtrer vos notes *</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filtrer vos notes *">
           </mat-form-field>
-          <button style="float: right;" class="add-bilan" color="primary" (click)="openDialog()" type="button" mat-fab>
+          <button style="float: right;" [disabled]="dataSource.data.length == 0" class="add-bilan" color="primary" (click)="openDialog()" type="button" mat-fab>
             <mat-icon>note_add</mat-icon>
           </button>
           <table mat-table [dataSource]="dataSource">
