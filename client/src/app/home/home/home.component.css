@@ -10,13 +10,18 @@
   min-height: 100vh !important;
 }
 
+.bgTitle
+{
+  display: flex;
+  justify-content: center;
+}
+
 .mainTitle
  {
    margin-top: 300px;
    display: inline-block;
    color: white;
    position: relative;
-   left: 30%;
    text-align: center;
  }
 

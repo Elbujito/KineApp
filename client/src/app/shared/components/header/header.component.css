@@ -25,7 +25,8 @@
 .imgMain
 {
  border-radius: 30px;
- max-width: 10% !important;
+ width: 40px !important;
+
 }
 
 .bgTitle:hover
