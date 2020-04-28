@@ -16,6 +16,13 @@
 	justify-content: center
 }
 
+.title
+{
+	display: flex;
+	justify-content: center;
+  margin-top: 20px;
+}
+
 .mat-card
 {
   border-color: #E0E0E0;
@@ -33,5 +40,4 @@
 
 .bgcarousel
 {
-  margin-top: 20px;
 }
