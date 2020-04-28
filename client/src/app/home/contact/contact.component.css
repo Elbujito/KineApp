@@ -20,3 +20,15 @@
   min-height: 100vh !important;
 }
 
+.cancelbtn
+{
+  background-color: #AA00FF;
+  color: white;
+}
+
+.cancelbtn:hover
+{
+    background-color: #6A1B9A;
+}
+
+

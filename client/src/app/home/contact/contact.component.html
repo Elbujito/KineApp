@@ -1,5 +1,7 @@
 <div class="bg" id="content">
-  <app-header></app-header>
+  <div style="margin-bottom: 20px;">
+    <app-header></app-header>
+  </div>
   <mat-card>
     <h1>Contact us</h1>
     <form class="form" (ngSubmit)="onSubmit(c)" #c="ngForm">
@@ -49,6 +51,7 @@
       </p>
       <br/>
       <button mat-raised-button type="submit" [disabled]="c.invalid">Submit</button>
+      <button class="cancelbtn" mat-raised-button style="margin-left: 10px;" [routerLink]="['/']">Cancel</button>
     </form>
   </mat-card>
 </div>
