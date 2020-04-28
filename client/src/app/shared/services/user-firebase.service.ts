@@ -39,8 +39,8 @@ export class UserFirebaseService {
     postal: string,
     message: string
   ) {
-    this.alertService.showToaster('This contact form is saved');
-    return firebase.database().ref().child('contactform/').push({
+    this.alertService.showToaster('Dear customer, thanks for reaching out!');
+    return firebase.database().ref().child('contacts').push({
       company: company,
       firstname: firstname,
       lastname: lastname,

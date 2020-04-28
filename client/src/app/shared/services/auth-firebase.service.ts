@@ -3,13 +3,16 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
+import {AlertService} from './alert.service';
+
 @Injectable()
 export class AuthFirebaseService {
   public token: string;
 
   constructor(
     private router: Router,
-    private auth: AngularFireAuth) { }
+    private auth: AngularFireAuth,
+    private alertService: AlertService) { }
 
   public onSuccess(): void {
     sessionStorage.setItem('session-alive', 'true');

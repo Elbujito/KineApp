@@ -27,3 +27,13 @@
  border-radius: 30px;
  max-width: 10% !important;
 }
+
+.bgTitle:hover
+{
+  cursor: pointer;
+}
+
+.imgMain:hover
+{
+  cursor: pointer;
+}

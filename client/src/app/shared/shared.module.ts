@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { LayoutComponent, NotFoundComponent, HeaderComponent, FooterComponent} from './components/index';
 import { UsernamePipe, TitleCasePipeComponent } from './pipes/index';
@@ -21,7 +22,8 @@ import { MaterialModule } from '../material.module';
     ReactiveFormsModule,
     FlexLayoutModule,
 	  MaterialModule,
-	  HttpClientModule
+	  HttpClientModule,
+	  NgxAuthFirebaseUIModule
   ],
   declarations: [
     LayoutComponent,

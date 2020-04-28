@@ -5,7 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
-import { PatientDialogComponent, ConfirmDialogComponent } from '../index';
+import { PatientDialogComponent } from '../patient-dialog/patient-dialog.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 import { Patient } from '../../shared/models/index';
 import { PatientsService } from '../../shared/services/index';
@@ -17,7 +18,7 @@ import { PatientsService } from '../../shared/services/index';
 })
 
 export class PatientListComponent implements OnInit {
-	
+
   displayedColumns: string[] = ['firstname', 'name', 'age', 'weight', 'email', 'edit', 'remove'];
   dataSource = new MatTableDataSource<Patient>([]);
 

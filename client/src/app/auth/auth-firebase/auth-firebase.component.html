@@ -6,7 +6,8 @@
         [guestEnabled]="false"
         (onSuccess)="onSuccess()"
         [registrationEnabled]="false"
-        appearance="outline">
+        [providers]="[providers.Google]"
+        appearance="legacy">
       </ngx-auth-firebaseui>
     </div>
   </div>

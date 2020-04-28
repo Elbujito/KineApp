@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { Subscription } from 'rxjs';
+import { LinkMenuItem } from 'ngx-auth-firebaseui';
 
 import { AuthService, AuthFirebaseService } from '../../services/index';
-import { User } from '../../models/index';
 
 @Component({
     selector: 'app-layout',
@@ -17,12 +17,12 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     private _mobileQueryListener: () => void;
     mobileQuery: MediaQueryList;
     showSpinner: boolean;
-    isAdmin: boolean;
-
-    user: User;
+    links: LinkMenuItem[];
+    home: any;
 
     constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef,
-        private media: MediaMatcher, private service: AuthService
+        private media: MediaMatcher,
+        private service: AuthService, private authFirebaseService : AuthFirebaseService
 ) {
 
         this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
@@ -32,7 +32,9 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnInit(): void {
-      this.user = this.service.getUser();
+       this.links = [
+          {icon: 'home', text: 'Home', callback: this.home},
+        ];
     }
 
     ngOnDestroy(): void {
@@ -41,4 +43,9 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     ngAfterViewInit(): void {
         this.changeDetectorRef.detectChanges();
     }
+
+      onLogout() {
+       this.service.logout();
+       this.authFirebaseService.logout();
+      }
 }

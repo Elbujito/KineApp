@@ -2,6 +2,8 @@ import { Router, ActivatedRoute, NavigationEnd, Event as NavigationEvent} from '
 import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import {AuthProvider} from 'ngx-auth-firebaseui';
+
 import { AuthService, AuthFirebaseService} from '../../shared/services/index';
 import {
     LoginPassword,
@@ -19,6 +21,7 @@ export class AuthFirebaseComponent {
     errorMsg: string = null;
     connectors: Connector[];
     productInformations: ProductInformations;
+    providers = AuthProvider;
 
   constructor(private router: Router, private authService: AuthService, private authFirebaseService: AuthFirebaseService) {}
 
