@@ -29,7 +29,11 @@ const appRoutes: Routes = [
         loadChildren: './about/about.module#AboutModule',
         canActivate: [LoggedOffGuard]
     },
-	{
+    {
+         path: 'subscription',
+         loadChildren: './subscription/subscription.module#SubscriptionModule',
+    },
+	  {
         path: 'help',
         loadChildren: './help/help.module#HelpModule',
         canActivate: [AuthFirebaseGuard]

@@ -2,10 +2,100 @@
   width: 100%;
 }
 
+.ifirstname {
+  color: white !important;
+}
+
+.iname {
+  color: white !important;
+}
+
+.iaddress {
+  color: white !important;
+}
+
+
+.ipostal {
+  color: white !important;
+}
+
+
+.icity {
+  color: white !important;
+}
+
+.imessage {
+  color: white !important;
+}
+
+.icompany {
+  color: white !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: white !important;
+}
+
+ ::ng-deep.mat-form-field-underline {
+  background-color: white !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ background-color: white !important;
+}
+
+.pcompany
+{
+color: white !important;
+}
+
+.pmessage
+{
+color: white !important;
+}
+
+.ppostal
+{
+color: white !important;
+}
+
+.pcity
+{
+color: white !important;
+}
+
+.pname
+{
+color: white !important;
+}
+
+.paddress
+{
+color: white !important;
+}
+
+.pfirstname
+{
+color: white !important;
+}
+
+.submitBtn
+{
+  color: white;
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.submitBtn:hover
+{
+  background-color: rgba(255, 255, 255, .6);
+}
+
+
 .mat-card
 {
   width: 50%;
   margin: 0 auto;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .bg

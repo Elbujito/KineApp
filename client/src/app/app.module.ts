@@ -7,6 +7,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
+import { SubscriptionModule } from './subscription/subscription.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthServiceConfiguration } from './shared/models/index';
 import { SharedModule } from './shared/shared.module';
@@ -65,6 +66,7 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
 		PatientsModule,
 		ProfileModule,
 		DashboardModule,
+		SubscriptionModule,
 		JwtModule.forRoot({
             config: {
                 tokenGetter: getToken

@@ -2,56 +2,65 @@
   <div style="margin-bottom: 20px;">
     <app-header></app-header>
   </div>
-  <mat-card>
-    <h1>Contact us</h1>
-    <form class="form" (ngSubmit)="onSubmit(c)" #c="ngForm">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Company" id="company" name="company" ngModel required>
-      </mat-form-field>
-      <table class="full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="First name" id="firstname" name="firstname" ngModel required>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Last name" id="lastname" name="lastname" ngModel required>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
+  <div class="card-container">
+    <mat-card>
+      <h1 style="color: white;">Contactez-nous</h1>
+      <form class="form" (ngSubmit)="onSubmit(c)" #c="ngForm">
+        <mat-form-field class="full-width">
+          <mat-placeholder class="pcompany" >Entreprise</mat-placeholder>
+          <input class="icompany" matInput id="company" name="company" ngModel required>
+        </mat-form-field>
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-placeholder class="pfirstname" >Prénom</mat-placeholder>
+                <input class="ifirstname" matInput id="firstname" name="firstname" ngModel required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-placeholder class="pname" >Nom</mat-placeholder>
+                <input class="iname" matInput id="lastname" name="lastname" ngModel required>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
 
-      <p>
-        <mat-form-field class="full-width">
-          <textarea matInput placeholder="Address" id="address" name="address" ngModel required></textarea>
-        </mat-form-field>
-      </p>
-      <table class="full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="City" id="city" name="city" ngModel required>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="full-width">
-              <input matInput #postalCode maxlength="6" id="postal" name="postal" placeholder="Zip Code" ngModel
-                     required>
-              <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-      <p>
-        <mat-form-field class="full-width">
-          <textarea matInput placeholder="Your message" id="message" name="message" ngModel required></textarea>
-        </mat-form-field>
-      </p>
-      <br/>
-      <button mat-raised-button type="submit" [disabled]="c.invalid">Submit</button>
-      <button class="cancelbtn" mat-raised-button style="margin-left: 10px;" [routerLink]="['/']">Cancel</button>
-    </form>
-  </mat-card>
+        <p>
+          <mat-form-field class="full-width">
+            <mat-placeholder class="paddress" >Adresse</mat-placeholder>
+            <textarea class="iaddress" matInput id="address" name="address" ngModel required></textarea>
+          </mat-form-field>
+        </p>
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-placeholder class="pcity" >Ville</mat-placeholder>
+                <input class="icity" matInput id="city" name="city" ngModel required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-placeholder class="ppostal" >Code Postale</mat-placeholder>
+                <input class="ipostal" matInput #postalCode maxlength="6" id="postal" name="postal" ngModel
+                       required>
+                <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <mat-form-field class="full-width">
+            <mat-placeholder class="pmessage" >Votre message</mat-placeholder>
+            <textarea class="imessage" matInput id="message" name="message" ngModel required></textarea>
+          </mat-form-field>
+        </p>
+        <br/>
+        <button class="submitBtn" mat-button type="submit" [disabled]="c.invalid">Envoyer</button>
+        <button class="cancelbtn" mat-raised-button style="margin-left: 10px;" [routerLink]="['/']">Retour</button>
+      </form>
+    </mat-card>
+  </div>
 </div>
