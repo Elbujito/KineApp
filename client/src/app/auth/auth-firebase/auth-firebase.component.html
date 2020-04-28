@@ -1,16 +1,18 @@
 <section>
   <div class="login-background">
-    <app-header></app-header>
-    <div class="bgauth">
-    <div class="auth-conf">
-      <ngx-auth-firebaseui
-        [guestEnabled]="false"
-        (onSuccess)="onSuccess()"
-        [registrationEnabled]="false"
-        [providers]="[providers.Google]"
-        appearance="legacy">
-      </ngx-auth-firebaseui>
+    <div style="margin-bottom: 20px;">
+      <app-header></app-header>
     </div>
+    <div class="bgauth">
+      <div class="auth-conf">
+        <ngx-auth-firebaseui
+          [guestEnabled]="false"
+          (onSuccess)="onSuccess()"
+          [registrationEnabled]="false"
+          [providers]="[providers.Google]"
+          appearance="legacy">
+        </ngx-auth-firebaseui>
+      </div>
     </div>
   </div>
 </section>
