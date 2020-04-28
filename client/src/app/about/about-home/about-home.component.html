@@ -1,54 +1,92 @@
-<div class="bg">
+<div class="page-about">
   <app-header></app-header>
-  <div class="bgcarousel">
-    <app-carousel></app-carousel>
-  </div>
-  <div class="bgcontainer" fxLayout="row" fxLayoutAlign="center none">
-    <div fxFlex="95%">
-      <mat-card class="card">
-        <mat-card-content>
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading text-center">
-                  <h2>Pourquoi MédiNotes ? </h2>
-                  <div class="line-shape"></div>
-                  <h2>Travaillons simplement pour un suivi plus simple de ses patients </h2>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <div class="single-special text-center wow fadeInUp" data-wow-delay="0.2s">
-                  <div class="single-icon">
-                    <i class="ti-mobile" aria-hidden="true"></i>
-                  </div>
-                  <h4>Simple d'utilisation</h4>
-                  <p>Nous avons développé un outil complexe pour faciliter ensuite votre travail</p>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="single-special text-center wow fadeInUp" data-wow-delay="0.4s">
-                  <div class="single-icon">
-                    <i class="ti-ruler-pencil" aria-hidden="true"></i>
-                  </div>
-                  <h4>Made by the the French-Tech</h4>
-                  <p>MédiNotes est un logiciel 100% Français, nous garantissons la sécurité de vos données</p>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="single-special text-center wow fadeInUp" data-wow-delay="0.6s">
-                  <div class="single-icon">
-                    <i class="ti-settings" aria-hidden="true"></i>
-                  </div>
-                  <h4>Une équipe à l'écoute</h4>
-                  <p>Nous sommes là pour vous et grâce à vous. Merci de vos retours</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
+  <div class="bgcontainer">
+    <div class="bgcarousel">
+      <app-carousel></app-carousel>
+    </div>
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="20px">
+      <div>
+        <mat-card>
+          <mat-card-content>
+              <mat-icon style="font-size: 60px;" [inline]="true">group</mat-icon>
+            <h1>Pour un suivi plus simple de ses patients</h1>
+            <h3>Les notes médicales font partie intégrante des cabinets médicaux que l'informatique peut beaucoup aidés.
+              En effet, la croissance de la population nécessite la mise en place d'une gestion face
+              et rapide.</h3>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card>
+          <mat-card-content>
+            <mat-icon style="font-size: 60px;" [inline]="true">home</mat-icon>
+            <h1>La French Tech, 100% engagée face aux épidémies</h1>
+            <h3>Nous sommes un mouvement d’entrepreneurs technologiques toulousains,
+              associé aux dynamiques territoriales en faveur des startups et à l’écosystème de l’innovation.</h3>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card>
+          <mat-card-content>
+            <mat-icon style="font-size: 60px;" [inline]="true">verified_user</mat-icon>
+            <h1>Vos patients ont le contrôle de leurs données de santé</h1>
+            <h3>Le respect de la vie privée est l’une des valeurs essentielles de Médinotes.
+              Nous respectons des engagements forts pour protéger les données de santé de vos patients en
+              accord avec la réglementation française et européenne (RGPD et LIL).</h3>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>
+<!--
+<div class="bgcontainer" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-heading text-center">
+                <h2>Pourquoi MédiNotes ? </h2>
+                <div class="line-shape"></div>
+                <h2>Travaillons simplement pour un suivi plus simple de ses patients </h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="single-special text-center wow fadeInUp" data-wow-delay="0.2s">
+                <div class="single-icon">
+                  <i class="ti-mobile" aria-hidden="true"></i>
+                </div>
+                <h4>Simple d'utilisation</h4>
+                <p>Nous avons développé un outil complexe pour faciliter ensuite votre travail</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="single-special text-center wow fadeInUp" data-wow-delay="0.4s">
+                <div class="single-icon">
+                  <i class="ti-ruler-pencil" aria-hidden="true"></i>
+                </div>
+                <h4>Made by the the French-Tech</h4>
+                <p>MédiNotes est un logiciel 100% Français, nous garantissons la sécurité de vos données</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="single-special text-center wow fadeInUp" data-wow-delay="0.6s">
+                <div class="single-icon">
+                  <i class="ti-settings" aria-hidden="true"></i>
+                </div>
+                <h4>Une équipe à l'écoute</h4>
+                <p>Nous sommes là pour vous et grâce à vous. Merci de vos retours</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+</div> -->

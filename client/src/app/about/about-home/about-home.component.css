@@ -1,4 +1,4 @@
-.bg {
+.page-about {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -9,12 +9,29 @@
    min-height: 100vh !important;
 }
 
+.bgcontainer
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.mat-card
+{
+  border-color: #E0E0E0;
+  border-radius: 5px;
+  border: solid 0.1em;
+  width: 300px;
+  height: 400px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #E0E0E0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
 .bgcarousel
 {
   margin-top: 20px;
 }
-
-.bgcontainer {
-  margin-top: 10px;
-}
-
