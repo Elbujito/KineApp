@@ -4,6 +4,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { DashboardComponent, SearchBarComponent} from './index';
+import { BilanDialogComponent, BilanConfirmDialogComponent } from './index';
 
 import { MaterialModule } from '../material.module';
 
@@ -14,7 +15,12 @@ import { MaterialModule } from '../material.module';
     SharedModule,
 	  MaterialModule
   ],
-  declarations: [DashboardComponent, SearchBarComponent],
+  declarations: [
+	DashboardComponent,
+	SearchBarComponent,
+	BilanDialogComponent,
+	BilanConfirmDialogComponent
+	],
   entryComponents: []
 })
 export class DashboardModule { }

@@ -1,11 +1,14 @@
 export class Bilan {
-  id: Number;
-  name: string;
-  date: string;
-  description: String;
-  short_description: String;
-  remark: String;
-  backgroundImg: String;
+    constructor(
+        public id?: number,
+        public patientId?: number,
+        public title?: string,
+        public date?: string,
+        public description?: string,
+    )
+    {
+    }
 }
+
 
 

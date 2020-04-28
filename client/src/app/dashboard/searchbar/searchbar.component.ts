@@ -19,6 +19,8 @@ export class SearchBarComponent implements OnInit {
   filteredPatients: Observable<Patient[]>;
   patientSearch: Patient;
 
+  @Output() patientOutput = new EventEmitter<Patient>();
+
   constructor(private router: Router, private patientsService: PatientsService) {}
 
   ngOnInit() {
@@ -46,7 +48,8 @@ export class SearchBarComponent implements OnInit {
     this.patientSearch = patient;
   }
 
-  submit() {
+  onSubmit() {
+    this.patientOutput.emit(this.patientSearch);
   }
 }
 

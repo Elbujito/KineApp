@@ -1,37 +1,23 @@
-.search-card
+.inputField
 {
-  margin: 10px auto;
-  width: 300px;
+
+}
+
+.btnFind
+{
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .mat-card-content
 {
-  display: flex;
-  align-item: center;
+  display: inline-block;
 }
 
 .bgsearch
 {
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
-}
-
-.newUser
-{
-  margin-left: 30px;
-  margin-top: 20px;
-}
-
-.help
-{
-  margin-left: 10px;
-  margin-top: 20px;
-  background-color: #AA00FF;
-  color: white;
-}
-
-.mat-raised-button
-{
- margin-left: 10px;
- height: 40px;
 }

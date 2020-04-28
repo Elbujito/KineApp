@@ -7,7 +7,9 @@ export class Patient {
         public weight?: string,
         public email?: string,
         public img?: string,
-    ) {
+        public displayedName?: string,
+    )
+    {
     }
 }
 

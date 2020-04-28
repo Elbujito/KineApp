@@ -13,8 +13,20 @@ export class BilansService {
   constructor(private http: HttpClient) {
   }
 
-   getAllBilans(): Observable<Bilan[]> {
-          return this.get('/bilan/all');
+   updateBilan(bilan: Bilan): Observable<any> {
+     return this.post('/bilan/update', bilan);
+   }
+
+   getBilansByPatientId(patient_id: string): Observable<Bilan[]> {
+        return this.post('/bilan/findAll', patient_id);
+   }
+
+   addBilan(bilan: Bilan): Observable<any> {
+        return this.post('/bilan/add', bilan);
+   }
+
+   removeBilan(bilan: Bilan): Observable<any> {
+      return this.post('/bilan/delete', bilan);
    }
 
   private get(route: string): Observable<any> {
@@ -24,16 +36,13 @@ export class BilansService {
           );
    }
 
-   private post(route: string, data: string): Observable<any> {
-           return this.http
-               .post<Response>(environment.apiUrl + route, data)
-               .pipe(
-                   map(this.extractData),
-                   catchError(this.handleError),
-               );
-   }
+  getBilanById(bilan_id: string): Observable<Bilan> {
+    return this.post('/bilan/find',bilan_id);
+  }
 
    private extractData(res: Response) {
+   console.log("Response");
+    console.log(res);
           return res || {};
    }
 
@@ -45,7 +54,12 @@ export class BilansService {
         }
     }
 
-
-
-
+       private post(route: string, data: string | Bilan): Observable<any> {
+               return this.http
+                   .post<Response>(environment.apiUrl + route, data)
+                   .pipe(
+                       map(this.extractData),
+                       catchError(this.handleError),
+                   );
+       }
 }

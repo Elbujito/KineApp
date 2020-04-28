@@ -10,6 +10,7 @@ public class Patient implements Serializable {
     public String weight;
     public String email;
     public String img;
+    public String displayedName;
 
     public Patient(Long id, String firstname, String name, String age,
                    String weight, String email, String img) {
@@ -21,6 +22,7 @@ public class Patient implements Serializable {
         this.weight = weight;
         this.email = email;
         this.img = img;
+        this.displayedName = this.firstname + ' ' + this.name;
     }
 
     public Patient() {
@@ -41,6 +43,7 @@ public class Patient implements Serializable {
     public String getWeight() { return weight; }
     public String getImg() { return img; }
     public String getEmail() { return email; }
+    public String getDisplayedName() { return displayedName; }
 
     @Override
     public boolean equals(Object o) {
@@ -73,6 +76,7 @@ public class Patient implements Serializable {
                 ", weight='" + getWeight() + "'" +
                 ", email='" + getEmail() + "'" +
                 ", img='" + getImg() + "'" +
+                ", displayedName='" + getDisplayedName() + "'" +
                 "}";
     }
 }
