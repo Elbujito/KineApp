@@ -4,8 +4,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
-import {PatientsService, BilansService, AlertService} from '../../shared/services/index';
-import {Patient, Bilan} from '../../shared/models/index'
+import {PatientsService, NotesService, AlertService} from '../../shared/services/index';
+import {Patient, Note} from '../../shared/models/index'
 
 @Component({
   selector: 'app-searchbar',
@@ -39,7 +39,7 @@ export class SearchBarComponent implements OnInit {
 
   private _filter(value: string): Patient[] {
     const filterValue = this._normalizeValue(value);
-    return this.patients.filter(patient => this._normalizeValue(patient.firstname).includes(filterValue));
+    return this.patients.filter(patient => this._normalizeValue(patient.displayedName).includes(filterValue));
   }
 
   private _normalizeValue(value: string): string {

@@ -1,13 +1,18 @@
+import { Address } from './address.model';
+import { Pathology } from './pathology.model';
+
 export class Patient {
     constructor(
         public id?: number,
-        public firstname?: string,
-        public name?: string,
-        public age?: string,
-        public weight?: string,
+        public firstName?: string,
+        public lastName?: string,
+        public age?: number,
+        public address?: Address,
         public email?: string,
-        public img?: string,
-        public displayedName?: string,
+        public createdAt?: Date,
+        public active?: Boolean,
+        public pathologies?: Pathology[],
+        public displayedName?: string
     )
     {
     }

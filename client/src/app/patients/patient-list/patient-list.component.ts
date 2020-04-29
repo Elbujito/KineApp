@@ -19,7 +19,7 @@ import { PatientsService } from '../../shared/services/index';
 
 export class PatientListComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstname', 'name', 'age', 'weight', 'email', 'edit', 'remove'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'age', 'email', 'edit', 'remove'];
   dataSource = new MatTableDataSource<Patient>([]);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -44,7 +44,7 @@ export class PatientListComponent implements OnInit {
 
   openDialog() {
 	const dialogRef = this.dialog.open(PatientDialogComponent,{
-		data:{dialogTitle: 'Add a new patient',
+		data:{dialogTitle: 'Ajouter un nouveau patient',
 		patient_id: ''}
 		});
     dialogRef.afterClosed().subscribe(result => {
@@ -55,7 +55,7 @@ export class PatientListComponent implements OnInit {
   remove(patient: Patient)
   {
 	  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-		  data: {dialogTitle: 'Delete the patient '+ patient.firstname +' '+ patient.name+' ?',
+		  data: {dialogTitle: 'Supprimer ce patient '+ patient.firstName +' '+ patient.lastName+' ?',
 		  patient_id: patient.id}
 		  });
 	  dialogRef.afterClosed().subscribe(result => {
@@ -66,7 +66,7 @@ export class PatientListComponent implements OnInit {
   edit(patient: Patient)
   {
 	  const dialogRef = this.dialog.open(PatientDialogComponent, {
-		  data: {dialogTitle: 'Edit a patient',
+		  data: {dialogTitle: 'Modifier un patient',
 		  patient_id: patient.id}
 		  });
       dialogRef.afterClosed().subscribe(result => {

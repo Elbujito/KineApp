@@ -5,28 +5,28 @@ import { catchError, map } from 'rxjs/operators';
 
 import {environment} from '../../../environments/environment';
 
-import {Bilan} from '../../shared/models/index';
+import {Note} from '../../shared/models/index';
 
 @Injectable()
-export class BilansService {
+export class NotesService {
 
   constructor(private http: HttpClient) {
   }
 
-   updateBilan(bilan: Bilan): Observable<any> {
-     return this.post('/bilan/update', bilan);
+   updateNote(note: Note): Observable<any> {
+     return this.post('/note/update', note);
    }
 
-   getBilansByPatientId(patient_id: string): Observable<Bilan[]> {
-        return this.post('/bilan/findAll', patient_id);
+   getNotesByPatientId(patient_id: string): Observable<Note[]> {
+        return this.post('/note/findAll', patient_id);
    }
 
-   addBilan(bilan: Bilan): Observable<any> {
-        return this.post('/bilan/add', bilan);
+   addNote(note: Note): Observable<any> {
+        return this.post('/note/add', note);
    }
 
-   removeBilan(bilan: Bilan): Observable<any> {
-      return this.post('/bilan/delete', bilan);
+   removeNote(note: Note): Observable<any> {
+      return this.post('/note/delete', note);
    }
 
   private get(route: string): Observable<any> {
@@ -36,8 +36,8 @@ export class BilansService {
           );
    }
 
-  getBilanById(bilan_id: string): Observable<Bilan> {
-    return this.post('/bilan/find',bilan_id);
+  getNoteById(note_id: string): Observable<Note> {
+    return this.post('/note/find',note_id);
   }
 
    private extractData(res: Response) {
@@ -54,7 +54,7 @@ export class BilansService {
         }
     }
 
-       private post(route: string, data: string | Bilan): Observable<any> {
+       private post(route: string, data: string | Note): Observable<any> {
                return this.http
                    .post<Response>(environment.apiUrl + route, data)
                    .pipe(

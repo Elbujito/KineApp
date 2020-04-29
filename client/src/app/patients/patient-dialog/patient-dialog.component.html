@@ -2,17 +2,14 @@
 <mat-dialog-content>
   <form class="form" (ngSubmit)="onSubmit()" #dialogForm="ngForm">
     <mat-form-field>
-      <input type="text" matInput placeholder="FirstName" [(ngModel)]="patient.firstname" id="firstname"
-             name="firstname" required>
+      <input type="text" matInput placeholder="FirstName" [(ngModel)]="patient.firstName" id="firstName"
+             name="firstName" required>
     </mat-form-field>
     <mat-form-field>
-      <input type="text" matInput placeholder="Name" [(ngModel)]="patient.name" id="name" name="name" required>
+      <input type="text" matInput placeholder="Name" [(ngModel)]="patient.lastName" id="lastName" name="lastName" required>
     </mat-form-field>
     <mat-form-field>
       <input type="text" matInput placeholder="Age" [(ngModel)]="patient.age" id="age" name="age" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input type="text" matInput placeholder="Weigth" [(ngModel)]="patient.weight" id="weight" name="weight" required>
     </mat-form-field>
     <mat-form-field>
       <input type="text" matInput placeholder="Email" [(ngModel)]="patient.email" id="email" name="email" required>

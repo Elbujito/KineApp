@@ -5,11 +5,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
-import { BilanDialogComponent } from '../bilan-dialog/bilan-dialog.component';
-import { BilanConfirmDialogComponent } from '../bilan-confirm-dialog/bilan-confirm-dialog.component';
+import { NoteDialogComponent } from '../note-dialog/note-dialog.component';
+import { NoteConfirmDialogComponent } from '../note-confirm-dialog/note-confirm-dialog.component';
 
-import { Bilan, Patient } from '../../shared/models/index';
-import { BilansService } from '../../shared/services/index';
+import { Note, Patient } from '../../shared/models/index';
+import { NotesService } from '../../shared/services/index';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,18 +20,18 @@ import { BilansService } from '../../shared/services/index';
 export class DashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['title', 'date', 'description','edit', 'remove'];
-  dataSource = new MatTableDataSource<Bilan>([]);
+  dataSource = new MatTableDataSource<Note>([]);
 
   @Input('patientOutput') patient: Patient;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private router: Router, private dialog: MatDialog,
-  private bilansService: BilansService,
+  private notesService: NotesService,
   private changeDetectorRefs: ChangeDetectorRef)
   {
-    let bilans: Bilan[] = [];
-    this.dataSource.data = bilans;
+    let notes: Note[] = [];
+    this.dataSource.data = notes;
   }
 
   ngOnInit() {
@@ -44,9 +44,9 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog() {
-	const dialogRef = this.dialog.open(BilanDialogComponent,{
-		data:{dialogTitle: 'Add a new bilan',
-		bilan_id: -1,
+	const dialogRef = this.dialog.open(NoteDialogComponent,{
+		data:{dialogTitle: 'Add a new note',
+		note_id: -1,
 		patient_id: this.patient.id}
 		});
         dialogRef.afterClosed().subscribe(result => {
@@ -54,22 +54,22 @@ export class DashboardComponent implements OnInit {
 		});
   }
 
-  remove(bilan: Bilan)
+  remove(note: Note)
   {
-	  const dialogRef = this.dialog.open(BilanConfirmDialogComponent, {
-		  data: {dialogTitle: 'Delete the bilan '+ this.patient.displayedName + '?',
-		  bilan_id: bilan.id}
+	  const dialogRef = this.dialog.open(NoteConfirmDialogComponent, {
+		  data: {dialogTitle: 'Delete the note '+ this.patient.displayedName + '?',
+		  note_id: note.id}
 		  });
 	  dialogRef.afterClosed().subscribe(result => {
 		  this.refresh();
 		  });
   }
 
-  edit(bilan: Bilan)
+  edit(note: Note)
   {
-	  const dialogRef = this.dialog.open(BilanDialogComponent, {
+	  const dialogRef = this.dialog.open(NoteDialogComponent, {
 		  data: {dialogTitle: 'Edit a patient',
-		  bilan_id: bilan.id,
+		  note_id: note.id,
 		  patient_id: this.patient.id}
 		  });
       dialogRef.afterClosed().subscribe(result => {
@@ -80,21 +80,21 @@ export class DashboardComponent implements OnInit {
   refresh() {
   if(this.patient !==undefined)
   {
-	  this.bilansService.getBilansByPatientId(String(this.patient.id)).subscribe((bilans: Bilan[]) => {
-		  this.dataSource.data = bilans;
+	  this.notesService.getNotesByPatientId(String(this.patient.id)).subscribe((notes: Note[]) => {
+		  this.dataSource.data = notes;
 		  this.changeDetectorRefs.detectChanges();
           });
    }
   }
 
-  onRequestBilans(patient: Patient)
+  onRequestNotes(patient: Patient)
   {
-  console.log("onRequestBilans", patient.displayedName);
+  console.log("onRequestNotes", patient.displayedName);
     this.patient = patient;
     if(this.patient !==undefined)
     {
-  	  this.bilansService.getBilansByPatientId(String(patient.id)).subscribe((bilans: Bilan[]) => {
-  		  this.dataSource.data = bilans;
+  	  this.notesService.getNotesByPatientId(String(patient.id)).subscribe((notes: Note[]) => {
+  		  this.dataSource.data = notes;
   		  this.changeDetectorRefs.detectChanges();
             });
      }

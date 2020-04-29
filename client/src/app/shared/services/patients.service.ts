@@ -9,24 +9,27 @@ import {Patient} from '../../shared/models/index';
 
 @Injectable()
 export class PatientsService {
+	
+  apiUrl: string;
 
   constructor(private http: HttpClient) {
+	  this.apiUrl = environment.apiUrl;
   }
 
    getAllPatients(): Observable<Patient[]> {
-          return this.get('/patient/all');
+          return this.get('/patients');
     }
 
    updatePatient(patient: Patient): Observable<any> {
-     return this.post('/patient/update', patient);
+     return this.post('/patient', patient);
    }
 
    addPatient(patient: Patient): Observable<any> {
-        return this.post('/patient/add', patient);
+   return this.put('/patient', patient);
    }
 
    removePatient(patient: Patient): Observable<any> {
-      return this.post('/patient/delete', patient);
+      return this.del(patient.id);
    }
 
   private get(route: string): Observable<any> {
@@ -36,8 +39,8 @@ export class PatientsService {
           );
    }
 
-  getPatientById(patient_id: string): Observable<Patient> {
-    return this.post('/patient/find',patient_id);
+  getPatientById(patient_id: number): Observable<Patient> {
+    return this.get('/patient/${patient_id}',);
   }
 
    private extractData(res: Response) {
@@ -57,6 +60,25 @@ export class PatientsService {
        private post(route: string, data: string | Patient): Observable<any> {
                return this.http
                    .post<Response>(environment.apiUrl + route, data)
+                   .pipe(
+                       map(this.extractData),
+                       catchError(this.handleError),
+                   );
+       }
+	   
+		private del (id: number): Observable<any> {
+		  const url = '${this.apiUrl}/patient/${id}'; 
+		  return this.http.delete(url)
+			.pipe(
+                       map(this.extractData),
+                       catchError(this.handleError),
+                   );
+		}
+	   
+	   
+	          private put(route: string, data: string | Patient): Observable<any> {
+               return this.http
+                   .put<Response>(environment.apiUrl + route, data)
                    .pipe(
                        map(this.extractData),
                        catchError(this.handleError),
