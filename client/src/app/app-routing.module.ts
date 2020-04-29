@@ -27,7 +27,6 @@ const appRoutes: Routes = [
     {
         path: 'about',
         loadChildren: './about/about.module#AboutModule',
-        canActivate: [LoggedOffGuard]
     },
     {
          path: 'subscription',
@@ -41,7 +40,6 @@ const appRoutes: Routes = [
 	{
         path: '',
         loadChildren: './home/home.module#HomeModule',
-        canActivate: [LoggedOffGuard]
     },
 	{
         path: 'login',

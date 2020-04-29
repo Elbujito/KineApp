@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase';
+import * as firebase from "firebase/app";
 
 import {AlertService} from './alert.service';
 
@@ -18,7 +18,6 @@ export class AuthFirebaseService {
     sessionStorage.setItem('session-alive', 'true');
     this.token = 'some-temporary-token';
     this.router.navigate(['/dashboard']);
-    console.log('AUTH: ', this.auth);
   }
 
   public logout(): void {
@@ -38,4 +37,5 @@ export class AuthFirebaseService {
   public isAuthenticated(): string {
     return sessionStorage.getItem('session-alive');
   }
+
 }

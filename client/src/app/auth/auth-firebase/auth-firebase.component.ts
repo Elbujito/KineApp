@@ -4,6 +4,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 import {AuthProvider} from 'ngx-auth-firebaseui';
 
+import * as firebase from "firebase/app";
+
 import { AuthService, AuthFirebaseService} from '../../shared/services/index';
 import {
     LoginPassword,
@@ -26,6 +28,9 @@ export class AuthFirebaseComponent {
   constructor(private router: Router, private authService: AuthService, private authFirebaseService: AuthFirebaseService) {}
 
    ngOnInit() {
+        if(firebase.auth().currentUser != null)
+          this.authFirebaseService.onSuccess();
+
         this.loginPassword = {} as LoginPassword;
         this.authService.getConnectors().subscribe(connectors => {
             this.connectors = connectors;
@@ -34,11 +39,21 @@ export class AuthFirebaseComponent {
         if (this.authService.productInformations) {
             this.productInformations = this.authService.productInformations;
         }
-        this.loginPassword.login = 'admin';
-        this.loginPassword.password = 'admin';
+
     }
 
     onSuccess() {
+       let email = firebase.auth().currentUser.email;
+       let uid = firebase.auth().currentUser.uid;
+       let route = 'users/' + firebase.auth().currentUser.uid;
+       if (! firebase.database().ref(route).child(route)) {
+              firebase.database().ref(route).push({
+                    email: email,
+                    uid: uid
+                    });
+      }
+      this.loginPassword.login = email;
+      this.loginPassword.password = uid;
       this.authService.login(this.loginPassword)
         .subscribe(
         error => (this.errorMsg = error)
