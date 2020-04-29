@@ -9,7 +9,7 @@ import {Patient} from '../../shared/models/index';
 
 @Injectable()
 export class PatientsService {
-	
+
   apiUrl: string;
 
   constructor(private http: HttpClient) {
@@ -21,11 +21,11 @@ export class PatientsService {
     }
 
    updatePatient(patient: Patient): Observable<any> {
-     return this.post('/patient', patient);
+     return this.put(patient);
    }
 
    addPatient(patient: Patient): Observable<any> {
-   return this.put('/patient', patient);
+    return this.post(patient);
    }
 
    removePatient(patient: Patient): Observable<any> {
@@ -40,7 +40,7 @@ export class PatientsService {
    }
 
   getPatientById(patient_id: number): Observable<Patient> {
-    return this.get('/patient/${patient_id}',);
+    return this.get('/patient/'+patient_id);
   }
 
    private extractData(res: Response) {
@@ -57,31 +57,31 @@ export class PatientsService {
         }
     }
 
-       private post(route: string, data: string | Patient): Observable<any> {
+       private post(patient: Patient): Observable<any> {
+               const url = this.apiUrl+'/patient';
                return this.http
-                   .post<Response>(environment.apiUrl + route, data)
+                   .post<Response>(url, patient)
                    .pipe(
                        map(this.extractData),
                        catchError(this.handleError),
                    );
        }
-	   
+
 		private del (id: number): Observable<any> {
-		  const url = '${this.apiUrl}/patient/${id}'; 
+		  const url = this.apiUrl+'/patient/'+id;
 		  return this.http.delete(url)
 			.pipe(
-                       map(this.extractData),
-                       catchError(this.handleError),
-                   );
+			map(this.extractData),
+       catchError(this.handleError),
+       );
 		}
-	   
-	   
-	          private put(route: string, data: string | Patient): Observable<any> {
-               return this.http
-                   .put<Response>(environment.apiUrl + route, data)
-                   .pipe(
-                       map(this.extractData),
-                       catchError(this.handleError),
-                   );
-       }
+
+		private put(patient: Patient): Observable<Patient> {
+		  const url = this.apiUrl+'/patient';
+      return this.http.put<Response>(url, patient)
+        .pipe(
+        map(this.extractData),
+          catchError(this.handleError),
+       );
+    }
 }
