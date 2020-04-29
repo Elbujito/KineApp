@@ -1,82 +1,137 @@
 package com.model.rest;
-import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.bson.types.ObjectId;
+
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
-public class Patient implements Serializable {
-    public Long id;
-    public String firstname;
-    public String name;
-    public String age;
-    public String weight;
-    public String email;
-    public String img;
-    public String displayedName;
+@JsonInclude(Include.NON_NULL)
+public class Patient {
 
-    public Patient(Long id, String firstname, String name, String age,
-                   String weight, String email, String img) {
-        this();
-        this.id = id;
-        this.firstname = firstname;
-        this.name = name;
-        this.age = age;
-        this.weight = weight;
-        this.email = email;
-        this.img = img;
-        this.displayedName = this.firstname + ' ' + this.name;
-    }
+    @JsonSerialize(using = ToStringSerializer.class)
+    private ObjectId id;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private Address address;
+    private String email;
+    private Date createdAt = new Date();
+    private Boolean active;
+    private List<Pathology> pathologies;
 
-    public Patient() {
-        super();
-    }
-
-    public Long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public Patient setId(ObjectId id) {
         this.id = id;
+        return this;
     }
 
-    public String getAge() { return age; }
-    public String getFirstname() { return firstname; }
-    public String getName() { return name; }
-    public String getWeight() { return weight; }
-    public String getImg() { return img; }
-    public String getEmail() { return email; }
-    public String getDisplayedName() { return displayedName; }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Patient patient = (Patient) o;
-        if(patient.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), patient.getId());
+    public String getFirstName() {
+        return firstName;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
+    public Patient setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Patient setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Patient setAge(int age) {
+        this.age = age;
+        return this;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Patient setAddress(Address address) {
+        this.address = address;
+        return this;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Patient setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDisplayedName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public Patient setActive(Boolean active) {
+        this.active = active;
+        return this;
+    }
+
+    public List<Pathology> getPathologies() {
+        return pathologies;
+    }
+
+    public Patient setPathologies(List<Pathology> pathologies) {
+        this.pathologies = pathologies;
+        return this;
     }
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "id=" + getId() +
-                ", firstname='" + getFirstname() + "'" +
-                ", name='" + getName() + "'" +
-                ", age='" + getAge() + "'" +
-                ", weight='" + getWeight() + "'" +
-                ", email='" + getEmail() + "'" +
-                ", img='" + getImg() + "'" +
-                ", displayedName='" + getDisplayedName() + "'" +
-                "}";
+        return "Patient{" + "id=" + id + ", firstName='" + '\'' + firstName + ", lastName='" + lastName + '\'' + ", age=" + age
+                + ", address=" + address + ", email='" + email + '\'' + ", createdAt=" + createdAt
+                + ", active=" + active + ", pathologies=" + pathologies + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Patient patient = (Patient) o;
+        return age == patient.age && Objects.equals(id, patient.id)
+                && Objects.equals(firstName,patient.firstName) && Objects.equals(lastName, patient.lastName)
+                && Objects.equals(address, patient.address) && Objects.equals(email, patient.email)
+                && Objects.equals(createdAt, patient.createdAt) && Objects.equals(active, patient.active)
+                && Objects.equals(pathologies, patient.pathologies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, age, address, email, createdAt, active, pathologies);
+    }
+
 }

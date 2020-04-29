@@ -1,25 +1,26 @@
 package com.client;
 
 import java.util.List;
-import com.model.rest.Bilan;
+import com.model.rest.Note;
+
 import feign.Headers;
 import feign.RequestLine;
 
 @Headers("Content-type: application/json;charset=UTF-8")
-public interface BilanClient {
+public interface NoteClient {
 
     @RequestLine("POST /update")
-    Boolean updateBilan(Bilan bilan);
+    Boolean updateNote(Note note);
 
     @RequestLine("POST /findAll")
-    List<Bilan> findBilansByPatientId(String patientId);
+    List<Note> findNotesByPatientId(String patientId);
 
     @RequestLine("POST /find")
-    Bilan findBilanById(String bilanId);
+    Note findNoteById(String noteId);
 
     @RequestLine("POST /remove")
-    Boolean removeBilan(Bilan bilan);
+    Boolean removeNote(Note note);
 
     @RequestLine("POST /add")
-    Boolean addBilan(Bilan bilan);
+    Boolean addNote(Note note);
 }

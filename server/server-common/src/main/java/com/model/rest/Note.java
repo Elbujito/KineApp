@@ -1,17 +1,17 @@
 package com.model.rest;
-
+import org.bson.types.ObjectId;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Bilan implements Serializable {
+public class Note implements Serializable {
 
-    public Long id;
-    public Long patientId;
+    public ObjectId id;
+    public ObjectId patientId;
     public String title;
     public String date;
     public String description;
 
-    public Bilan(Long id, Long patientId, String title, String date, String description) {
+    public Note(ObjectId id, ObjectId patientId, String title, String date, String description) {
         this();
         this.id = id;
         this.patientId = patientId;
@@ -20,29 +20,37 @@ public class Bilan implements Serializable {
         this.description = description;
     }
 
-    public Bilan() {
+    public Note() {
         super();
     }
 
-    public Long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
-    public Long getPatientId() {
+    public ObjectId getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(Long patientId) {
+    public void setPatientId(ObjectId patientId) {
         this.patientId = patientId;
     }
 
-    public String getTitle() { return title; }
-    public String getDate() { return date; }
-    public String getDescription() { return description; }
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -53,11 +61,11 @@ public class Bilan implements Serializable {
             return false;
         }
 
-        Bilan bilan = (Bilan) o;
-        if(bilan.getId() == null || getId() == null) {
+        Note note = (Note) o;
+        if (note.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), bilan.getId());
+        return Objects.equals(getId(), note.getId());
     }
 
     @Override
@@ -67,7 +75,7 @@ public class Bilan implements Serializable {
 
     @Override
     public String toString() {
-        return "Bilan{" +
+        return "Note{" +
                 "id=" + getId() +
                 ", patientId=" + getPatientId() +
                 ", title='" + getTitle() + "'" +

@@ -1,110 +1,99 @@
 package com.rest;
 
-import java.util.stream.Collectors;
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import com.client.PatientClient;
 import com.model.rest.Patient;
 import com.repository.PatientRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static java.util.Arrays.asList;
 
 @RestController
-@RequestMapping("/patient")
-@SuppressWarnings("PMD.ExcessiveImports")
-public final class PatientController implements PatientClient {
+@RequestMapping("/")
+public class PatientController {
 
-    private static final Marker PUBLIC = MarkerFactory.getMarker("PUBLIC");
+    private final static Logger LOGGER = LoggerFactory.getLogger(PatientController.class);
+    private final PatientRepository patientRepository;
 
-    private static final Logger LOG = LoggerFactory.getLogger(PatientController.class);
-
-    private static PatientRepository.DbPatientRepository repo = new PatientRepository.DbPatientRepository();
-
-    @SuppressWarnings("checkstyle:parameternumber")
-    public PatientController() {
+    public PatientController(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
     }
 
-    @Override
-    @GetMapping("/all")
+    @PostMapping("patient")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Patient postPatient(@RequestBody Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @PostMapping("patients")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Patient> postPatients(@RequestBody List<Patient> patients) {
+        return patientRepository.saveAll(patients);
+    }
+
+    @GetMapping("patients")
     public List<Patient> getPatients() {
-        try {
-            LOG.info(" getPatients ");
-            this.repo.displayList();
-            return this.repo.getPatients().stream().collect(Collectors.toList());
-        }
-        catch (Exception e) {
-            throw e;
-        }
+        return patientRepository.findAll();
     }
 
-    @Override
-    @PostMapping("/add")
-    public Boolean addPatient(@RequestBody final Patient patient)
-    {
-        LOG.info(" addPatient " + patient);
-        try {
-            this.repo.displayList();
-            Boolean result = this.repo.addPatient(patient);
-            this.repo.displayList();
-            return result;
-        }
-        catch (Exception e) {
-            throw e;
-        }
+    @GetMapping("patient/{id}")
+    public ResponseEntity<Patient> getPatient(@PathVariable String id) {
+        Patient patient = patientRepository.findOne(id);
+        if (patient == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.ok(patient);
     }
 
-    @Override
-    @PostMapping("/update")
-    public Boolean updatePatient(@RequestBody final Patient patient)
-    {
-        LOG.info(" updatePatient " + patient);
-        try {
-                this.repo.displayList();
-                Patient currentPatient = this.repo.findPatientById(patient.getId());
-                if(currentPatient != null) {
-                    Boolean result = this.repo.updatePatient(patient);
-                    this.repo.displayList();
-                    return result;
-                }
-                return false;
-        }
-        catch (Exception e) {
-            throw e;
-        }
+    @GetMapping("patients/{ids}")
+    public List<Patient> getPatients(@PathVariable String ids) {
+        List<String> listIds = asList(ids.split(","));
+        return patientRepository.findAll(listIds);
     }
 
-    @Override
-    @PostMapping("/find")
-    public Patient findPatientById(@RequestBody final String patientId)
-    {
-        LOG.info(" findPatientById " + patientId);
-        try {
-            return this.repo.findPatientById(Long.parseLong(patientId));
-        }
-        catch (Exception e) {
-            throw e;
-        }
+    @GetMapping("patients/count")
+    public Long getCount() {
+        return patientRepository.count();
     }
 
-    @Override
-    @PostMapping("/delete")
-    public Boolean removePatient(@RequestBody final Patient patient)
-    {
-        LOG.info(" removePatient " + patient);
-        try {
-            this.repo.displayList();
-            Boolean result = this.repo.removePatient(patient);
-            this.repo.displayList();
-            return result;
-        }
-        catch (Exception e) {
-            throw e;
-        }
+    @DeleteMapping("patient/{id}")
+    public Long deletePatient(@PathVariable String id) {
+        return patientRepository.delete(id);
+    }
+
+    @DeleteMapping("patients/{ids}")
+    public Long deletePatients(@PathVariable String ids) {
+        List<String> listIds = asList(ids.split(","));
+        return patientRepository.delete(listIds);
+    }
+
+    @DeleteMapping("patients")
+    public Long deletePatients() {
+        return patientRepository.deleteAll();
+    }
+
+    @PutMapping("patient")
+    public Patient putPatient(@RequestBody Patient patient) {
+        return patientRepository.update(patient);
+    }
+
+    @PutMapping("patients")
+    public Long putPatient(@RequestBody List<Patient> patients) {
+        return patientRepository.update(patients);
+    }
+
+    @GetMapping("patients/averageAge")
+    public Double averageAge() {
+        return patientRepository.getAverageAge();
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public final Exception handleAllExceptions(RuntimeException e) {
+        LOGGER.error("Internal server error.", e);
+        return e;
     }
 }

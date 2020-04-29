@@ -1,84 +1,35 @@
 package com.repository;
 
 import com.model.rest.Patient;
-import com.rest.PatientController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.*;
-import java.util.function.*;
 
-public class PatientRepository
-{
-    public static class DbPatientRepository {
+@Repository
+public interface PatientRepository {
 
-        private static final Logger LOG = LoggerFactory.getLogger(DbPatientRepository.class);
+    Patient save(Patient patient);
 
-        public List<Patient> patientList;
+    List<Patient> saveAll(List<Patient> patient);
 
-        public DbPatientRepository()
-        {
-            this.patientList = new ArrayList();
-            this.patientList.add(new Patient(1L,"Adrien", "Roques", "25", "64", "adrien.roques@medinotes.fr", ""));
-            this.patientList.add(new Patient(2L,"Rafael", "Cecotti", "23", "74", "rafael.cecotti@medinotes.fr", ""));
-            this.patientList.add(new Patient(3L,"Thomas", "Benetti", "25", "54", "thomas.benetti@medinotes.fr", ""));
-            this.patientList.add(new Patient(4L,"Victor", "Chamontin", "24", "70", "victor.chamontin@medinotes.fr", ""));
-            this.patientList.add(new Patient(5L,"Romain", "Roques", "24", "64", "romain.roques@medinotes.fr", ""));
-            this.patientList.add(new Patient(6L,"Maxime", "Cecotti", "89", "74", "maxime.cecotti@medinotes.fr", ""));
-            this.patientList.add(new Patient(7L,"Thibault", "Benetti", "67", "54", "thibault.benetti@medinotes.fr", ""));
-            this.patientList.add(new Patient(8L,"Hugo", "Torry", "65", "70", "hugo.torry@medinotes.fr", ""));
-        }
+    List<Patient> findAll();
 
-        public void displayList()
-        {
-            LOG.info(" addPatient " + this.patientList);
-        }
+    List<Patient> findAll(List<String> ids);
 
-        public List<Patient> getPatients()
-        {
-            return this.patientList;
-        }
+    Patient findOne(String id);
 
-        public Boolean addPatient(Patient patient)
-        {
-            List<Long> ids = this.patientList.stream()
-                    .map(Patient::getId).collect(Collectors.toList());
-            patient.setId(ids.stream()
-                    .reduce(Long::max)
-                    .get()+1);
-            return this.patientList.add(patient);
-        }
+    long count();
 
-        public Boolean removePatient(Patient patient)
-        {
-            Patient patientToRemove = findPatientById(patient.getId());
-            int itemIndex = this.patientList.indexOf(patientToRemove);
-            if (itemIndex != -1) {
-                return this.patientList.remove(patient);
-            }
-            return false;
-        }
+    long delete(String id);
 
-        public Patient findPatientById(Long id)
-        {
-            System.out.println(id);
-            return this.patientList.stream()
-                    .filter(patient -> id.equals(patient.getId()))
-                    .findFirst()
-                    .get();
-        }
+    long delete(List<String> ids);
 
+    long deleteAll();
 
-        public Boolean updatePatient(Patient patient) {
-            int itemIndex = this.patientList.indexOf(patient);
-            if (itemIndex != -1) {
-                this.patientList.set(itemIndex, patient);
-                return true;
-            }
-            return false;
-        }
-    }
+    Patient update(Patient patient);
+
+    long update(List<Patient> patient);
+
+    double getAverageAge();
+
 }

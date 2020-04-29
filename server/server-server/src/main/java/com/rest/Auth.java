@@ -1,7 +1,5 @@
 package com.rest;
 
-import java.util.stream.Collectors;
-import java.util.stream.*;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -49,8 +47,6 @@ import com.model.login.LoginPassword;
 import com.model.provider.connector.IAuthConnectorProvider;
 import com.model.provider.roles.IAuthRolesProvider;
 import com.model.rest.Connector;
-import com.model.rest.Patient;
-import com.model.rest.Bilan;
 import com.model.user.User;
 import com.provider.token.IAuthTokenProvider;
 import io.jsonwebtoken.Claims;
