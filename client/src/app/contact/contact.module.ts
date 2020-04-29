@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { HomeRoutingModule } from './home-routing.module';
+import { AuthModule } from '../auth/auth.module';
+import { ContactRoutingModule } from './contact-routing.module';
 import { MaterialModule } from '../material.module';
 
-import { HomeComponent } from './index';
+import { ContactComponent } from './index';
 
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    ContactRoutingModule,
+	AuthModule,
     SharedModule,
 	MaterialModule
   ],
-  declarations: [HomeComponent],
+  declarations: [ContactComponent],
   entryComponents: []
 })
-export class HomeModule { }
+export class ContactModule { }

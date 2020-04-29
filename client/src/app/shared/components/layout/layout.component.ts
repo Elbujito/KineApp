@@ -20,8 +20,8 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     links: LinkMenuItem[];
     home: any;
 
-    constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef,
-        private media: MediaMatcher,
+    constructor(private router: Router,
+        private media: MediaMatcher, private changeDetectorRef: ChangeDetectorRef,
         private service: AuthService, private authFirebaseService : AuthFirebaseService,
         private alertService: AlertService
 ) {
@@ -45,9 +45,14 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
         this.changeDetectorRef.detectChanges();
     }
 
-      onLogout() {
+    onLogout() {
        this.service.logout();
        this.authFirebaseService.logout();
-       this.alertService.showToaster("Logout...");
-      }
+       this.showToaster("Logout...");
+    }
+
+    showToaster(message: string)
+    {
+      this.alertService.showToaster(message);
+    }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard} from './shared/guards/index';
+import { AuthFirebaseGuard} from './shared/guards/index';
 
 const appRoutes: Routes = [
     {
@@ -27,6 +27,10 @@ const appRoutes: Routes = [
     {
         path: 'about',
         loadChildren: './about/about.module#AboutModule',
+    },
+	{
+        path: 'contact',
+        loadChildren: './contact/contact.module#ContactModule',
     },
     {
          path: 'subscription',

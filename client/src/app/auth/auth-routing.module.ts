@@ -6,7 +6,7 @@ import { LoggedGuard, LoggedOffGuard } from '../shared/guards/index';
 
 const routes: Routes = [
     {
-        path: 'login',
+        path: '',
         component: AuthFirebaseComponent,
     },
     {

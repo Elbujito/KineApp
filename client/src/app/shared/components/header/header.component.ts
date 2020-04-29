@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import * as firebase from 'firebase';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthFirebaseService, AlertService } from '../../services/index';
+import * as firebase from "firebase/app";
+
+import { AuthFirebaseService} from '../../services/index';
 
 @Component({
   selector: 'app-header',
@@ -9,21 +11,20 @@ import { AuthFirebaseService, AlertService } from '../../services/index';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  public isAuthenticated: Boolean;
+  constructor( private route: ActivatedRoute,private router: Router,
+               private authFirebaseService: AuthFirebaseService ) {
 
-  constructor(public authService: AuthFirebaseService, private alertService: AlertService) {
-      //this.isAuthenticated = this.authService.isAuthenticated()
   }
 
-  public userUid(): string {
-    return firebase.auth().currentUser.uid;
-  }
-
-  public userEmail(): string {
-    return firebase.auth().currentUser.email;
-  }
-
-  public userName(): string {
-    return firebase.auth().currentUser.displayName;
+  public onLoginClicked()
+  {
+	  if(firebase.auth().currentUser)
+    {
+		  this.authFirebaseService.onSuccess();
+    }
+    else
+    {
+      this.router.navigate(['login']);
+    }
   }
 }

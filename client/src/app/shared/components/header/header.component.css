@@ -7,14 +7,14 @@
 {
  background-color: transparent;
  color: white;
- transform: scale(1.2);
+ transform: scale(1.1);
 }
 
 .abonner>button
 {
   background-color: #AA00FF;
   color: white;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .loginButton>button:hover
@@ -38,3 +38,23 @@
 {
   cursor: pointer;
 }
+
+.buttonMain
+{
+  margin-left: 10px;
+  color: white;
+  border-style: none;
+}
+
+.buttonMain>button
+{
+margin-left: 20px;
+transform: scale(1.2);
+}
+
+.mat-button:hover
+{
+    color: #AB47BC;
+    font-weight: bold;
+}
+

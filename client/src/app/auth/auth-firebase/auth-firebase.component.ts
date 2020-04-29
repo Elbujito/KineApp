@@ -30,11 +30,6 @@ export class AuthFirebaseComponent {
    ngOnInit() {
         this.loginPassword = {} as LoginPassword;
 
-        if(firebase.auth().currentUser != null)
-        {
-          this.loginOnServer();
-        }
-
         this.authService.getConnectors().subscribe(connectors => {
             this.connectors = connectors;
             this.loginPassword.connector = this.connectors[0].id;
@@ -42,7 +37,6 @@ export class AuthFirebaseComponent {
         if (this.authService.productInformations) {
             this.productInformations = this.authService.productInformations;
         }
-
     }
 
     onSuccess() {
