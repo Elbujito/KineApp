@@ -28,10 +28,14 @@ export class AuthFirebaseComponent {
   constructor(private router: Router, private authService: AuthService, private authFirebaseService: AuthFirebaseService) {}
 
    ngOnInit() {
-        if(firebase.auth().currentUser != null)
-          this.authFirebaseService.onSuccess();
-
         this.loginPassword = {} as LoginPassword;
+
+        if(firebase.auth().currentUser != null)
+        {
+          this.loginOnServer();
+          if(this.errorMsg == '') this.authFirebaseService.onSuccess();
+        }
+
         this.authService.getConnectors().subscribe(connectors => {
             this.connectors = connectors;
             this.loginPassword.connector = this.connectors[0].id;
@@ -52,12 +56,17 @@ export class AuthFirebaseComponent {
                     uid: uid
                     });
       }
-      this.loginPassword.login = email;
-      this.loginPassword.password = uid;
-      this.authService.login(this.loginPassword)
-        .subscribe(
-        error => (this.errorMsg = error)
+      this.loginOnServer();
+      if(this.errorMsg == '') this.authFirebaseService.onSuccess();
+    }
+
+    loginOnServer()
+    {
+       this.loginPassword.login = firebase.auth().currentUser.email;
+       this.loginPassword.password = firebase.auth().currentUser.uid;
+       this.authService.login(this.loginPassword)
+       .subscribe(
+          error => (this.errorMsg = error)
         );
-      this.authFirebaseService.onSuccess();
     }
 }
