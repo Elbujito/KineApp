@@ -33,7 +33,6 @@ export class AuthFirebaseComponent {
         if(firebase.auth().currentUser != null)
         {
           this.loginOnServer();
-          if(this.errorMsg == '') this.authFirebaseService.onSuccess();
         }
 
         this.authService.getConnectors().subscribe(connectors => {
@@ -57,7 +56,6 @@ export class AuthFirebaseComponent {
                     });
       }
       this.loginOnServer();
-      if(this.errorMsg == '') this.authFirebaseService.onSuccess();
     }
 
     loginOnServer()
@@ -65,8 +63,10 @@ export class AuthFirebaseComponent {
        this.loginPassword.login = firebase.auth().currentUser.email;
        this.loginPassword.password = firebase.auth().currentUser.uid;
        this.authService.login(this.loginPassword)
-       .subscribe(
-          error => (this.errorMsg = error)
-        );
+       .subscribe( res => {
+          this.authFirebaseService.onSuccess();
+         },
+         (error) => { this.errorMsg = error;
+        });
     }
 }
