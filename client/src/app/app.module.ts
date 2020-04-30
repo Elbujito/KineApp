@@ -16,7 +16,7 @@ import { ContactModule } from './contact/contact.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AboutModule } from './about/about.module';
 import { HelpModule } from './help/help.module';
-import { PatientsModule } from './patients/patients.module';
+import { PatientModule } from './patient/patient.module';
 import { ProfileModule } from './profile/profile.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigurationModule } from './configuration/configuration.module';
@@ -66,7 +66,7 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
 		ContactModule,
 		HelpModule,
 		AuthModule,
-		PatientsModule,
+		PatientModule,
 		ProfileModule,
 		DashboardModule,
 		SubscriptionModule,

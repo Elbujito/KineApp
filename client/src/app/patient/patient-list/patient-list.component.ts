@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { PatientDialogComponent } from '../patient-dialog/patient-dialog.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { PatientConfirmDialogComponent } from '../patient-confirm-dialog/patient-confirm-dialog.component';
 
 import { Patient } from '../../shared/models/index';
 import { PatientsService } from '../../shared/services/index';
@@ -19,7 +19,7 @@ import { PatientsService } from '../../shared/services/index';
 
 export class PatientListComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'age', 'email', 'edit', 'remove'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'phoneNumber', 'email', 'see', 'edit', 'remove'];
   dataSource = new MatTableDataSource<Patient>([]);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -54,8 +54,8 @@ export class PatientListComponent implements OnInit {
 
   remove(patient: Patient)
   {
-	  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-		  data: {dialogTitle: 'Supprimer ce patient '+ patient.firstName +' '+ patient.lastName+' ?',
+	  const dialogRef = this.dialog.open(PatientConfirmDialogComponent, {
+		  data: {dialogTitle: 'Voulez vous supprimer '+ patient.firstName +' '+ patient.lastName+' ?',
 		  patient_id: patient.id}
 		  });
 	  dialogRef.afterClosed().subscribe(result => {
@@ -67,7 +67,20 @@ export class PatientListComponent implements OnInit {
   {
 	  const dialogRef = this.dialog.open(PatientDialogComponent, {
 		  data: {dialogTitle: 'Modifier un patient',
-		  patient_id: patient.id}
+		  patient_id: patient.id,
+		  readonly: false}
+		  });
+      dialogRef.afterClosed().subscribe(result => {
+		  this.refresh();
+		  });
+  }
+
+  see(patient: Patient)
+  {
+	  const dialogRef = this.dialog.open(PatientDialogComponent, {
+		  data: {dialogTitle: 'Consulter les informations du patient',
+		  patient_id: patient.id,
+		  readonly: true}
 		  });
       dialogRef.afterClosed().subscribe(result => {
 		  this.refresh();

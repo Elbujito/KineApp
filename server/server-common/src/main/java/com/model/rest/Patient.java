@@ -17,7 +17,9 @@ public class Patient {
     private ObjectId id;
     private String firstName;
     private String lastName;
-    private int age;
+    private String sexe;
+    private Date birthday = new Date();
+    private String phoneNumber;
     private Address address;
     private String email;
     private Date createdAt = new Date();
@@ -51,13 +53,28 @@ public class Patient {
         return this;
     }
 
-    public int getAge() {
-        return age;
+    public String getSexe() {
+        return sexe;
     }
 
-    public Patient setAge(int age) {
-        this.age = age;
-        return this;
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Address getAddress() {
@@ -110,8 +127,8 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "id=" + id + ", firstName='" + '\'' + firstName + ", lastName='" + lastName + '\'' + ", age=" + age
-                + ", address=" + address + ", email='" + email + '\'' + ", createdAt=" + createdAt
+        return "Patient{" + "id=" + id + ", firstName='" + '\'' + firstName + ", lastName='" + lastName + '\'' + ", birthday=" + birthday
+                + ", sexe='" + sexe + '\'' +  ", phoneNumber='" + phoneNumber + '\''+ ", address=" + address + ", email='" + email + '\'' + ", createdAt=" + createdAt
                 + ", active=" + active + ", pathologies=" + pathologies + '}';
     }
 
@@ -122,8 +139,9 @@ public class Patient {
         if (o == null || getClass() != o.getClass())
             return false;
         Patient patient = (Patient) o;
-        return age == patient.age && Objects.equals(id, patient.id)
+        return birthday == patient.birthday && Objects.equals(id, patient.id)
                 && Objects.equals(firstName,patient.firstName) && Objects.equals(lastName, patient.lastName)
+                && Objects.equals(sexe, patient.sexe) && Objects.equals(phoneNumber, patient.phoneNumber)
                 && Objects.equals(address, patient.address) && Objects.equals(email, patient.email)
                 && Objects.equals(createdAt, patient.createdAt) && Objects.equals(active, patient.active)
                 && Objects.equals(pathologies, patient.pathologies);
@@ -131,7 +149,7 @@ public class Patient {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, age, address, email, createdAt, active, pathologies);
+        return Objects.hash(id, firstName, lastName, sexe, birthday, phoneNumber, email, createdAt, active, pathologies);
     }
 
 }

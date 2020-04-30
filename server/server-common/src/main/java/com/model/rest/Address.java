@@ -3,7 +3,7 @@ package com.model.rest;
 import java.util.Objects;
 
 public class Address {
-    private int number;
+    private int streetNumber;
     private String street;
     private String postcode;
     private String city;
@@ -12,12 +12,12 @@ public class Address {
     public Address() {
     }
 
-    public int getNumber() {
-        return number;
+    public int getStreetNumber() {
+        return streetNumber;
     }
 
-    public Address setNumber(int number) {
-        this.number = number;
+    public Address setStreetNumber(int streetNumber) {
+        this.streetNumber = streetNumber;
         return this;
     }
 
@@ -59,7 +59,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" + "number=" + number + ", street='" + street + '\'' + ", postcode='" + postcode + '\'' + ", city='" + city + '\'' + ", country='" + country + '\'' + '}';
+        return "Address{" + "streetNumber=" + streetNumber + ", street='" + street + '\'' + ", postcode='" + postcode + '\'' + ", city='" + city + '\'' + ", country='" + country + '\'' + '}';
     }
 
     @Override
@@ -69,13 +69,13 @@ public class Address {
         if (o == null || getClass() != o.getClass())
             return false;
         Address address = (Address) o;
-        return number == address.number && Objects.equals(street, address.street) && Objects.equals(postcode,
+        return streetNumber == address.streetNumber && Objects.equals(street, address.street) && Objects.equals(postcode,
                                                                                                     address.postcode) && Objects
                 .equals(city, address.city) && Objects.equals(country, address.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, street, postcode, city, country);
+        return Objects.hash(streetNumber, street, postcode, city, country);
     }
 }

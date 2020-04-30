@@ -1,0 +1,124 @@
+<h1 mat-dialog-title>{{data.dialogTitle}}</h1>
+<mat-dialog-content>
+  <form class="form" (ngSubmit)="onSubmit()" #dialogForm="ngForm">
+    <h2>Informations personnelles</h2>
+    <mat-divider></mat-divider>
+    <table cellspacing="10">
+      <tr>
+        <td>
+          <mat-form-field style="width: 40px;">
+            <mat-label>Sexe</mat-label>
+            <select [(ngModel)]="patient.sexe" id="sexe" name="sexe" matNativeControl required>
+              <option>{{patient.sexe}}</option>
+              <option *ngIf="!isReadOnly && patient.sexe == 'F'" value="M">M</option>
+              <option *ngIf="!isReadOnly && patient.sexe == 'M'" value="F">F</option>
+            </select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table cellspacing="10">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" matInput placeholder="Prénom" [(ngModel)]="patient.firstName"
+                   id="firstName"
+                   name="firstName" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" matInput placeholder="Nom" [(ngModel)]="patient.lastName"
+                   id="lastName" name="lastName" required>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table cellspacing="10">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="tel" matInput placeholder="Télphone" [(ngModel)]="patient.phoneNumber"
+                   id="phoneNumber" name="phoneNumber" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="email" matInput placeholder="Email" [(ngModel)]="patient.email"
+                   id="email" name="email" required>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <h2>Adresse</h2>
+    <mat-divider></mat-divider>
+    <table cellspacing="10">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="number" matInput placeholder="Numéro"
+                   [(ngModel)]="patient.address.streetNumber" id="streetNumber" name="streetNumber" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" matInput placeholder="Rue" [(ngModel)]="patient.address.street"
+                   id="street" name="street" required>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table cellspacing="10">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" matInput placeholder="Ville" [(ngModel)]="patient.address.city"
+                   id="city" name="city" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" matInput placeholder="Code Postale"
+                   [(ngModel)]="patient.address.postcode" id="postcode" name="postcode" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" type="text" matInput placeholder="Pays" [(ngModel)]="patient.address.country"
+                   id="country" name="country" required>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <h2>Paramètres</h2>
+    <mat-divider></mat-divider>
+    <table cellspacing="10">
+      <tr>
+        <td>
+          <label> Profil actif:
+            <mat-checkbox *ngIf="isReadOnly" id="active" color="primary" [(ngModel)]="patient.active" [checked]="patient.active"
+                          name="active" (click)="$event.preventDefault()" require>
+            </mat-checkbox>
+            <mat-checkbox *ngIf="!isReadOnly" id="active" color="primary" [(ngModel)]="patient.active" [checked]="patient.active"
+                          name="active" require>
+            </mat-checkbox>
+          </label>
+        </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="true" matInput type="date"
+                   [(ngModel)]="patient.createdAt"
+                   required
+                   placeholder="Date de création"
+                   name="createdAt"
+                   id="createdAt"/>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button style="color: white; background-color: #FF4081;" *ngIf="!isReadOnly" mat-raised-button type="submit" (click)="onSubmit()" [disabled]="dialogForm.invalid">Save</button>
+  <button mat-raised-button color="primary" (click)="close()" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

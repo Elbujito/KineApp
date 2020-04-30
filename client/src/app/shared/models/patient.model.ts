@@ -6,7 +6,9 @@ export class Patient {
         public id?: number,
         public firstName?: string,
         public lastName?: string,
-        public age?: number,
+		    public sexe?: string,
+        public birthday?: Date,
+		    public phoneNumber?: string,
         public address?: Address,
         public email?: string,
         public createdAt?: Date,
@@ -15,6 +17,8 @@ export class Patient {
         public displayedName?: string
     )
     {
+      this.address = new Address();
+      this.pathologies = [];
     }
 }
 

@@ -2,10 +2,10 @@
   <div fxFlex="95%">
     <mat-card>
       <mat-card-content>
-        <h2>Configurer les pathologies</h2>
+        <h2>Configurer les types de pathologie</h2>
         <mat-form-field>
-          <mat-label>Chercher une pathologie *</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Chercher une pathologie *">
+          <mat-label>Chercher un type pathologie *</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Chercher un type pathologie *">
         </mat-form-field>
         <button style="float: right;" class="add-pathologyType" color="primary" (click)="openDialog()" type="button" mat-fab>
           <mat-icon>playlist_add</mat-icon>

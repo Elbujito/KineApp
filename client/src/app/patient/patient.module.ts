@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PatientsRoutingModule } from './patients-routing.module';
+import { PatientRoutingModule } from './patient-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { PatientListComponent, PatientDialogComponent, ConfirmDialogComponent } from './index';
+import { PatientListComponent, PatientDialogComponent, PatientConfirmDialogComponent } from './index';
 
 import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    PatientsRoutingModule,
+    PatientRoutingModule,
     SharedModule,
 	  MaterialModule
   ],
   declarations: [
     PatientListComponent,
 	  PatientDialogComponent,
-	  ConfirmDialogComponent
+	  PatientConfirmDialogComponent
   ],
-  entryComponents: [PatientDialogComponent, ConfirmDialogComponent]
+  entryComponents: [PatientDialogComponent, PatientConfirmDialogComponent]
 })
-export class PatientsModule { }
+export class PatientModule { }

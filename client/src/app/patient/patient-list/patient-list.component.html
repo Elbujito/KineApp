@@ -4,8 +4,8 @@
       <mat-card-content>
         <h2>Patients</h2>
         <mat-form-field>
-          <mat-label>Trouver votre patient *</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Trouver votre patient *">
+          <mat-label>Chercher un patient *</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Chercher un patient *">
         </mat-form-field>
         <button style="float: right;" class="add-patient" color="primary" (click)="openDialog()" type="button" mat-fab>
           <mat-icon>group_add</mat-icon>
@@ -19,16 +19,24 @@
             <th mat-header-cell *matHeaderCellDef> Nom</th>
             <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
           </ng-container>
-          <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef> Age</th>
-            <td mat-cell *matCellDef="let element"> {{element.age}}</td>
+          <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef> Téléphone</th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}}</td>
           </ng-container>
           <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef> Email</th>
             <td mat-cell *matCellDef="let element"> {{element.email}}</td>
           </ng-container>
+		  <ng-container matColumnDef="see">
+            <th mat-header-cell *matHeaderCellDef> Détails</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button color="primary" (click)="see(element)">
+                <mat-icon>search</mat-icon>
+              </button>
+            </td>
+          </ng-container>
           <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef> Edit</th>
+            <th mat-header-cell *matHeaderCellDef> Modifier</th>
             <td mat-cell *matCellDef="let element">
               <button mat-raised-button color="primary" (click)="edit(element)">
                 <mat-icon>edit</mat-icon>
@@ -36,7 +44,7 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="remove">
-            <th mat-header-cell *matHeaderCellDef> Remove</th>
+            <th mat-header-cell *matHeaderCellDef> Supprimer</th>
             <td mat-cell *matCellDef="let element">
               <button style="color: white; background-color: #FF4081;" mat-raised-button (click)="remove(element)">
                 <mat-icon>delete</mat-icon>
