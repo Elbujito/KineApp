@@ -8,7 +8,7 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Trouver un mouvement *">
         </mat-form-field>
         <button style="float: right;" class="add-mouvement" color="primary" (click)="openDialog()" type="button" mat-fab>
-          <mat-icon>group_add</mat-icon>
+          <mat-icon>playlist_add</mat-icon>
         </button>
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="name">

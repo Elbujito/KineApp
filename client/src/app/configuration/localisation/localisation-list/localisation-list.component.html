@@ -8,7 +8,7 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Trouver une localisation *">
         </mat-form-field>
         <button style="float: right;" class="add-localisation" color="primary" (click)="openDialog()" type="button" mat-fab>
-          <mat-icon>group_add</mat-icon>
+          <mat-icon>add_location</mat-icon>
         </button>
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="name">

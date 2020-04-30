@@ -8,7 +8,7 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Chercher une pathologie *">
         </mat-form-field>
         <button style="float: right;" class="add-pathologyType" color="primary" (click)="openDialog()" type="button" mat-fab>
-          <mat-icon>note_add</mat-icon>
+          <mat-icon>playlist_add</mat-icon>
         </button>
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="name">
