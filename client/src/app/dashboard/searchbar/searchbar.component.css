@@ -1,25 +1,11 @@
-.inputField
-{
-
-}
-
 .btnFind
 {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.mat-card-content
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bgsearch
+.container
 {
   margin-top: 10px;
   margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
 }

@@ -3,13 +3,9 @@ import { ViewChild, OnInit, Input, Component, Output, EventEmitter, ChangeDetect
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
-import { NoteDialogComponent } from '../note-dialog/note-dialog.component';
-import { NoteConfirmDialogComponent } from '../note-confirm-dialog/note-confirm-dialog.component';
-
-import { Note, Patient } from '../../shared/models/index';
-import { NotesService } from '../../shared/services/index';
+import { Pathology, PathologyType, Patient } from '../../shared/models/index';
+import { PatientsService, PathologiesService, PathologyTypesService } from '../../shared/services/index';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,84 +15,46 @@ import { NotesService } from '../../shared/services/index';
 
 export class DashboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'date', 'description','edit', 'remove'];
-  dataSource = new MatTableDataSource<Note>([]);
+  displayedColumns: string[] = ['pathologyType', 'name','createdAt','lastModifcation', 'discover','active', 'launch'];
+  dataSource = new MatTableDataSource<Pathology>([]);
 
   @Input('patientOutput') patient: Patient;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private router: Router, private dialog: MatDialog,
-  private notesService: NotesService,
+  constructor(private router: Router, private route: ActivatedRoute,
+  private pathologiesService: PathologiesService,
+  private pathologyTypesService: PathologyTypesService,
+  private patientsService: PatientsService,
   private changeDetectorRefs: ChangeDetectorRef)
   {
-    let notes: Note[] = [];
-    this.dataSource.data = notes;
+    let pathologies: Pathology[] = [];
+    this.dataSource.data = pathologies;
   }
 
   ngOnInit() {
 	this.refresh();
   }
 
-  applyFilter(event: Event) {
-	const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  openDialog() {
-	const dialogRef = this.dialog.open(NoteDialogComponent,{
-		data:{dialogTitle: 'Add a new note',
-		note_id: -1,
-		patient_id: this.patient.id}
-		});
-        dialogRef.afterClosed().subscribe(result => {
-		this.refresh();
-		});
-  }
-
-  remove(note: Note)
+  launch(pathology: Pathology)
   {
-	  const dialogRef = this.dialog.open(NoteConfirmDialogComponent, {
-		  data: {dialogTitle: 'Delete the note '+ this.patient.displayedName + '?',
-		  note_id: note.id}
-		  });
-	  dialogRef.afterClosed().subscribe(result => {
-		  this.refresh();
-		  });
-  }
 
-  edit(note: Note)
-  {
-	  const dialogRef = this.dialog.open(NoteDialogComponent, {
-		  data: {dialogTitle: 'Edit a patient',
-		  note_id: note.id,
-		  patient_id: this.patient.id}
-		  });
-      dialogRef.afterClosed().subscribe(result => {
-		  this.refresh();
-		  });
   }
 
   refresh() {
   if(this.patient !==undefined)
   {
-	  this.notesService.getNotesByPatientId(String(this.patient.id)).subscribe((notes: Note[]) => {
-		  this.dataSource.data = notes;
+	  this.patientsService.getPatientById(this.patient.id).subscribe((patient: Patient) => {
+		  this.dataSource.data = patient.pathologies;
 		  this.changeDetectorRefs.detectChanges();
           });
    }
   }
 
-  onRequestNotes(patient: Patient)
+  onRequestPathologies(patient: Patient)
   {
-  console.log("onRequestNotes", patient.displayedName);
-    this.patient = patient;
-    if(this.patient !==undefined)
-    {
-  	  this.notesService.getNotesByPatientId(String(patient.id)).subscribe((notes: Note[]) => {
-  		  this.dataSource.data = notes;
-  		  this.changeDetectorRefs.detectChanges();
-            });
-     }
+      console.log("onRequestPathologies");
+      this.patient = patient;
+      this.refresh();
   }
 }

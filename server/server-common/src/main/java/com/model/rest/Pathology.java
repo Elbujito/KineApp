@@ -36,11 +36,11 @@ public class Pathology {
         this.name = name;
     }
 
-    public PathologyType getType() {
+    public PathologyType getPathologyType() {
         return pathologyType;
     }
 
-    public void setType(PathologyType pathologyType) {
+    public void setPathologyType(PathologyType pathologyType) {
         this.pathologyType = pathologyType;
     }
 

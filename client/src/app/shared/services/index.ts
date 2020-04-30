@@ -9,3 +9,4 @@ export * from './localisations.service';
 export * from './mouvements.service';
 export * from './muscles.service';
 export * from './prescripteurs.service';
+export * from './pathologies.service';

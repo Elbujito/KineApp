@@ -4,7 +4,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { DashboardComponent, SearchBarComponent} from './index';
-import { NoteDialogComponent, NoteConfirmDialogComponent } from './index';
 
 import { MaterialModule } from '../material.module';
 
@@ -17,9 +16,7 @@ import { MaterialModule } from '../material.module';
   ],
   declarations: [
 	DashboardComponent,
-	SearchBarComponent,
-	NoteDialogComponent,
-	NoteConfirmDialogComponent
+	SearchBarComponent
 	],
   entryComponents: []
 })

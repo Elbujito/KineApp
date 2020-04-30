@@ -22,6 +22,14 @@ export class Pathology {
         public bilanAlgiques?: BilanAlgique[]
     )
     {
+		this.pathologyType = new PathologyType();
+		this.createdAt = new Date();
+        this.lastModifcation = new Date();
+        this.prescripteur = new Prescripteur();
+        this.localisation = new Localisation();	
+	    this.bilanArticulaires = [];
+		this.bilanMusculaires = [];
+		this.bilanMusculaires = [];
     }
 }
 

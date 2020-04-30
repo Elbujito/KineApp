@@ -1,0 +1,11 @@
+.container
+{
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #E0E0E0;
+}
+
+.content
+{
+  text-align: center;
+}
