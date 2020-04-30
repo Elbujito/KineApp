@@ -5,10 +5,10 @@ import { catchError, map } from 'rxjs/operators';
 
 import {environment} from '../../../environments/environment';
 
-import {PathologyType} from '../../shared/models/index';
+import {Localisation} from '../../shared/models/index';
 
 @Injectable()
-export class PathologyTypesService {
+export class LocalisationsService {
 
   apiUrl: string;
 
@@ -16,20 +16,20 @@ export class PathologyTypesService {
 	  this.apiUrl = environment.apiUrl;
   }
 
-   getPathologyTypes(): Observable<PathologyType[]> {
-          return this.get('/pathologyTypes');
+   getLocalisations(): Observable<Localisation[]> {
+          return this.get('/localisations');
     }
 
-   updatePathologyType(pathologyType: PathologyType): Observable<any> {
-     return this.put(pathologyType);
+   updateLocalisation(localisation: Localisation): Observable<any> {
+     return this.put(localisation);
    }
 
-   addPathologyType(pathologyType: PathologyType): Observable<any> {
-    return this.post(pathologyType);
+   addLocalisation(localisation: Localisation): Observable<any> {
+    return this.post(localisation);
    }
 
-   removePathologyType(pathologyType: PathologyType): Observable<any> {
-      return this.del(pathologyType.id);
+   removeLocalisation(localisation: Localisation): Observable<any> {
+      return this.del(localisation.id);
    }
 
   private get(route: string): Observable<any> {
@@ -39,8 +39,8 @@ export class PathologyTypesService {
           );
    }
 
-  getPathologyTypeById(pathologyType_id: number): Observable<PathologyType> {
-    return this.get('/pathologyType/'+pathologyType_id);
+  getLocalisationById(localisation_id: number): Observable<Localisation> {
+    return this.get('/localisation/'+localisation_id);
   }
 
    private extractData(res: Response) {
@@ -57,10 +57,10 @@ export class PathologyTypesService {
         }
     }
 
-       private post(pathologyType: PathologyType): Observable<any> {
-               const url = this.apiUrl+'/pathologyType';
+       private post(localisation: Localisation): Observable<any> {
+               const url = this.apiUrl+'/localisation';
                return this.http
-                   .post<Response>(url, pathologyType)
+                   .post<Response>(url, localisation)
                    .pipe(
                        map(this.extractData),
                        catchError(this.handleError),
@@ -68,7 +68,7 @@ export class PathologyTypesService {
        }
 
 		private del (id: number): Observable<any> {
-		  const url = this.apiUrl+'/pathologyType/'+id;
+		  const url = this.apiUrl+'/localisation/'+id;
 		  return this.http.delete(url)
 			.pipe(
 			map(this.extractData),
@@ -76,9 +76,9 @@ export class PathologyTypesService {
        );
 		}
 
-		private put(pathologyType: PathologyType): Observable<PathologyType> {
-		  const url = this.apiUrl+'/pathologyType';
-      return this.http.put<Response>(url, pathologyType)
+		private put(localisation: Localisation): Observable<Localisation> {
+		  const url = this.apiUrl+'/localisation';
+      return this.http.put<Response>(url, localisation)
         .pipe(
         map(this.extractData),
           catchError(this.handleError),

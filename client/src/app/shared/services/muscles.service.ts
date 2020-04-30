@@ -5,10 +5,10 @@ import { catchError, map } from 'rxjs/operators';
 
 import {environment} from '../../../environments/environment';
 
-import {PathologyType} from '../../shared/models/index';
+import {Muscle} from '../../shared/models/index';
 
 @Injectable()
-export class PathologyTypesService {
+export class MusclesService {
 
   apiUrl: string;
 
@@ -16,20 +16,20 @@ export class PathologyTypesService {
 	  this.apiUrl = environment.apiUrl;
   }
 
-   getPathologyTypes(): Observable<PathologyType[]> {
-          return this.get('/pathologyTypes');
+   getMuscles(): Observable<Muscle[]> {
+          return this.get('/muscles');
     }
 
-   updatePathologyType(pathologyType: PathologyType): Observable<any> {
-     return this.put(pathologyType);
+   updateMuscle(muscle: Muscle): Observable<any> {
+     return this.put(muscle);
    }
 
-   addPathologyType(pathologyType: PathologyType): Observable<any> {
-    return this.post(pathologyType);
+   addMuscle(muscle: Muscle): Observable<any> {
+    return this.post(muscle);
    }
 
-   removePathologyType(pathologyType: PathologyType): Observable<any> {
-      return this.del(pathologyType.id);
+   removeMuscle(muscle: Muscle): Observable<any> {
+      return this.del(muscle.id);
    }
 
   private get(route: string): Observable<any> {
@@ -39,8 +39,8 @@ export class PathologyTypesService {
           );
    }
 
-  getPathologyTypeById(pathologyType_id: number): Observable<PathologyType> {
-    return this.get('/pathologyType/'+pathologyType_id);
+  getMuscleById(muscle_id: number): Observable<Muscle> {
+    return this.get('/muscle/'+muscle_id);
   }
 
    private extractData(res: Response) {
@@ -57,10 +57,10 @@ export class PathologyTypesService {
         }
     }
 
-       private post(pathologyType: PathologyType): Observable<any> {
-               const url = this.apiUrl+'/pathologyType';
+       private post(muscle: Muscle): Observable<any> {
+               const url = this.apiUrl+'/muscle';
                return this.http
-                   .post<Response>(url, pathologyType)
+                   .post<Response>(url, muscle)
                    .pipe(
                        map(this.extractData),
                        catchError(this.handleError),
@@ -68,7 +68,7 @@ export class PathologyTypesService {
        }
 
 		private del (id: number): Observable<any> {
-		  const url = this.apiUrl+'/pathologyType/'+id;
+		  const url = this.apiUrl+'/muscle/'+id;
 		  return this.http.delete(url)
 			.pipe(
 			map(this.extractData),
@@ -76,9 +76,9 @@ export class PathologyTypesService {
        );
 		}
 
-		private put(pathologyType: PathologyType): Observable<PathologyType> {
-		  const url = this.apiUrl+'/pathologyType';
-      return this.http.put<Response>(url, pathologyType)
+		private put(muscle: Muscle): Observable<Muscle> {
+		  const url = this.apiUrl+'/muscle';
+      return this.http.put<Response>(url, muscle)
         .pipe(
         map(this.extractData),
           catchError(this.handleError),

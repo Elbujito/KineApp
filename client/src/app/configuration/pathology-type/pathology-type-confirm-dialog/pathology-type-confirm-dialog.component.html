@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.dialogTitle}}</h2>
+<mat-dialog-content>
+  <form class="form" (ngSubmit)="onSubmit()">
+    Cela va supprimer le type pathologie couramment selectionné, il n'y aura pas de retour possible.
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button type="submit" (click)="onSubmit()" mat-dialog-close>Supprimer</button>
+  <button mat-button (click)="close()" mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

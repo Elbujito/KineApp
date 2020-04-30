@@ -1,0 +1,40 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+    <mat-card>
+      <mat-card-content>
+        <h2>Muscles</h2>
+        <mat-form-field>
+          <mat-label>Trouver un muscle *</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Trouver un muscle *">
+        </mat-form-field>
+        <button style="float: right;" class="add-muscle" color="primary" (click)="openDialog()" type="button" mat-fab>
+          <mat-icon>group_add</mat-icon>
+        </button>
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nom</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef> Modifier</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button color="primary" (click)="edit(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="remove">
+            <th mat-header-cell *matHeaderCellDef> Supprimer</th>
+            <td mat-cell *matCellDef="let element">
+              <button style="color: white; background-color: #FF4081;" mat-raised-button (click)="remove(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

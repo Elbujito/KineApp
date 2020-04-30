@@ -19,6 +19,11 @@ const appRoutes: Routes = [
         loadChildren: './patients/patients.module#PatientsModule',
         canActivate: [AuthFirebaseGuard]
     },
+	{
+        path: 'configuration',
+        loadChildren: './configuration/configuration.module#ConfigurationModule',
+        canActivate: [AuthFirebaseGuard]
+    },
     {
         path: 'account',
         loadChildren: './account/account.module#AccountModule',

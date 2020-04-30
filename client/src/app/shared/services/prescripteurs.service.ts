@@ -5,10 +5,10 @@ import { catchError, map } from 'rxjs/operators';
 
 import {environment} from '../../../environments/environment';
 
-import {PathologyType} from '../../shared/models/index';
+import {Prescripteur} from '../../shared/models/index';
 
 @Injectable()
-export class PathologyTypesService {
+export class PrescripteursService {
 
   apiUrl: string;
 
@@ -16,20 +16,20 @@ export class PathologyTypesService {
 	  this.apiUrl = environment.apiUrl;
   }
 
-   getPathologyTypes(): Observable<PathologyType[]> {
-          return this.get('/pathologyTypes');
+   getPrescripteurs(): Observable<Prescripteur[]> {
+          return this.get('/prescripteurs');
     }
 
-   updatePathologyType(pathologyType: PathologyType): Observable<any> {
-     return this.put(pathologyType);
+   updatePrescripteur(prescripteur: Prescripteur): Observable<any> {
+     return this.put(prescripteur);
    }
 
-   addPathologyType(pathologyType: PathologyType): Observable<any> {
-    return this.post(pathologyType);
+   addPrescripteur(prescripteur: Prescripteur): Observable<any> {
+    return this.post(prescripteur);
    }
 
-   removePathologyType(pathologyType: PathologyType): Observable<any> {
-      return this.del(pathologyType.id);
+   removePrescripteur(prescripteur: Prescripteur): Observable<any> {
+      return this.del(prescripteur.id);
    }
 
   private get(route: string): Observable<any> {
@@ -39,8 +39,8 @@ export class PathologyTypesService {
           );
    }
 
-  getPathologyTypeById(pathologyType_id: number): Observable<PathologyType> {
-    return this.get('/pathologyType/'+pathologyType_id);
+  getPrescripteurById(prescripteur_id: number): Observable<Prescripteur> {
+    return this.get('/prescripteur/'+prescripteur_id);
   }
 
    private extractData(res: Response) {
@@ -57,10 +57,10 @@ export class PathologyTypesService {
         }
     }
 
-       private post(pathologyType: PathologyType): Observable<any> {
-               const url = this.apiUrl+'/pathologyType';
+       private post(prescripteur: Prescripteur): Observable<any> {
+               const url = this.apiUrl+'/prescripteur';
                return this.http
-                   .post<Response>(url, pathologyType)
+                   .post<Response>(url, prescripteur)
                    .pipe(
                        map(this.extractData),
                        catchError(this.handleError),
@@ -68,7 +68,7 @@ export class PathologyTypesService {
        }
 
 		private del (id: number): Observable<any> {
-		  const url = this.apiUrl+'/pathologyType/'+id;
+		  const url = this.apiUrl+'/prescripteur/'+id;
 		  return this.http.delete(url)
 			.pipe(
 			map(this.extractData),
@@ -76,9 +76,9 @@ export class PathologyTypesService {
        );
 		}
 
-		private put(pathologyType: PathologyType): Observable<PathologyType> {
-		  const url = this.apiUrl+'/pathologyType';
-      return this.http.put<Response>(url, pathologyType)
+		private put(prescripteur: Prescripteur): Observable<Prescripteur> {
+		  const url = this.apiUrl+'/prescripteur';
+      return this.http.put<Response>(url, prescripteur)
         .pipe(
         map(this.extractData),
           catchError(this.handleError),

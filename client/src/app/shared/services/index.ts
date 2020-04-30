@@ -5,3 +5,7 @@ export * from './alert.service';
 export * from './user-firebase.service';
 export * from './auth-firebase.service';
 export * from './pathology-types.service';
+export * from './localisations.service';
+export * from './mouvements.service';
+export * from './muscles.service';
+export * from './prescripteurs.service';

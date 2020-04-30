@@ -19,6 +19,7 @@ import { HelpModule } from './help/help.module';
 import { PatientsModule } from './patients/patients.module';
 import { ProfileModule } from './profile/profile.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigurationModule } from './configuration/configuration.module';
 
 import { AppComponent } from './app.component';
 
@@ -69,6 +70,7 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
 		ProfileModule,
 		DashboardModule,
 		SubscriptionModule,
+		ConfigurationModule,
 		JwtModule.forRoot({
             config: {
                 tokenGetter: getToken
