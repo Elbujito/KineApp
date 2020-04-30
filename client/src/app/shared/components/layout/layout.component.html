@@ -41,6 +41,12 @@
           </mat-icon>
           <p mat-line>Patients</p>
         </a>
+        <a mat-list-item [routerLink]="['/configuration']" routerLinkActive="active">
+          <mat-icon mat-list-icon>
+            settings
+          </mat-icon>
+          <p mat-line>Configurations</p>
+        </a>
         <mat-divider></mat-divider>
         <h3 mat-subheader>Resources</h3>
         <a mat-list-item [routerLink]="['/profile']" routerLinkActive="active">

@@ -1,7 +1,9 @@
 <div class="bgfilter">
   <div class="bgsearch">
     <mat-card class="search-card">
-      <mat-card-content>
+
+      <mat-card-content fxLayout="row" fxLayout.xs="column">
+        <a style="font-weight: bold; margin-right:10px;">Rechercher un patient: </a>
         <form #searchForm="ngForm" class="searchbar-form" (ngSubmit)="onSubmit()">
           <mat-form-field>
             <input class="inputFiled" matInput placeholder="Sélectionner un patient " [formControl]="control" [matAutocomplete]="auto"
@@ -13,8 +15,14 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-          <button class="btnFind" mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Find</button>
         </form>
+        <a style="font-weight: bold; margin-left:10px;">Type de pathologies: </a>
+        <mat-list-item *ngFor="let pathologyType of pathologyTypes">
+          <mat-checkbox color="primary" style="margin:5px;" mat-fab>
+            {{ pathologyType.name }}
+          </mat-checkbox>
+        </mat-list-item>
+        <button class="btnFind" mat-raised-button color="primary" type="submit" [disabled]="control.value.length == 0">Rechercher</button>
       </mat-card-content>
     </mat-card>
   </div>

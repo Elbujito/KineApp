@@ -9,7 +9,7 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { LayoutComponent, NotFoundComponent, HeaderComponent, FooterComponent} from './components/index';
 import { UsernamePipe, TitleCasePipeComponent } from './pipes/index';
 
-import { AuthService, AuthFirebaseService, PatientsService , NotesService, AlertService, UserFirebaseService } from './services/index';
+import { PathologyTypesService, AuthService, AuthFirebaseService, PatientsService , NotesService, AlertService, UserFirebaseService } from './services/index';
 import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard } from './guards/index';
 
 import { MaterialModule } from '../material.module';
@@ -42,7 +42,8 @@ import { MaterialModule } from '../material.module';
   	NotesService,
   	AlertService,
   	AuthFirebaseService,
-  	UserFirebaseService
+  	UserFirebaseService,
+  	PathologyTypesService
     ],
   exports: [
     FormsModule,

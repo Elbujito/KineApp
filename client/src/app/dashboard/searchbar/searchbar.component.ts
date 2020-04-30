@@ -4,8 +4,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
-import {PatientsService, NotesService, AlertService} from '../../shared/services/index';
-import {Patient, Note} from '../../shared/models/index'
+import {PathologyTypesService, PatientsService, NotesService, AlertService} from '../../shared/services/index';
+import {Patient, Note, PathologyType} from '../../shared/models/index'
 
 @Component({
   selector: 'app-searchbar',
@@ -16,6 +16,7 @@ import {Patient, Note} from '../../shared/models/index'
 export class SearchBarComponent implements OnInit {
   control = new FormControl();
   patients: Patient[] = [];
+  pathologyTypes: PathologyType[] = [];
   filteredPatients: Observable<Patient[]>;
   patientSearch: Patient;
 
@@ -23,12 +24,17 @@ export class SearchBarComponent implements OnInit {
 
   constructor(private router: Router,
   private patientsService: PatientsService,
-  private alertService: AlertService
+  private alertService: AlertService,
+  private pathologyTypesService: PathologyTypesService
   ) {}
 
   ngOnInit() {
     this.patientsService.getAllPatients().subscribe(patients => {
                 this.patients = patients;
+    });
+
+    this.pathologyTypesService.getPathologyTypes().subscribe(pathologyTypes => {
+                 this.pathologyTypes = pathologyTypes;
     });
 
     this.filteredPatients = this.control.valueChanges.pipe(

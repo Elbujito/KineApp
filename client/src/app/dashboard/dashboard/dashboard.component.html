@@ -4,10 +4,10 @@
     <div fxFlex="95%">
       <mat-card>
         <mat-card-content>
-          <h2>Toutes vos notes</h2>
+          <h2>Toutes les pathologies</h2>
           <mat-form-field>
-            <mat-label>Filtrer vos notes *</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Filtrer vos notes *">
+            <mat-label>Filtrer les pathologies *</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filtrer les pathologies *">
           </mat-form-field>
           <button style="float: right;" [disabled]="dataSource.data.length == 0" class="add-note" color="primary" (click)="openDialog()" type="button" mat-fab>
             <mat-icon>note_add</mat-icon>
