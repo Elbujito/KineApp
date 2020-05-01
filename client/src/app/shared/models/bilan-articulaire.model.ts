@@ -9,6 +9,8 @@ export class BilanArticulaire {
         public observation?: string
     )
     {
+          this.date = new Date();
+          this.mouvement = new Mouvement();
     }
 }
 

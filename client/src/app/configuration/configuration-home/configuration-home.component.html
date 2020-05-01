@@ -1,0 +1,31 @@
+<div class="configuration-page" style="height: 80vh;">
+  <mat-tab-group>
+    <mat-tab label="Commun">
+      <mat-tab-group>
+        <mat-tab label="Types de pathologie et Localisations">
+          <app-pathology-type-list></app-pathology-type-list>
+          <app-localisation-list></app-localisation-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+    <mat-tab *ngIf="user.roles.indexOf('kine') != -1" label="Kinésithérapie">
+      <mat-tab-group>
+        <mat-tab label="Muscles et Mouvements">
+          <app-muscle-list></app-muscle-list>
+          <app-mouvement-list></app-mouvement-list>
+        </mat-tab>
+        <mat-tab label="Prescripteurs">
+          <app-prescripteur-list></app-prescripteur-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+    <mat-tab *ngIf="user.roles.indexOf('osteo') != -1" label="Ostéopathie">
+      <mat-tab-group>
+      </mat-tab-group>
+    </mat-tab>
+    <mat-tab *ngIf="user.roles.indexOf('medecin') != -1" label="Médecine">
+      <mat-tab-group>
+      </mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</div>

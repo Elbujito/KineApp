@@ -3,10 +3,11 @@ export class Note {
         public id?: number,
         public patientId?: number,
         public title?: string,
-        public date?: string,
+        public date?: Date,
         public description?: string
     )
     {
+        this.date = new Date();
     }
 }
 

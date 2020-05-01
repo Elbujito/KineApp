@@ -9,6 +9,8 @@ export class BilanMusculaire {
         public observation?: string
     )
     {
+      this.date = new Date();
+      this.muscle = new Muscle();
     }
 }
 

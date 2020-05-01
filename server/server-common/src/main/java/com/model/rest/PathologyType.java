@@ -14,6 +14,7 @@ public class PathologyType {
     @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId id;
     private String name;
+    private NoteTemplate template;
     private String observation;
     private int level;
 
@@ -41,6 +42,14 @@ public class PathologyType {
         this.level = level;
     }
 
+    public NoteTemplate getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(NoteTemplate template) {
+        this.template = template;
+    }
+
     public ObjectId getId() {
         return id;
     }
@@ -53,7 +62,7 @@ public class PathologyType {
     @Override
     public String toString() {
         return "PathologyType{" + "id=" + id + ", name='"
-                + name + '\'' + ", observation='" + observation + '\'' + ", level=" + level + '}';
+                + name + '\'' + ", template=" + template +", observation='" + observation + '\'' + ", level=" + level + '}';
     }
 
     @Override
@@ -64,12 +73,13 @@ public class PathologyType {
             return false;
         PathologyType pathologyType = (PathologyType) o;
         return name == pathologyType.name && Objects.equals(id, pathologyType.id)
-                && Objects.equals(observation,pathologyType.observation) && Objects.equals(level, pathologyType.level);
+                && Objects.equals(observation,pathologyType.observation)
+                && Objects.equals(level, pathologyType.level)
+                && Objects.equals(template,pathologyType.template) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, observation,level);
+        return Objects.hash(id, name, template, observation,level);
     }
-
 }

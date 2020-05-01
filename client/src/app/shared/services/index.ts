@@ -10,3 +10,4 @@ export * from './mouvements.service';
 export * from './muscles.service';
 export * from './prescripteurs.service';
 export * from './pathologies.service';
+export * from './note-templates.service';

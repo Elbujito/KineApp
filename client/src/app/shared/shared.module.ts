@@ -20,7 +20,8 @@ import { PathologyTypesService,
 		 MouvementsService,
 		 MusclesService,
 		 PrescripteursService,
-		 PathologiesService
+		 PathologiesService,
+		 NoteTemplatesService
 } from './services/index';
 
 import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard } from './guards/index';
@@ -61,7 +62,8 @@ import { MaterialModule } from '../material.module';
 	MouvementsService,
 	MusclesService,
 	PrescripteursService,
-	PathologiesService
+	PathologiesService,
+	NoteTemplatesService
     ],
   exports: [
     FormsModule,

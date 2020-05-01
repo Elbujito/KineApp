@@ -6,6 +6,7 @@ export class BilanAlgique {
         public observation?: string
     )
     {
+        this.date = new Date();
     }
 }
 

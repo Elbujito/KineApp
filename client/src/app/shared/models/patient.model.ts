@@ -17,6 +17,8 @@ export class Patient {
         public displayedName?: string
     )
     {
+      this.birthday = new Date();
+      this.createdAt = new Date();
       this.address = new Address();
       this.pathologies = [];
     }

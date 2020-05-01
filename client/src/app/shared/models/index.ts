@@ -12,4 +12,5 @@ export * from './prescripteur.model';
 export * from './address.model';
 export * from './pathology.model';
 export * from './pathology-type.model';
+export * from './note-template.model';
 export * from './localisation.model';
