@@ -9,6 +9,30 @@
    min-height: 100vh !important;
 }
 
+.mat-list-icon {
+  color: green;
+}
+
+.mat-card-title
+{
+    text-align: center;
+}
+
+.mat-card-subtitle
+{
+    text-align: center;
+}
+
+.mat-card-content
+{
+
+  background-color: #EEEEEE;
+}
+
+.mat-line
+{
+}
+
 .bgcontainer
 {
   margin-top: 40px;
@@ -19,21 +43,12 @@
 
 .mat-card
 {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
   border-color: #E0E0E0;
   border-radius: 5px;
   border: solid 0.1em;
-  width: 300px;
-  height: 600px;
-  text-align: center;
-  align-items: center;
-  color: #E0E0E0;
-  background-color: rgba(0, 0, 0, .4);
-}
 
-mat-card img{
-  object-fit: cover;
-  width: 100%;
-  height: 50%;
 }
 
 .mat-button

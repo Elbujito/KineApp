@@ -2,43 +2,66 @@
   <app-header></app-header>
   <div class="bgcontainer">
     <div style="margin-top: 70px;" fxLayout fxLayoutAlign="center start" fxLayoutGap="20px">
-      <div>
-        <mat-card fxLayout="column" fxFlex.md="0 1 calc(100% - 20px)" fxFlex.sm="0 1 calc(100% - 20px)" fxFlex.xs="100">
-          <h1>Pro</h1>
-          <img mat-card-image src="../../../assets/img/carousel_1.jpg">
-          <mat-card-content fxFlex>
-            <h2> 19,90€/mois - sans engagement</h2>
-          </mat-card-content>
-          <mat-card-actions fxFlexAlign="center" align="center">
-            <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
-          </mat-card-actions>
-        </mat-card>
+      <mat-card fxLayout="column" fxFlex.md="0 1 calc(100% - 20px)" fxFlex.sm="0 1 calc(100% - 20px)" fxFlex.xs="100">
+        <mat-card-title>Professionnel</mat-card-title>
+        <mat-card-subtitle>Pour simplifier le suivi de vos patients</mat-card-subtitle>
+        <mat-card-content>
+          <mat-list class="content">
+            <mat-list-item *ngFor="let benefit of probenefits">
+              <mat-icon mat-list-icon>{{benefit.icon}}</mat-icon>
+              <div mat-line>{{benefit.name}}</div>
+              <div mat-line> {{benefit.details}}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxFlexAlign="center" align="center">
+          <h1><strong>€19,90</strong></h1>
+          <h2>/mois </h2>
+        </mat-card-actions>
+        <div fxLayout="column" fxFlexAlign="center" align="center">
+          <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
+        </div>
+      </mat-card>
+      <mat-card fxLayout="column" fxFlex.md="0 1 calc(100% - 20px)" fxFlex.sm="0 1 calc(100% - 20px)" fxFlex.xs="100">
+        <mat-card-title>Chercheur</mat-card-title>
+        <mat-card-subtitle>Pour suivre et analyser les épidémies</mat-card-subtitle>
+        <mat-card-content>
+          <mat-list class="content">
+            <mat-list-item *ngFor="let benefit of researchbenefits">
+              <mat-icon mat-list-icon>{{benefit.icon}}</mat-icon>
+              <div mat-line>{{benefit.name}}</div>
+              <div mat-line> {{benefit.details}}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxFlexAlign="center" align="center">
+          <h1><strong>€29,90</strong></h1>
+          <h2>/mois </h2>
+        </mat-card-actions>
+        <div fxLayout="column" fxFlexAlign="center" align="center">
+          <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
+        </div>
+      </mat-card>
+      <mat-card fxLayout="column" fxFlex.md="0 1 calc(100% - 20px)" fxFlex.sm="0 1 calc(100% - 20px)" fxFlex.xs="100">
+      <mat-card-title>Institution</mat-card-title>
+      <mat-card-subtitle>Pour améliorer vos investissements de santé</mat-card-subtitle>
+      <mat-card-content>
+        <mat-list class="content">
+          <mat-list-item *ngFor="let benefit of institutionbenefits">
+            <mat-icon mat-list-icon>{{benefit.icon}}</mat-icon>
+            <div mat-line>{{benefit.name}}</div>
+            <div mat-line> {{benefit.details}}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxFlexAlign="center" align="center">
+        <h1><strong>€39,90</strong></h1>
+        <h2>/mois </h2>
+      </mat-card-actions>
+      <div fxLayout="column" fxFlexAlign="center" align="center">
+        <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
       </div>
-      <div>
-        <mat-card fxLayout="column" fxFlex.md="0 1 calc(100% - 20px)" fxFlex.sm="0 1 calc(100% - 20px)" fxFlex.xs="100">
-          <h1>Chercheur</h1>
-          <img mat-card-image src="../../../assets/img/carousel_2.jpg">
-          <mat-card-content fxFlex>
-            <h2> 39,90€/mois - 12 mois d'engagement</h2>
-          </mat-card-content>
-          <mat-card-actions fxFlexAlign="center" align="center">
-            <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
-          </mat-card-actions>
-        </mat-card>
-
-      </div>
-      <div>
-        <mat-card fxLayout="column" fxFlex.md="0 1 calc(100% - 20px)" fxFlex.sm="0 1 calc(100% - 20px)" fxFlex.xs="100">
-          <h1>Institution</h1>
-          <img mat-card-image src="../../../assets/img/carousel_4.jpg">
-          <mat-card-content fxFlex>
-            <h2> 49,90€/mois - 12 mois d'engagement</h2>
-          </mat-card-content>
-          <mat-card-actions fxFlexAlign="center" align="center">
-            <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
+    </mat-card>
     </div>
   </div>
 </div>
