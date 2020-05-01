@@ -10,8 +10,8 @@
             <mat-label>Sexe</mat-label>
             <select [(ngModel)]="patient.sexe" id="sexe" name="sexe" matNativeControl required>
               <option>{{patient.sexe}}</option>
-              <option *ngIf="!isReadOnly && patient.sexe == 'F'" value="M">M</option>
-              <option *ngIf="!isReadOnly && patient.sexe == 'M'" value="F">F</option>
+              <option>M</option>
+              <option>F</option>
             </select>
           </mat-form-field>
         </td>
