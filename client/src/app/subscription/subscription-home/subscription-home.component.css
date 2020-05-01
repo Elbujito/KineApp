@@ -11,7 +11,7 @@
 
 .bgcontainer
 {
-  margin-top: 20px;
+  margin-top: 40px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center
@@ -23,7 +23,7 @@
   border-radius: 5px;
   border: solid 0.1em;
   width: 300px;
-  height: 510px;
+  height: 600px;
   text-align: center;
   align-items: center;
   color: #E0E0E0;
