@@ -39,7 +39,7 @@ export class PathologiesService {
           );
    }
 
-  getPathologieById(pathology_id: number): Observable<Pathology> {
+  getPathologyById(pathology_id: number): Observable<Pathology> {
     return this.get('/pathology/'+pathology_id);
   }
 

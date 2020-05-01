@@ -32,6 +32,11 @@
                    id="lastName" name="lastName" required>
           </mat-form-field>
         </td>
+        <td>
+          <mat-form-field>
+            <input [readonly]="isReadOnly" matInput name="birthday" placeholder="Date de naissance"  [ngModel]="patient.birthday  | date:'MM-dd-yyyy'">
+          </mat-form-field>
+        </td>
       </tr>
     </table>
     <table cellspacing="10">
@@ -106,12 +111,12 @@
         </td>
         <td>
           <mat-form-field>
-            <input [readonly]="true" matInput type="date"
-                   [(ngModel)]="patient.createdAt"
+            <input [readonly]="true" matInput type="text"
                    required
                    placeholder="Date de création"
                    name="createdAt"
                    id="createdAt"/>
+            {{patient.createdAt | date: 'dd/MM/yyyy'}}
           </mat-form-field>
         </td>
       </tr>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { DashboardComponent, SearchBarComponent} from './index';
+import { ConsultationComponent, DashboardComponent, SearchBarComponent} from './index';
 
 import { MaterialModule } from '../material.module';
 
@@ -16,7 +16,8 @@ import { MaterialModule } from '../material.module';
   ],
   declarations: [
 	DashboardComponent,
-	SearchBarComponent
+	SearchBarComponent,
+	ConsultationComponent
 	],
   entryComponents: []
 })

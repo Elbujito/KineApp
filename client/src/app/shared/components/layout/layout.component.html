@@ -1,4 +1,4 @@
-<div class="navbar-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="navbar-container" [class.com-is-mobile]="mobileQuery.matches">
   <mat-toolbar class="navbar" color="primary">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -59,7 +59,6 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
-    <!-- Main content -->
     <mat-sidenav-content class="sidenav-content">
       <div class="progress-bar-container">
         <mat-progress-bar color="accent" mode="indeterminate">

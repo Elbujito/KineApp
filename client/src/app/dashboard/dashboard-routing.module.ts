@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from '../shared/components/index';
-import { DashboardComponent } from './index';
+import { DashboardComponent, ConsultationComponent } from './index';
 
 const routes: Routes = [
   {
@@ -10,6 +10,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: DashboardComponent },
+      { path:'consultation/:patient_id/:pathology_id', component:ConsultationComponent}
     ]
   }
 ];

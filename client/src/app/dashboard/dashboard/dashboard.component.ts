@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ViewChild, OnInit, Input, Component, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
@@ -38,7 +38,13 @@ export class DashboardComponent implements OnInit {
 
   launch(pathology: Pathology)
   {
-
+     let navigationExtras: NavigationExtras = {
+     queryParams: {
+                  "pathology_id": pathology.id,
+                  "patient_id": this.patient.id
+              }
+     };
+     this.router.navigate(['consultation/'+pathology.id+'/'+pathology.id], navigationExtras);
   }
 
   refresh() {
