@@ -11,7 +11,7 @@ import { AuthFirebaseService} from '../../services/index';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor( private route: ActivatedRoute,private router: Router,
+  constructor( private route: ActivatedRoute,public router: Router,
                private authFirebaseService: AuthFirebaseService ) {
 
   }

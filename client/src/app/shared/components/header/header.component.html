@@ -24,9 +24,12 @@
     <div fxShow="true" fxFlex fxLayout>
       <div fxFlex fxLayoutAlign="center center">
         <div class="buttonMain">
-          <button type="button" routerLink="/about" mat-button>Découvrir</button>
-          <button type="button" routerLink="/subscription" mat-button>Nos offres</button>
-          <button type="button" routerLink="/contact" mat-button>Nous contacter</button>
+          <button *ngIf="router.url !== '/about'" type="button" routerLink="/about" mat-button>Découvrir</button>
+          <button *ngIf="router.url === '/about'" style="color:#AB47BC; font-weight: bold;" type="button" routerLink="/about" mat-button>Découvrir</button>
+          <button *ngIf="router.url !== '/subscription'" type="button" routerLink="/subscription" mat-button>Nos offres</button>
+          <button *ngIf="router.url === '/subscription'" style="color:#AB47BC; font-weight: bold;" type="button" routerLink="/subscription" mat-button>Nos offres</button>
+          <button *ngIf="router.url !== '/contact'" type="button" routerLink="/contact" mat-button>Nous contacter</button>
+          <button *ngIf="router.url === '/contact'" style="color:#AB47BC; font-weight: bold;" type="button" routerLink="/contact" mat-button>Nous contacter</button>
         </div>
       </div>
     </div>
