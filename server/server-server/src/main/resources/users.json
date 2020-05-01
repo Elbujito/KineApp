@@ -10,13 +10,15 @@
   "password": "guest",
   "name": "GUEST",
   "email": "guest@guest.com",
-  "img"  : ""
+  "img"  : "",
+  "roles" : ["kine"]
 },
 {
     "login": "adrien.roques.31000@gmail.com",
     "password": "vhl8CrXZ8YaHtwtdIENOIBHCa452",
     "name": "admin",
     "email": "admin@medinotes.fr",
-    "img"  : ""
+    "img"  : "",
+    "roles" : ["medecin", "kine"]
 }
 ]
