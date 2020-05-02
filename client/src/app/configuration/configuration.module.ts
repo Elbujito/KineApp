@@ -9,6 +9,8 @@ import { ConfigurationCommonModule } from './configuration-common/configuration-
 import { ConfigurationKinesitherapieModule } from './configuration-kinesitherapie/configuration-kinesitherapie.module';
 import { ConfigurationOsteopathieModule } from './configuration-osteopathie/configuration-osteopathie.module';
 import { ConfigurationMedecinModule } from './configuration-medecin/configuration-medecin.module';
+import { ConfigurationAdminModule } from './configuration-admin/configuration-admin.module';
+
 
 import { MaterialModule } from '../material.module';
 
@@ -21,7 +23,8 @@ import { MaterialModule } from '../material.module';
 	ConfigurationCommonModule,
 	ConfigurationKinesitherapieModule,
 	ConfigurationOsteopathieModule,
-	ConfigurationMedecinModule
+	ConfigurationMedecinModule,
+	ConfigurationAdminModule
   ],
   declarations: [ ConfigurationComponent ],
   entryComponents: []

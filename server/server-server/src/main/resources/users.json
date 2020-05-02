@@ -19,6 +19,6 @@
     "name": "admin",
     "email": "admin@medinotes.fr",
     "img"  : "",
-    "roles" : ["medecin", "kine"]
+    "roles" : ["medecin", "kine","admin"]
 }
 ]

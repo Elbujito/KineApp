@@ -27,5 +27,12 @@
       <mat-tab-group>
       </mat-tab-group>
     </mat-tab>
+	<mat-tab *ngIf="user.roles.indexOf('admin') != -1" label="Admin">
+      <mat-tab-group label="Templates">
+        <mat-tab label="Templates">
+          <app-template-list></app-template-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
   </mat-tab-group>
 </div>

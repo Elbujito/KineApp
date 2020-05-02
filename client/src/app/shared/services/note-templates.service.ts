@@ -20,12 +20,28 @@ export class NoteTemplatesService {
           return this.get('/noteTemplates');
     }
 
+   updateNoteTemplate(noteTemplate: NoteTemplate): Observable<any> {
+     return this.put(noteTemplate);
+   }
+
+   addNoteTemplate(noteTemplate: NoteTemplate): Observable<any> {
+    return this.post(noteTemplate);
+   }
+
+   removeNoteTemplate(noteTemplate: NoteTemplate): Observable<any> {
+      return this.del(noteTemplate.id);
+   }
+
   private get(route: string): Observable<any> {
           return this.http.get<Response>(environment.apiUrl + route).pipe(
               map(this.extractData),
               catchError(this.handleError)
           );
    }
+
+  getNoteTemplateById(noteTemplate_id: number): Observable<NoteTemplate> {
+    return this.get('/noteTemplate/'+noteTemplate_id);
+  }
 
    private extractData(res: Response) {
    console.log("Response");
@@ -39,5 +55,33 @@ export class NoteTemplatesService {
                 || (error.status ? `${error.status} - ${error.statusText}` : 'Server error');
             return observableThrowError(errMsg);
         }
+    }
+
+       private post(noteTemplate: NoteTemplate): Observable<any> {
+               const url = this.apiUrl+'/noteTemplate';
+               return this.http
+                   .post<Response>(url, noteTemplate)
+                   .pipe(
+                       map(this.extractData),
+                       catchError(this.handleError),
+                   );
+       }
+
+		private del (id: number): Observable<any> {
+		  const url = this.apiUrl+'/noteTemplate/'+id;
+		  return this.http.delete(url)
+			.pipe(
+			map(this.extractData),
+       catchError(this.handleError),
+       );
+		}
+
+		private put(noteTemplate: NoteTemplate): Observable<NoteTemplate> {
+		  const url = this.apiUrl+'/noteTemplate';
+      return this.http.put<Response>(url, noteTemplate)
+        .pipe(
+        map(this.extractData),
+          catchError(this.handleError),
+       );
     }
 }
