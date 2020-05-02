@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>{{data.dialogTitle}}</h2>
+<mat-dialog-content>
+  <form class="form" (ngSubmit)="onSubmit()" #dialogForm="ngForm">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Nom" [(ngModel)]="pathology.name" id="name"
+             name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type de pathologie</mat-label>
+      <select [(ngModel)]="pathology.pathologyType.name" id="pathologyType" name="pathologyType" matNativeControl required>
+        <option>{{pathology.pathologyType.name}}</option>
+        <option *ngFor="let pathologyType of pathologyTypes; let index = index;">{{pathologyType.name}}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>Localisation</mat-label>
+    <select [(ngModel)]="pathology.localisation.name" id="localisationName" name="localisationName" matNativeControl required>
+      <option>{{pathology.localisation.name}}</option>
+      <option *ngFor="let localisation of localisations; let index = index;">{{localisation.name}}</option>
+    </select>
+  </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="dialogForm.invalid">Sauvegarder</button>
+  <button mat-button (click)="close()" mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

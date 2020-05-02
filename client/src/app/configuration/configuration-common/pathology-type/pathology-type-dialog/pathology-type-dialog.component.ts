@@ -34,7 +34,6 @@ export class PathologyTypeDialogComponent implements OnInit {
       this.noteTemplatesService.getNoteTemplates().subscribe((noteTemplates: NoteTemplate[]) => {
              this.noteTemplates = noteTemplates;
       });
-            console.log(this.noteTemplates);
   }
 
    public onSubmit() {

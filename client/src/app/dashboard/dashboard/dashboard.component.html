@@ -5,7 +5,7 @@
       <mat-card>
         <mat-card-content>
           <h2>Toutes les pathologies</h2>
-          <button style="float: right;" [disabled]="dataSource.data.length == 0" class="add-pathology" color="primary" type="button" mat-fab>
+          <button style="float: right;" [disabled]="patient === undefined" class="add-pathology" color="primary" type="button" (click)="openDialog()" mat-fab>
             <mat-icon>note_add</mat-icon>
           </button>
           <table mat-table [dataSource]="dataSource">
