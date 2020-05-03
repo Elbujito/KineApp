@@ -4,7 +4,7 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>
-            {{pathology.name}}
+            <input type="text" matInput [(ngModel)]="pathology.name" [value]="pathology.name">
           </mat-card-title>
           <mat-card-subtitle>
             {{patient.displayedName}}
@@ -15,38 +15,38 @@
             <div fxLayout="row" fxLayoutAlign="center center">
               <mat-form-field style="margin-right: 10px;">
                 <mat-label>Date prescription</mat-label>
-                <input matInput [matDatepicker]="datapicker" [formControl]="this.pathology.createdAt">
-                <mat-datepicker-toggle matSuffix [for]="datapicker"></mat-datepicker-toggle>
-                <mat-datepicker #datapicker></mat-datepicker>
+                <input [(ngModel)]="pathology.createdAt" [value]="pathology.createdAt" matInput [matDatepicker]="picker1" [formControl]="startDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>{{this.pathology.createdAt | date: 'dd/MM/yyyy'}}
+                <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
               <mat-form-field style="margin-right: 10px;">
-                <mat-label>Prescripteur</mat-label>
-                <select [(ngModel)]="prescripteurName" id="prescripteurName" name="prescripteurName" matNativeControl
-                        required>
-                  <option>{{prescripteurName}}</option>
-                  <option *ngFor="let prescripteur of prescripteurs; let index = index;">{{prescripteur.name}}</option>
-                </select>
+                <mat-select [(ngModel)]="pathologyTypeName"
+                            [value]="pathologyTypeName"
+                            [placeholder]="pathologyTypeName">
+                  <mat-option *ngFor="let pathologyType of pathologyTypes; let index = index;">{{pathologyType.name}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
               <mat-form-field style="margin-right: 10px;">
-                <mat-label>Localisation</mat-label>
-                <select [(ngModel)]="localisationName" id="localisationName" name="localisationName" matNativeControl
-                        required>
-                  <option>{{localisationName}}</option>
-                  <option *ngFor="let localisation of localisations; let index = index;">{{localisation.name}}</option>
-                </select>
+                <mat-select [(ngModel)]="localisationName"
+                            [value]="localisationName"
+                            (selectionChange)="onLocalisationChanged($event.value)">
+                  <mat-option *ngFor="let localisation of localisations;" [value]="localisation.name">
+                    {{localisation.name}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
-              <mat-form-field style="margin-right: 10px;">
+              <mat-form-field style="margin-right: 10px;" appearance="none">
                 <input [readonly]="true" type="text" matInput [(ngModel)]="sousLocalisationName" id="sousLocalisation"
                        name="sousLocalisation">
               </mat-form-field>
               <mat-form-field style="margin-right: 10px;">
-                <mat-label>Type de pathologie</mat-label>
-                <select [(ngModel)]="pathologyTypeName" id="pathologyTypeName" name="pathologyTypeName" matNativeControl
-                        required>
-                  <option>{{pathologyTypeName}}</option>
-                  <option *ngFor="let pathologyType of pathologyTypes; let index = index;">{{pathologyType.name}}
-                  </option>
-                </select>
+                <mat-select [(ngModel)]="prescripteurName"
+                            [value]="prescripteurName"
+                            [placeholder]="prescripteurName">
+                  <mat-option *ngFor="let prescripteur of prescripteurs; let index = index;">{{prescripteur.name}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
           </div>
@@ -59,28 +59,51 @@
                 <mat-label>Filter par nom de bilan</mat-label>
                 <input matInput (keyup)="applyBilanArticulaireFilter($event)" placeholder="Nom de bilan *">
               </mat-form-field>
-              <button style="float: right;" class="add-bilanArticulaire" color="primary" type="button" mat-mini-fab>
+              <button style="float: right;" class="add-bilanArticulaire" color="primary" (click)="addLineBA()"
+                      type="button" mat-mini-fab>
                 <mat-icon>playlist_add</mat-icon>
               </button>
             </div>
             <div fxLayout="row">
-              <table style="width: 70%; margin-right: 10px;" mat-table [dataSource]="bilanArticulaireDataSource"
-                     class="mat-elevation-z8">
-                <ng-container matColumnDef="date_ba">
-                  <th mat-header-cell *matHeaderCellDef> Date</th>
-                  <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}}</td>
-                </ng-container>
-                <ng-container matColumnDef="name_ba">
-                  <th mat-header-cell *matHeaderCellDef> Nom</th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}}</td>
-                </ng-container>
-                <ng-container matColumnDef="amplitude">
-                  <th mat-header-cell *matHeaderCellDef> Amplitude</th>
-                  <td mat-cell *matCellDef="let element"> {{element.amplitude}}</td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedBilanArticulaireColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedBilanArticulaireColumns;"></tr>
-              </table>
+              <div class="ba-container" fxLayout="column">
+                <table mat-table [dataSource]="bilanArticulaireDataSource"
+                       class="mat-elevation-z8">
+                  <ng-container matColumnDef="date_ba">
+                    <th mat-header-cell *matHeaderCellDef> Date</th>
+                    <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="name_ba">
+                    <th mat-header-cell *matHeaderCellDef> Nom</th>
+                    <td mat-cell *matCellDef="let element">
+                      <input matInput type="text">{{element.name}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="amplitude">
+                    <th mat-header-cell *matHeaderCellDef> Amplitude</th>
+                    <td mat-cell *matCellDef="let element">
+                      <input matInput type="text">{{element.amplitude}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="remove_ba">
+                    <th mat-header-cell *matHeaderCellDef> Supprimer</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button style="color: white; background-color: #FF4081;" mat-raised-button>
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="save_ba">
+                    <th mat-header-cell *matHeaderCellDef> Sauvegarder</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button color="primary" mat-raised-button>
+                        <mat-icon>save</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedBilanArticulaireColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedBilanArticulaireColumns;"></tr>
+                </table>
+              </div>
               <mat-form-field style="width: 30%; background-color: rgba(0, 0, 0, .05);">
                 <textarea matInput rows="10" cols="40" placeholder="Observations"></textarea>
               </mat-form-field>
@@ -96,28 +119,51 @@
                 <mat-label>Filter par nom de bilan</mat-label>
                 <input matInput (keyup)="applyBilanMusculaireFilter($event)" placeholder="Nom de bilan *">
               </mat-form-field>
-              <button style="float: right;" class="add-bilanArticulaire" color="primary" type="button" mat-mini-fab>
+              <button style="float: right;" class="add-bilanMusculaire" color="primary" type="button"
+                      (click)="addLineBM()" mat-mini-fab>
                 <mat-icon>playlist_add</mat-icon>
               </button>
             </div>
             <div fxLayout="row">
-              <table style="width: 70%; margin-right: 10px;" mat-table [dataSource]="bilanMusculaireDataSource"
-                     class="mat-elevation-z8">
-                <ng-container matColumnDef="date_bm">
-                  <th mat-header-cell *matHeaderCellDef> Date</th>
-                  <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}}</td>
-                </ng-container>
-                <ng-container matColumnDef="name_bm">
-                  <th mat-header-cell *matHeaderCellDef> Nom</th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}}</td>
-                </ng-container>
-                <ng-container matColumnDef="mouvement">
-                  <th mat-header-cell *matHeaderCellDef> Mouvement</th>
-                  <td mat-cell *matCellDef="let element"> {{element.mouvement}}</td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedBilanMusculaireColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedBilanMusculaireColumns;"></tr>
-              </table>
+              <div class="bm-container" fxLayout="column">
+                <table mat-table [dataSource]="bilanMusculaireDataSource"
+                       class="mat-elevation-z8">
+                  <ng-container matColumnDef="date_bm">
+                    <th mat-header-cell *matHeaderCellDef> Date</th>
+                    <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="name_bm">
+                    <th mat-header-cell *matHeaderCellDef> Nom</th>
+                    <td mat-cell *matCellDef="let element">
+                      <input matInput type="text">{{element.name}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="mouvement">
+                    <th mat-header-cell *matHeaderCellDef> Mouvement</th>
+                    <td mat-cell *matCellDef="let element">
+                      <input matInput type="text">{{element.mouvement}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="remove_bm">
+                    <th mat-header-cell *matHeaderCellDef> Supprimer</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button style="color: white; background-color: #FF4081;" mat-raised-button>
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="save_bm">
+                    <th mat-header-cell *matHeaderCellDef> Sauvegarder</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button color="primary" mat-raised-button>
+                        <mat-icon>save</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedBilanMusculaireColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedBilanMusculaireColumns;"></tr>
+                </table>
+              </div>
               <mat-form-field style="width: 30%; background-color: rgba(0, 0, 0, .05);">
                 <textarea matInput rows="10" cols="40" placeholder="Observations"></textarea>
               </mat-form-field>
@@ -127,10 +173,12 @@
             <div>
               <h2>Bilan algique</h2>
             </div>
-            <div>
-              <input [readonly]="true" type="text" matInput id="lastModification"
-                     name="lastModification">
-              {{patient.createdAt | date: 'dd/MM/yyyy'}}
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-form-field appearance="none">
+                <input [readonly]="true" matInput type="text" matInput id="lastModification"
+                       name="lastModification">
+                Dernier résulat au : {{patient.createdAt | date: 'dd/MM/yyyy'}}
+              </mat-form-field>
               <mat-radio-group aria-labelledby="bilan-algique-group-label"
                                class="bilan-algique-group"
                                [(ngModel)]="currentBilanAlgique">
@@ -143,7 +191,7 @@
           </div>
         </mat-card-content>
         <mat-dialog-actions>
-          <button style="color: white; background-color: #FF4081; margin-right: 5px;" mat-raised-button type="button">
+          <button (click)="save()" style="color: white; background-color: #FF4081; margin-right: 5px;" mat-raised-button type="button">
             Sauvegarder
           </button>
           <button mat-raised-button color="primary">Quitter</button>

@@ -32,4 +32,20 @@
   margin-bottom: 5px;
 }
 
+.ba-container
+{
+  max-height: 250px;
+  overflow: auto;
+  width: 70%;
+  margin-right: 10px;
+}
+
+.bm-container
+{
+  max-height: 250px;
+  overflow: auto;
+  width: 70%;
+  margin-right: 10px;
+}
+
 

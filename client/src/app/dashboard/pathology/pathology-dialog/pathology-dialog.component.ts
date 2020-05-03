@@ -61,7 +61,7 @@ export class PathologyDialogComponent implements OnInit {
 
       let pathology = new Pathology();
       pathology.name = this.pathologyName;
-      pathology.localisation = this.localisations.find(l => l.name === this.pathologyName);
+      pathology.localisation = this.localisations.find(l => l.name === this.localisationName);
       pathology.prescripteur = this.prescripteurs.find(p => p.name === this.prescripteurName);
       pathology.pathologyType = this.pathologyTypes.find(pt => pt.name === this.pathologyTypeName);
 
