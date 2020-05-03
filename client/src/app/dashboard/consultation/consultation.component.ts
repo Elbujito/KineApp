@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from "@angular/material/dialog";
 
 import { Pathology, PathologyType, Patient, BilanArticulaire, BilanMusculaire, Localisation, Prescripteur} from '../../shared/models/index';
-import { AlertService, PatientsService, PathologiesService, PathologyTypesService, LocalisationsService, PrescripteursService} from '../../shared/services/index';
+import { BilanAlgiquesService, BilanMusculairesService, BilanArticulairesService, AlertService, PatientsService, PathologiesService, PathologyTypesService, LocalisationsService, PrescripteursService} from '../../shared/services/index';
 
 import { ConsultationConfirmDialogComponent } from '../consultation-confirm-dialog/consultation-confirm-dialog.component';
 
@@ -31,20 +31,21 @@ export class ConsultationComponent implements OnInit {
   public prescripteurs: Prescripteur[] = [];
   public startDate = new FormControl(new Date());
 
-    @ViewChild(MatPaginator, {static: true}) paginatorBA: MatPaginator;
-    @ViewChild(MatPaginator, {static: true}) paginatorBM: MatPaginator;
-    @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   currentBilanAlgique: string;
   douleurs: string[] = ['1', '2', '3', '4','5', '6', '7', '8','9','10'];
 
-  displayedBilanArticulaireColumns: string[] = ['date_ba', 'name_ba', 'amplitude', 'remove_ba', 'save_ba'];
-  displayedBilanMusculaireColumns: string[] = ['date_bm', 'name_bm', 'mouvement', 'remove_bm', 'save_bm'];
+  displayedBilanArticulaireColumns: string[] = ['date_ba', 'name_ba', 'amplitude', 'remove_ba'];
+  displayedBilanMusculaireColumns: string[] = ['date_bm', 'name_bm', 'mouvement', 'remove_bm'];
   bilanArticulaireDataSource = new MatTableDataSource<BilanArticulaire>([]);
   bilanMusculaireDataSource = new MatTableDataSource<BilanMusculaire>([]);
 
 
   constructor(private router: Router, private route: ActivatedRoute,private dialog: MatDialog,
+              private bilanArticulairesService: BilanArticulairesService,
+              private bilanMusculairesService: BilanMusculairesService,
+              private bilanAlgiquesService: BilanAlgiquesService,
               private pathologyTypesService: PathologyTypesService,
               private localisationsService: LocalisationsService,
               private prescripteursService: PrescripteursService,
@@ -53,9 +54,6 @@ export class ConsultationComponent implements OnInit {
               private alertService: AlertService,
               private changeDetectorRefs: ChangeDetectorRef)
   {
-      this.bilanArticulaireDataSource.paginator = this.paginatorBA;
-      this.bilanMusculaireDataSource.paginator = this.paginatorBM;
-
       let patient_id;
       let pathology_id;
       this.route.queryParams.subscribe(params => {
@@ -109,14 +107,23 @@ export class ConsultationComponent implements OnInit {
 
   addLineBM()
   {
-    this.pathology.bilanMusculaires.push(new BilanMusculaire());
-    this.bilanMusculaireDataSource.data = this.pathology.bilanMusculaires;
+    let bilanMusculaire = new BilanMusculaire();
+    this.bilanMusculairesService.addBilanMusculaire(bilanMusculaire).subscribe(result => {
+        bilanMusculaire = result;
+        this.pathology.bilanMusculaires.push(bilanMusculaire);
+        this.bilanMusculaireDataSource.data = this.pathology.bilanMusculaires;
+    });
   }
 
   addLineBA()
   {
-     this.pathology.bilanArticulaires.push(new BilanArticulaire());
-     this.bilanArticulaireDataSource.data = this.pathology.bilanArticulaires;
+     let bilanArticulaire = new BilanArticulaire();
+     this.bilanArticulairesService.addBilanArticulaire(bilanArticulaire).subscribe(result => {
+          bilanArticulaire = result;
+          this.pathology.bilanArticulaires.push(bilanArticulaire);
+          this.bilanArticulaireDataSource.data = this.pathology.bilanArticulaires;
+     });
+
   }
 
   onLocalisationChanged(value)

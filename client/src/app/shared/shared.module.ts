@@ -21,7 +21,10 @@ import { PathologyTypesService,
 		 MusclesService,
 		 PrescripteursService,
 		 PathologiesService,
-		 NoteTemplatesService
+		 NoteTemplatesService,
+		 BilanArticulairesService,
+		 BilanMusculairesService,
+		 BilanAlgiquesService
 } from './services/index';
 
 import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard } from './guards/index';
@@ -63,7 +66,10 @@ import { MaterialModule } from '../material.module';
 	MusclesService,
 	PrescripteursService,
 	PathologiesService,
-	NoteTemplatesService
+	NoteTemplatesService,
+	BilanArticulairesService,
+	BilanMusculairesService,
+	BilanAlgiquesService
     ],
   exports: [
     FormsModule,
