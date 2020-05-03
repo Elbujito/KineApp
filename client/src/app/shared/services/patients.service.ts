@@ -16,7 +16,7 @@ export class PatientsService {
 	  this.apiUrl = environment.apiUrl;
   }
 
-   getAllPatients(): Observable<Patient[]> {
+   getPatients(): Observable<Patient[]> {
           return this.get('/patients');
     }
 

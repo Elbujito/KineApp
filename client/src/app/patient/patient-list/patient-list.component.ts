@@ -28,7 +28,7 @@ export class PatientListComponent implements OnInit {
   private patientsService: PatientsService,
   private changeDetectorRefs: ChangeDetectorRef)
   {
-     this.patientsService.getAllPatients().subscribe((patients: Patient[]) => {
+     this.patientsService.getPatients().subscribe((patients: Patient[]) => {
 		 this.dataSource.data = patients;
 		 });
   }
@@ -88,7 +88,7 @@ export class PatientListComponent implements OnInit {
   }
 
   refresh() {
-	  this.patientsService.getAllPatients().subscribe((patients: Patient[]) => {
+	  this.patientsService.getPatients().subscribe((patients: Patient[]) => {
 		  this.dataSource.data = patients;
 		  this.changeDetectorRefs.detectChanges();
           });

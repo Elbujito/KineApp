@@ -47,7 +47,7 @@ public class MongoDBPathologyRepository implements PathologyRepository {
 
     @PostConstruct
     void init() {
-        pathologyCollection = client.getDatabase("medinotes").getCollection("pathologys", Pathology.class);
+        pathologyCollection = client.getDatabase("medinotes").getCollection("pathologies", Pathology.class);
     }
 
     @Override
@@ -58,12 +58,12 @@ public class MongoDBPathologyRepository implements PathologyRepository {
     }
 
     @Override
-    public List<Pathology> saveAll(List<Pathology> pathologys) {
+    public List<Pathology> saveAll(List<Pathology> pathologies) {
         try (ClientSession clientSession = client.startSession()) {
             return clientSession.withTransaction(() -> {
-                pathologys.forEach(p -> p.setId(new ObjectId()));
-                pathologyCollection.insertMany(clientSession, pathologys);
-                return pathologys;
+                pathologies.forEach(p -> p.setId(new ObjectId()));
+                pathologyCollection.insertMany(clientSession, pathologies);
+                return pathologies;
             }, txnOptions);
         }
     }
@@ -117,8 +117,8 @@ public class MongoDBPathologyRepository implements PathologyRepository {
     }
 
     @Override
-    public long update(List<Pathology> pathologys) {
-        List<WriteModel<Pathology>> writes = pathologys.stream()
+    public long update(List<Pathology> pathologies) {
+        List<WriteModel<Pathology>> writes = pathologies.stream()
                 .map(p -> new ReplaceOneModel<>(eq("_id", p.getId()), p))
                 .collect(Collectors.toList());
         try (ClientSession clientSession = client.startSession()) {

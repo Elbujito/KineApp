@@ -16,19 +16,19 @@ export class PathologiesService {
 	  this.apiUrl = environment.apiUrl;
   }
 
-   getAllPathologies(): Observable<Pathology[]> {
+   getPathologies(): Observable<Pathology[]> {
           return this.get('/pathologies');
     }
 
-   updatePathologie(pathology: Pathology): Observable<any> {
+   updatePathology(pathology: Pathology): Observable<any> {
      return this.put(pathology);
    }
 
-   addPathologie(pathology: Pathology): Observable<any> {
+   addPathology(pathology: Pathology): Observable<any> {
     return this.post(pathology);
    }
 
-   removePathologie(pathology: Pathology): Observable<any> {
+   removePathology(pathology: Pathology): Observable<any> {
       return this.del(pathology.id);
    }
 

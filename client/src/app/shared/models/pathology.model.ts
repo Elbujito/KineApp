@@ -23,13 +23,16 @@ export class Pathology {
     )
     {
 		this.pathologyType = new PathologyType();
-		this.createdAt = new Date();
-        this.lastModifcation = new Date();
-        this.prescripteur = new Prescripteur();
-        this.localisation = new Localisation();	
+		  this.createdAt = new Date();
+      this.lastModifcation = new Date();
+      this.prescripteur = new Prescripteur();
+      this.localisation = new Localisation();
 	    this.bilanArticulaires = [];
-		this.bilanMusculaires = [];
-		this.bilanMusculaires = [];
+		  this.bilanMusculaires = [];
+		  this.bilanAlgiques = [];
+      this.observation = '';
+		  this.discover = true;
+		  this.active = false;
     }
 }
 

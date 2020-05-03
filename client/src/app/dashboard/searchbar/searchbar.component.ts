@@ -29,7 +29,7 @@ export class SearchBarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.patientsService.getAllPatients().subscribe(patients => {
+    this.patientsService.getPatients().subscribe(patients => {
                 this.patients = patients;
     });
 

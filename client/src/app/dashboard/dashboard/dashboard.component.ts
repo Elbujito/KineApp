@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
     openDialog() {
   	const dialogRef = this.dialog.open(PathologyDialogComponent,{
   		data:{dialogTitle: 'Ajouter une nouvelle pathologie',
-  		pathology_id: ''}
+  		patient_id: this.patient.id}
   		});
       dialogRef.afterClosed().subscribe(result => {
   		this.refresh();
