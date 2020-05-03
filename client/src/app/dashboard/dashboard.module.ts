@@ -7,6 +7,7 @@ import { ConsultationComponent,
 		 DashboardComponent,
 		 SearchBarComponent,
 		 PathologyDialogComponent,
+		 ConsultationConfirmDialogComponent
 } from './index';
 
 import { MaterialModule } from '../material.module';
@@ -22,8 +23,9 @@ import { MaterialModule } from '../material.module';
 	DashboardComponent,
 	SearchBarComponent,
 	ConsultationComponent,
-	PathologyDialogComponent
+	PathologyDialogComponent,
+	ConsultationConfirmDialogComponent
 	],
-  entryComponents: [PathologyDialogComponent]
+  entryComponents: [PathologyDialogComponent, ConsultationConfirmDialogComponent]
 })
 export class DashboardModule { }

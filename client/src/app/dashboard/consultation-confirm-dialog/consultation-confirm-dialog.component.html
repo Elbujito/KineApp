@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.dialogTitle}}</h2>
+<mat-dialog-content>
+  <form class="form">
+    Voulez vous quitter la consultation ? Toute action non sauvegardée sera perdue...
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button type="submit" (click)="onClose()" mat-dialog-close>Quitter</button>
+  <button mat-button (click)="onCancel()" mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

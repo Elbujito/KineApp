@@ -4,9 +4,12 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from "@angular/material/dialog";
 
 import { Pathology, PathologyType, Patient, BilanArticulaire, BilanMusculaire, Localisation, Prescripteur} from '../../shared/models/index';
 import { AlertService, PatientsService, PathologiesService, PathologyTypesService, LocalisationsService, PrescripteursService} from '../../shared/services/index';
+
+import { ConsultationConfirmDialogComponent } from '../consultation-confirm-dialog/consultation-confirm-dialog.component';
 
 @Component({
   selector: 'app-consultation',
@@ -41,7 +44,7 @@ export class ConsultationComponent implements OnInit {
   bilanMusculaireDataSource = new MatTableDataSource<BilanMusculaire>([]);
 
 
-  constructor(private router: Router, private route: ActivatedRoute,
+  constructor(private router: Router, private route: ActivatedRoute,private dialog: MatDialog,
               private pathologyTypesService: PathologyTypesService,
               private localisationsService: LocalisationsService,
               private prescripteursService: PrescripteursService,
@@ -124,14 +127,22 @@ export class ConsultationComponent implements OnInit {
       });
   }
 
-  save()
+  onSave()
   {
+        this.pathology.lastModification = new Date();
         this.pathology.localisation = this.localisations.find(l => l.name === this.localisationName);
         this.pathology.prescripteur = this.prescripteurs.find(p => p.name === this.prescripteurName);
         this.pathology.pathologyType = this.pathologyTypes.find(pt => pt.name === this.pathologyTypeName);
         this.patient.pathologies[this.pathology.id] = this.pathology
         this.patientsService.updatePatient(this.patient).subscribe(result => { });
         this.alertService.showToaster("La pathologie a été sauvergardé");
+  }
+
+  onClose()
+  {
+    	const dialogRef = this.dialog.open(ConsultationConfirmDialogComponent,{
+    		data:{dialogTitle: 'Quitter la consultation de '+this.patient.displayedName}
+    		});
   }
 
 
