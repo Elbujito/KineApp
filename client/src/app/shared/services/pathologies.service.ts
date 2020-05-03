@@ -25,7 +25,10 @@ export class PathologiesService {
    }
 
    addPathology(pathology: Pathology): Observable<any> {
-    return this.post(pathology);
+    return this.post(pathology).pipe(
+           map(this.extractData),
+           catchError(this.handleError)
+      );
    }
 
    removePathology(pathology: Pathology): Observable<any> {

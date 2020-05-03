@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-	this.refresh();
+	  this.refresh();
   }
 
   launch(pathology: Pathology)
@@ -61,7 +61,6 @@ export class DashboardComponent implements OnInit {
 
   onRequestPathologies(patient: Patient)
   {
-      console.log("onRequestPathologies");
       this.patient = patient;
       this.refresh();
   }

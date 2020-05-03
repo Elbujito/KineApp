@@ -29,14 +29,14 @@ public class PathologyController {
         return pathologyRepository.save(pathology);
     }
 
-    @PostMapping("pathologys")
+    @PostMapping("pathologies")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Pathology> postPathologys(@RequestBody List<Pathology> pathologys) {
-        return pathologyRepository.saveAll(pathologys);
+    public List<Pathology> postPathologies(@RequestBody List<Pathology> pathologies) {
+        return pathologyRepository.saveAll(pathologies);
     }
 
-    @GetMapping("pathologys")
-    public List<Pathology> getPathologys() {
+    @GetMapping("pathologies")
+    public List<Pathology> getPathologies() {
         return pathologyRepository.findAll();
     }
 
@@ -48,13 +48,13 @@ public class PathologyController {
         return ResponseEntity.ok(pathology);
     }
 
-    @GetMapping("pathologys/{ids}")
-    public List<Pathology> getPathologys(@PathVariable String ids) {
+    @GetMapping("pathologies/{ids}")
+    public List<Pathology> getPathologies(@PathVariable String ids) {
         List<String> listIds = asList(ids.split(","));
         return pathologyRepository.findAll(listIds);
     }
 
-    @GetMapping("pathologys/count")
+    @GetMapping("pathologies/count")
     public Long getCount() {
         return pathologyRepository.count();
     }
@@ -64,14 +64,14 @@ public class PathologyController {
         return pathologyRepository.delete(id);
     }
 
-    @DeleteMapping("pathologys/{ids}")
-    public Long deletePathologys(@PathVariable String ids) {
+    @DeleteMapping("pathologies/{ids}")
+    public Long deletePathologies(@PathVariable String ids) {
         List<String> listIds = asList(ids.split(","));
         return pathologyRepository.delete(listIds);
     }
 
-    @DeleteMapping("pathologys")
-    public Long deletePathologys() {
+    @DeleteMapping("pathologies")
+    public Long deletePathologies() {
         return pathologyRepository.deleteAll();
     }
 
@@ -80,9 +80,9 @@ public class PathologyController {
         return pathologyRepository.update(pathology);
     }
 
-    @PutMapping("pathologys")
-    public Long putPathology(@RequestBody List<Pathology> pathologys) {
-        return pathologyRepository.update(pathologys);
+    @PutMapping("pathologies")
+    public Long putPathology(@RequestBody List<Pathology> pathologies) {
+        return pathologyRepository.update(pathologies);
     }
 
     @ExceptionHandler(RuntimeException.class)

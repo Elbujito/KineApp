@@ -13,7 +13,7 @@ export class Patient {
         public email?: string,
         public createdAt?: Date,
         public active?: Boolean,
-        public pathologies?: Pathology[],
+        public pathologies?: any[],
         public displayedName?: string
     )
     {

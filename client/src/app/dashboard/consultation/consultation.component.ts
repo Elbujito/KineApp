@@ -29,10 +29,11 @@ export class ConsultationComponent implements OnInit {
       this.patientsService.getPatientById(patient_id).subscribe((patient: Patient) => {
         this.patient = patient;
       });
-
-      this.pathologiesService.getPathologyById(pathology_id).subscribe((pathology: Pathology) => {
-        this.pathology = pathology;
-      });
+      console.log("patient: ",this.patient);
+      console.log("Pathologies patient: ",this.patient.pathologies);
+      console.log("Pathology patient id: ",pathology_id);
+      this.pathology = this.patient.pathologies.find( pathology => pathology.id === pathology_id);
+      console.log("Pathology: ",this.pathology);
   }
 
   ngOnInit() {
