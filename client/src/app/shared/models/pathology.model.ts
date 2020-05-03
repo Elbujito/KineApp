@@ -12,7 +12,7 @@ export class Pathology {
         public pathologyType?: PathologyType,
         public observation?: string,
         public createdAt?: Date,
-        public lastModifcation?: Date,
+        public lastModification?: Date,
         public prescripteur?: Prescripteur,
         public localisation?: Localisation,
         public discover?: Boolean,
@@ -24,7 +24,7 @@ export class Pathology {
     {
 		this.pathologyType = new PathologyType();
 		  this.createdAt = new Date();
-      this.lastModifcation = new Date();
+      this.lastModification = new Date();
       this.prescripteur = new Prescripteur();
       this.localisation = new Localisation();
 	    this.bilanArticulaires = [];

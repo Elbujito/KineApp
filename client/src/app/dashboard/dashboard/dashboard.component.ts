@@ -42,11 +42,11 @@ export class DashboardComponent implements OnInit {
   {
      let navigationExtras: NavigationExtras = {
      queryParams: {
-                  "pathology_id": pathology.id,
-                  "patient_id": this.patient.id
+                  'pathology_id': pathology.id,
+                  'patient_id': this.patient.id
               }
      };
-     this.router.navigate(['consultation/'+pathology.id+'/'+pathology.id], navigationExtras);
+     this.router.navigate(['consultation'], navigationExtras);
   }
 
   refresh() {

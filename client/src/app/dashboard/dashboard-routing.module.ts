@@ -10,7 +10,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path:'consultation/:patient_id/:pathology_id', component:ConsultationComponent}
+      { path:'consultation', component:ConsultationComponent}
     ]
   }
 ];

@@ -1,0 +1,35 @@
+
+.header-bilan
+{
+  background-color: rgba(0, 0, 0, .05);
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+.bilan-articulaire
+{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+.bilan-musculaire
+{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+.bilan-algique
+{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+
