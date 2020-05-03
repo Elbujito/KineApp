@@ -2,27 +2,27 @@
 <mat-dialog-content>
   <form class="form" (ngSubmit)="onSubmit()" #dialogForm="ngForm">
     <mat-form-field>
-      <input type="text" matInput placeholder="Nom" [(ngModel)]="pathology.name" id="name"
-             name="name" required>
+      <input type="text" matInput placeholder="Nom" [(ngModel)]="pathologyName" id="pathologyName"
+             name="pathologyName" required>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Type de pathologie</mat-label>
-      <select [(ngModel)]="pathology.pathologyType.name" id="pathologyType" name="pathologyType" matNativeControl required>
-        <option>{{pathology.pathologyType.name}}</option>
+      <select [(ngModel)]="pathologyTypeName" id="pathologyTypeName" name="pathologyTypeName" matNativeControl required>
+        <option>{{pathologyTypeName}}</option>
         <option *ngFor="let pathologyType of pathologyTypes; let index = index;">{{pathologyType.name}}</option>
       </select>
     </mat-form-field>
     <mat-form-field>
     <mat-label>Localisation</mat-label>
-    <select [(ngModel)]="pathology.localisation.name" id="localisationName" name="localisationName" matNativeControl required>
-      <option>{{pathology.localisation.name}}</option>
+    <select [(ngModel)]="localisationName" id="localisationName" name="localisationName" matNativeControl required>
+      <option>{{localisationName}}</option>
       <option *ngFor="let localisation of localisations; let index = index;">{{localisation.name}}</option>
     </select>
   </mat-form-field>
     <mat-form-field>
       <mat-label>Prescripteur</mat-label>
-      <select [(ngModel)]="pathology.prescripteur.name" id="prescripteurName" name="prescripteurName" matNativeControl required>
-        <option>{{pathology.prescripteur.name}}</option>
+      <select [(ngModel)]="prescripteurName" id="prescripteurName" name="prescripteurName" matNativeControl required>
+        <option>{{prescripteurName}}</option>
         <option *ngFor="let prescripteur of prescripteurs; let index = index;">{{prescripteur.name}}</option>
       </select>
     </mat-form-field>

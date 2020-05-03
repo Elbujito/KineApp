@@ -13,7 +13,10 @@ import { NgForm } from '@angular/forms';
 })
 
 export class PathologyDialogComponent implements OnInit {
-  public pathology: Pathology;
+  public pathologyName: string;
+  public prescripteurName: string;
+  public localisationName: string;
+  public pathologyTypeName: string;
   public pathologyTypes: PathologyType[] = [];
   public localisations: Localisation[] = [];
   public prescripteurs: Prescripteur[] = [];
@@ -28,7 +31,6 @@ export class PathologyDialogComponent implements OnInit {
     private patientsService: PatientsService,
     public dialogRef: MatDialogRef<PathologyDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.pathology = new Pathology();
     }
 
   ngOnInit() {
@@ -56,11 +58,19 @@ export class PathologyDialogComponent implements OnInit {
   }
 
    public onSubmit() {
-      this.pathologiesService.addPathology(this.pathology).subscribe(result => {
+
+      let pathology = new Pathology();
+      pathology.name = this.pathologyName;
+      pathology.localisation = this.localisations.find(l => l.name === this.pathologyName);
+      pathology.prescripteur = this.prescripteurs.find(p => p.name === this.prescripteurName);
+      pathology.pathologyType = this.pathologyTypes.find(pt => pt.name === this.pathologyTypeName);
+
+      this.pathologiesService.addPathology(pathology).subscribe(result => {
+        pathology = result;
+        this.patient.pathologies.push(pathology);
+        this.patientsService.updatePatient(this.patient).subscribe(result => { });
+        this.dialogRef.close(true);
       });
-      this.patient.pathologies.push(this.pathology);
-      this.patientsService.updatePatient(this.patient).subscribe(result => { });
-      this.dialogRef.close(true);
    }
 
   close() {
