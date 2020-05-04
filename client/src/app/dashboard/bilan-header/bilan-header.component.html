@@ -1,0 +1,47 @@
+<div class="header-bilan">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field style="margin-right: 10px; width: 150px;">
+      <mat-label>Date prescription</mat-label>
+      <input [(ngModel)]="pathology.createdAt" [value]="pathology.createdAt" matInput [matDatepicker]="picker1"
+             [formControl]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      {{this.pathology.createdAt | date: 'dd/MM/yyyy'}}
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="margin-right: 10px; width: 150px;">
+      <mat-select [(ngModel)]="pathologyTypeName"
+                  [value]="pathologyTypeName"
+                  [placeholder]="pathologyTypeName">
+        <mat-option *ngFor="let pathologyType of pathologyTypes; let index = index;">{{pathologyType.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="margin-right: 10px; width: 150px;">
+      <mat-select [(ngModel)]="localisationName"
+                  [value]="localisationName"
+                  (selectionChange)="onLocalisationChanged($event.value)">
+        <mat-option *ngFor="let localisation of localisations;" [value]="localisation.name">
+          {{localisation.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="margin-right: 10px; width: 150px;" appearance="none">
+      <input [readonly]="true" type="text" matInput [(ngModel)]="sousLocalisationName" id="sousLocalisation"
+             name="sousLocalisation">
+    </mat-form-field>
+    <mat-form-field style="margin-right: 10px; width: 150px;">
+      <mat-select [(ngModel)]="prescripteurName"
+                  [value]="prescripteurName"
+                  [placeholder]="prescripteurName">
+        <mat-option *ngFor="let prescripteur of prescripteurs; let index = index;">{{prescripteur.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <label style="margin-right: 5px;">Découvert</label>
+    <mat-checkbox style="margin-right: 10px;" color="primary" [value]="pathology.discover"
+                  [(ngModel)]="pathology.discover" [checked]="pathology.discover"></mat-checkbox>
+    <label style="margin-right: 5px;">Traité</label>
+    <mat-checkbox color="primary" [value]="pathology.active" [(ngModel)]="pathology.active"
+                  [checked]="pathology.active"></mat-checkbox>
+  </div>
+</div>

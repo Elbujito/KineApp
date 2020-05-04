@@ -1,0 +1,15 @@
+.bilan-musculaire
+{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+.bm-container
+{
+  max-height: 250px;
+  overflow: auto;
+  margin-right: 10px;
+}
+

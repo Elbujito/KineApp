@@ -1,0 +1,21 @@
+<div class="bilan-algique">
+  <div>
+    <h2>Bilan algique</h2>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field appearance="none">
+      <input [readonly]="true" matInput type="text" matInput id="lastModification"
+             [(ngModel)]="pathology.lastModification"
+             name="lastModification">
+      Dernier résulat au : {{pathology.lastModification | date: 'dd/MM/yyyy'}}
+    </mat-form-field>
+    <mat-radio-group aria-labelledby="bilan-algique-group-label"
+                     class="bilan-algique-group"
+                     [(ngModel)]="currentBilanAlgique">
+      <mat-radio-button color="primary" style="margin-right: 5px;" class="douleur-radio-button"
+                        *ngFor="let douleur of douleurs" [value]="douleur">
+        {{douleur}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

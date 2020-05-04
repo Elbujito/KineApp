@@ -4,3 +4,6 @@ export * from './consultation/consultation.component';
 export * from './consultation-confirm-dialog/consultation-confirm-dialog.component';
 export * from './pathology/pathology-dialog/pathology-dialog.component';
 export * from './bilan-articulaire-table/bilan-articulaire-table.component';
+export * from './bilan-musculaire-table/bilan-musculaire-table.component';
+export * from './bilan-algique/bilan-algique.component';
+export * from './bilan-header/bilan-header.component';

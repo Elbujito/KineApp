@@ -8,7 +8,10 @@ import { ConsultationComponent,
 		 SearchBarComponent,
 		 PathologyDialogComponent,
 		 ConsultationConfirmDialogComponent,
-		 BilanArticulaireTableComponent
+		 BilanArticulaireTableComponent,
+		 BilanMusculaireTableComponent,
+		 BilanAlgiqueComponent,
+		 BilanHeaderComponent
 } from './index';
 
 import { MaterialModule } from '../material.module';
@@ -26,7 +29,10 @@ import { MaterialModule } from '../material.module';
 	ConsultationComponent,
 	PathologyDialogComponent,
 	ConsultationConfirmDialogComponent,
-	BilanArticulaireTableComponent
+	BilanArticulaireTableComponent,
+	BilanMusculaireTableComponent,
+	BilanAlgiqueComponent,
+	BilanHeaderComponent
 	],
   entryComponents: [PathologyDialogComponent, ConsultationConfirmDialogComponent]
 })
