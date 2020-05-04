@@ -1,5 +1,5 @@
 <div class="consulation-page" style="height: 80vh;">
-  <div class="container" fxLayout="column" fxLayoutAlign="center none">
+   <div class="container" fxLayout="column" fxLayoutAlign="center none">
     <div fxFlex="95%">
       <mat-card>
         <mat-card-header>
@@ -11,6 +11,7 @@
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
+
           <div class="header-bilan">
             <div fxLayout="row" fxLayoutAlign="center center">
               <mat-form-field style="margin-right: 10px; width: 150px;">
@@ -54,125 +55,7 @@
               <mat-checkbox color="primary" [value]="pathology.active" [(ngModel)]="pathology.active" [checked]="pathology.active"></mat-checkbox>
             </div>
           </div>
-          <div class="bilan-articulaire">
-            <div>
-              <h2>Bilan articulaire</h2>
-            </div>
-            <div fxLayout="row">
-              <mat-form-field style="width: 65%; margin-right: 20px;">
-                <mat-label>Filter par nom de bilan</mat-label>
-                <input matInput (keyup)="applyBilanArticulaireFilter($event)" placeholder="Nom de bilan *">
-              </mat-form-field>
-              <button style="float: right;" class="add-bilanArticulaire" color="primary" (click)="addLineBA()"
-                      type="button" mat-mini-fab>
-                <mat-icon>playlist_add</mat-icon>
-              </button>
-            </div>
-            <div fxLayout="row">
-              <div class="ba-container" fxLayout="column">
-                <table mat-table [dataSource]="bilanArticulaireDataSource"
-                       class="mat-elevation-z8">
-                  <ng-container matColumnDef="date_ba">
-                    <th mat-header-cell *matHeaderCellDef> Date</th>
-                    <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}}</td>
-                  </ng-container>
-                  <ng-container matColumnDef="name_ba">
-                    <th mat-header-cell *matHeaderCellDef> Nom</th>
-                    <td mat-cell *matCellDef="let element">
-                      <input matInput type="text">{{element.name}}
-                    </td>
-                  </ng-container>
-                  <ng-container matColumnDef="amplitude">
-                    <th mat-header-cell *matHeaderCellDef> Amplitude</th>
-                    <td mat-cell *matCellDef="let element">
-                      <input matInput type="text">{{element.amplitude}}
-                    </td>
-                  </ng-container>
-                  <ng-container matColumnDef="remove_ba">
-                    <th mat-header-cell *matHeaderCellDef> Supprimer</th>
-                    <td mat-cell *matCellDef="let element">
-                      <button style="color: white; background-color: #FF4081;" mat-raised-button>
-                        <mat-icon>delete</mat-icon>
-                      </button>
-                    </td>
-                  </ng-container>
-                  <ng-container matColumnDef="save_ba">
-                    <th mat-header-cell *matHeaderCellDef> Sauvegarder</th>
-                    <td mat-cell *matCellDef="let element">
-                      <button color="primary" mat-raised-button>
-                        <mat-icon>save</mat-icon>
-                      </button>
-                    </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedBilanArticulaireColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedBilanArticulaireColumns;"></tr>
-                </table>
-              </div>
-              <mat-form-field style="width: 30%; background-color: rgba(0, 0, 0, .05);">
-                <textarea matInput rows="10" cols="40" placeholder="Observations"></textarea>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="bilan-musculaire">
-            <div>
-              <h2>Bilan musculaire</h2>
-            </div>
-            <div fxLayout="row">
-              <mat-form-field style="width: 65%; margin-right: 20px;">
-                <mat-label>Filter par nom de bilan</mat-label>
-                <input matInput (keyup)="applyBilanMusculaireFilter($event)" placeholder="Nom de bilan *">
-              </mat-form-field>
-              <button style="float: right;" class="add-bilanMusculaire" color="primary" type="button"
-                      (click)="addLineBM()" mat-mini-fab>
-                <mat-icon>playlist_add</mat-icon>
-              </button>
-            </div>
-            <div fxLayout="row">
-              <div class="bm-container" fxLayout="column">
-                <table mat-table [dataSource]="bilanMusculaireDataSource"
-                       class="mat-elevation-z8">
-                  <ng-container matColumnDef="date_bm">
-                    <th mat-header-cell *matHeaderCellDef> Date</th>
-                    <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}}</td>
-                  </ng-container>
-                  <ng-container matColumnDef="name_bm">
-                    <th mat-header-cell *matHeaderCellDef> Nom</th>
-                    <td mat-cell *matCellDef="let element">
-                      <input matInput type="text">{{element.name}}
-                    </td>
-                  </ng-container>
-                  <ng-container matColumnDef="mouvement">
-                    <th mat-header-cell *matHeaderCellDef> Mouvement</th>
-                    <td mat-cell *matCellDef="let element">
-                      <input matInput type="text">{{element.mouvement}}
-                    </td>
-                  </ng-container>
-                  <ng-container matColumnDef="remove_bm">
-                    <th mat-header-cell *matHeaderCellDef> Supprimer</th>
-                    <td mat-cell *matCellDef="let element">
-                      <button style="color: white; background-color: #FF4081;" mat-raised-button>
-                        <mat-icon>delete</mat-icon>
-                      </button>
-                    </td>
-                  </ng-container>
-                  <ng-container matColumnDef="save_bm">
-                    <th mat-header-cell *matHeaderCellDef> Sauvegarder</th>
-                    <td mat-cell *matCellDef="let element">
-                      <button color="primary" mat-raised-button>
-                        <mat-icon>save</mat-icon>
-                      </button>
-                    </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedBilanMusculaireColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedBilanMusculaireColumns;"></tr>
-                </table>
-              </div>
-              <mat-form-field style="width: 30%; background-color: rgba(0, 0, 0, .05);">
-                <textarea matInput rows="10" cols="40" placeholder="Observations"></textarea>
-              </mat-form-field>
-            </div>
-          </div>
+          <app-bilan-articulaire-table [patient_id]="patient_id" [pathology_id]="pathology_id" (pathologyOutput)="onUpdatePathology($event)"></app-bilan-articulaire-table>
           <div class="bilan-algique">
             <div>
               <h2>Bilan algique</h2>
