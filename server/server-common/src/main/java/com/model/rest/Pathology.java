@@ -17,7 +17,8 @@ public class Pathology {
     private ObjectId id;
     private String name;
     private PathologyType pathologyType;
-    private String observation;
+    private String observationArticulaire;
+    private String observationMusculaire;
     private Date createdAt = new Date();
     private Date lastModifcation = new Date();
     private Prescripteur prescripteur;
@@ -44,12 +45,20 @@ public class Pathology {
         this.pathologyType = pathologyType;
     }
 
-    public String getObservation() {
-        return observation;
+    public String getObservationArticulaire() {
+        return observationArticulaire;
     }
 
-    public void setObservation(String observation) {
-        this.observation = observation;
+    public void setObservationArticulaire(String observationArticulaire) {
+        this.observationArticulaire = observationArticulaire;
+    }
+
+    public String getObservationMusculaire() {
+        return observationMusculaire;
+    }
+
+    public void setObservationMusculaire(String observationMusculaire) {
+        this.observationMusculaire = observationMusculaire;
     }
 
     public Date getCreatedAt() {
@@ -137,7 +146,8 @@ public class Pathology {
     public String toString() {
         return "Pathology{" + "id=" + id + ", name='"
                 + name + '\'' + ", pathologyType='" + pathologyType + '\''
-                + ", observation='" + observation + '\'' + ", createdAt=" + createdAt
+                + ", observationArticulaire='" + observationArticulaire + '\'' + ", observationMusculaire='" + observationMusculaire + '\''
+                + ", createdAt=" + createdAt
                 + ", lastModifcation=" + lastModifcation + ", prescripteur=" + prescripteur
                 + ", localisation=" + localisation + ", discover=" + discover
                 + ", active=" + active + ", bilanArticulaires=" + bilanArticulaires
@@ -153,7 +163,8 @@ public class Pathology {
             return false;
         Pathology pathology = (Pathology) o;
         return name == pathology.name && Objects.equals(id, pathology.id)
-                && Objects.equals(pathologyType,pathology.pathologyType) && Objects.equals(observation, pathology.observation) 
+                && Objects.equals(pathologyType,pathology.pathologyType) && Objects.equals(observationArticulaire, pathology.observationArticulaire)
+                && Objects.equals(observationMusculaire, pathology.observationMusculaire)
                 && Objects.equals(createdAt, pathology.createdAt) && Objects.equals(lastModifcation, pathology.lastModifcation)
                 && Objects.equals(prescripteur, pathology.prescripteur) && Objects.equals(localisation, pathology.localisation)
                 && Objects.equals(discover, pathology.discover) && Objects.equals(active, pathology.active)
@@ -163,7 +174,7 @@ public class Pathology {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, pathologyType, observation,
+        return Objects.hash(id, name, pathologyType, observationArticulaire,observationMusculaire,
                 createdAt, lastModifcation, prescripteur, active, localisation,
                 discover, active, bilanArticulaires, bilanMusculaires, bilanAlgiques
         );

@@ -10,7 +10,8 @@ export class Pathology {
         public id?: number,
         public name?: string,
         public pathologyType?: PathologyType,
-        public observation?: string,
+        public observationMusculaire?: string,
+		    public observationArticulaire?: string,
         public createdAt?: Date,
         public lastModification?: Date,
         public prescripteur?: Prescripteur,
@@ -31,7 +32,6 @@ export class Pathology {
 	    this.bilanArticulaires = [];
 		  this.bilanMusculaires = [];
 		  this.bilanAlgiques = [];
-      this.observation = '';
 		  this.discover = true;
 		  this.active = false;
     }

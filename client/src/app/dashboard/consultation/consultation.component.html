@@ -1,13 +1,24 @@
 <div class="consulation-page" style="height: 80vh;">
-   <div class="container" fxLayout="column" fxLayoutAlign="center none">
+  <div class="container" fxLayout="column" fxLayoutAlign="center none">
     <div fxFlex="95%">
       <mat-card>
         <mat-card-header>
           <mat-card-title>
-            <input type="text" matInput [(ngModel)]="pathology.name" [value]="pathology.name">
+            <input (input)="onChange()" type="text" matInput [(ngModel)]="pathology.name" [value]="pathology.name">
           </mat-card-title>
           <mat-card-subtitle>
             {{patient.displayedName}}
+            <label style="margin-left: 5px; margin-right: 5px;">| Découvert</label>
+            <mat-checkbox (change)="onChange()" style="margin-right: 10px;" color="primary" [value]="pathology.discover"
+                          [(ngModel)]="pathology.discover" [checked]="pathology.discover"></mat-checkbox>
+            <label style="margin-right: 5px;">Traité</label>
+            <mat-checkbox (change)="onChange()" color="primary" [value]="pathology.active"
+                          [(ngModel)]="pathology.active"
+                          [checked]="pathology.active"></mat-checkbox>
+            <button *ngIf="!isSaved()" (click)="onSave()" color="primary" style="margin-left: 10px; margin-right: 5px;"
+                    mat-mini-fab type="button">
+              <mat-icon>save</mat-icon>
+            </button>
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -17,21 +28,44 @@
                             [createdAt]="pathology.createdAt"
                             (bilanHeaderOutput)="onBilanHeaderChanged($event)">
           </app-bilan-header>
-          <app-bilan-articulaire-table [bilanArticulaires]="pathology.bilanArticulaires" (bilanArticulairesOutput)="onBilanArticulairesChanged($event)"></app-bilan-articulaire-table>
-          <app-bilan-musculaire-table  [bilanMusculaires]="pathology.bilanMusculaires" (bilanMusculairesOutput)="onBilanMusculairesChanged($event)"></app-bilan-musculaire-table>
+          <div fxLayout="row">
+            <div style="width: 75%;">
+              <app-bilan-articulaire-table [bilanArticulaires]="pathology.bilanArticulaires"
+                                           (bilanArticulairesOutput)="onBilanArticulairesChanged($event)"></app-bilan-articulaire-table>
+            </div>
+            <div style="margin: 0 auto;">
+              <mat-form-field>
+                <textarea (input)="onChange()" matInput rows="15" cols="60"
+                          [value]="pathology.observationArticulaire"
+                          [(ngModel)]="pathology.observationArticulaire"
+                          placeholder="Observations articulaires"></textarea>
+                <button *ngIf="!isSaved()" mat-raised-button (click)="onSave()">
+                  <mat-icon>save</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div style="width: 75%;">
+              <app-bilan-musculaire-table [bilanMusculaires]="pathology.bilanMusculaires"
+                                          (bilanMusculairesOutput)="onBilanMusculairesChanged($event)"></app-bilan-musculaire-table>
+            </div>
+            <div style="margin: 0 auto;">
+              <mat-form-field>
+                <textarea (input)="onChange()" matInput rows="15" cols="60"
+                          [value]="pathology.observationMusculaire"
+                          [(ngModel)]="pathology.observationMusculaire"
+                          placeholder="Observations musculaires"></textarea>
+                <button *ngIf="!isSaved()" mat-raised-button (click)="onSave()">
+                  <mat-icon>save</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
           <app-bilan-algique [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-algique>
         </mat-card-content>
         <mat-dialog-actions>
-          <button (click)="onSave()" style="color: white; background-color: #FF4081; margin-right: 5px;" mat-raised-button type="button">
-            Sauvegarder
-          </button>
-          <button (click)="onClose()" mat-raised-button color="primary">Quitter</button>
-          <label style="margin-left: 5px; margin-right: 5px;">Découvert</label>
-          <mat-checkbox style="margin-right: 10px;" color="primary" [value]="pathology.discover"
-                        [(ngModel)]="pathology.discover" [checked]="pathology.discover"></mat-checkbox>
-          <label style="margin-right: 5px;">Traité</label>
-          <mat-checkbox color="primary" [value]="pathology.active" [(ngModel)]="pathology.active"
-                        [checked]="pathology.active"></mat-checkbox>
+          <button (click)="onClose()" style="color: white; background-color: #FF4081" mat-raised-button>Quitter</button>
         </mat-dialog-actions>
       </mat-card>
     </div>

@@ -1,0 +1,6 @@
+.mat-grid-tile
+{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

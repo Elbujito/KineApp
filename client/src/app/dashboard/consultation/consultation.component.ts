@@ -21,6 +21,7 @@ export class ConsultationComponent implements OnInit {
   public pathology: Pathology = new Pathology();
   public patient_id: number;
   public pathology_id: number;
+  public saved: Boolean;
 
   @Input('bilanArticulairesOutput') bilanArticulaires: BilanArticulaire[];
   @Input('bilanMusculairesOutput') bilanMusculaires: BilanMusculaire[];
@@ -30,7 +31,7 @@ export class ConsultationComponent implements OnInit {
               private alertService: AlertService,
               private changeDetectorRefs: ChangeDetectorRef)
   {
-
+      this.saved = true;
       this.route.queryParams.subscribe(params => {
         this.patient_id = params['patient_id'];
         this.pathology_id = params['pathology_id'];
@@ -99,6 +100,16 @@ export class ConsultationComponent implements OnInit {
       });
    }
 
+      onChange()
+      {
+         this.saved = false;
+      }
+
+      isSaved(): Boolean
+      {
+         return this.saved;
+      }
+
   onSave()
   {
     this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
@@ -107,9 +118,12 @@ export class ConsultationComponent implements OnInit {
        this.patient.pathologies[index].name = this.pathology.name;
        this.patient.pathologies[index].discover = this.pathology.discover;
        this.patient.pathologies[index].active = this.pathology.active;
+       this.patient.pathologies[index].observationArticulaire = this.pathology.observationArticulaire;
+       this.patient.pathologies[index].observationMusculaire = this.pathology.observationMusculaire;
        this.patientsService.updatePatient(this.patient).subscribe( patient => {
             this.patient = patient;
             this.alertService.showToaster("La pathologie a été sauvergardé");
+            this.saved = true;
       });
     });
   }
