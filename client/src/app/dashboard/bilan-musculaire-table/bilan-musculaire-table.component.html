@@ -22,7 +22,7 @@
           </td>
         </ng-container>
         <ng-container matColumnDef="muscle">
-          <th mat-header-cell *matHeaderCellDef> Muscule</th>
+          <th mat-header-cell *matHeaderCellDef> Muscle</th>
           <td mat-cell *matCellDef="let element">
             <mat-select (selectionChange)="onChange(element)" [placeholder]="element.muscle.name"
                         [value]="element.muscle" [(ngModel)]="element.muscle">
