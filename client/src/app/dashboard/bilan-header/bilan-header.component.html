@@ -1,17 +1,25 @@
-<div class="header-bilan">
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field style="margin-right: 10px;">
-      <input matInput [(value)]="pathology.formatedCreatedAt" [(ngModel)]="pathology.formatedCreatedAt" name="date" type="text" />
+<div class="header-bilan-bg" fxLayout="row">
+  <div class="header-bilan">
+    <mat-form-field>
+      <label>Date de création </label>
+      <input matInput [(value)]="formatedCreatedAt"
+             [(ngModel)]="formatedCreatedAt"
+             name="date"
+             (input)="onChange()"
+             type="text"/>
     </mat-form-field>
-    <mat-form-field style="margin-right: 10px; width: 150px;">
+    <mat-form-field>
+      <label>Type de pathologie</label>
       <mat-select [(ngModel)]="pathologyTypeName"
                   [value]="pathologyTypeName"
-                  [placeholder]="pathologyTypeName">
-        <mat-option *ngFor="let pathologyType of pathologyTypes; let index = index;">{{pathologyType.name}}
+                  (selectionChange)="onChange()">
+        <mat-option *ngFor="let pathologyType of pathologyTypes; let index = index;" [value]="pathologyType.name">
+          {{pathologyType.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field style="margin-right: 10px; width: 150px;">
+    <mat-form-field>
+      <label>Localisation</label>
       <mat-select [(ngModel)]="localisationName"
                   [value]="localisationName"
                   (selectionChange)="onLocalisationChanged($event.value)">
@@ -20,23 +28,24 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field style="margin-right: 10px; width: 150px;" appearance="none">
-      <input [readonly]="true" type="text" matInput [(ngModel)]="sousLocalisationName" id="sousLocalisation"
+    <mat-form-field>
+      <label>Sous localisation</label>
+      <input [readonly]="true" type="text" matInput
+             [(ngModel)]="sousLocalisationName" id="sousLocalisation"
              name="sousLocalisation">
     </mat-form-field>
-    <mat-form-field style="margin-right: 10px; width: 150px;">
+    <mat-form-field>
+      <label>Prescripteur</label>
       <mat-select [(ngModel)]="prescripteurName"
                   [value]="prescripteurName"
-                  [placeholder]="prescripteurName">
-        <mat-option *ngFor="let prescripteur of prescripteurs; let index = index;">{{prescripteur.name}}
+                  (selectionChange)="onChange()">
+        <mat-option *ngFor="let prescripteur of prescripteurs; let index = index;" [value]="prescripteur.name">
+          {{prescripteur.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <label style="margin-right: 5px;">Découvert</label>
-    <mat-checkbox style="margin-right: 10px;" color="primary" [value]="pathology.discover"
-                  [(ngModel)]="pathology.discover" [checked]="pathology.discover"></mat-checkbox>
-    <label style="margin-right: 5px;">Traité</label>
-    <mat-checkbox color="primary" [value]="pathology.active" [(ngModel)]="pathology.active"
-                  [checked]="pathology.active"></mat-checkbox>
   </div>
+  <button style="margin-left: 30px;" *ngIf="!isSaved()" color="primary" (click)="save()" mat-mini-fab>
+    <mat-icon>save</mat-icon>
+  </button>
 </div>

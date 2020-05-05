@@ -11,7 +11,12 @@
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <app-bilan-header [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-header>
+          <app-bilan-header [localisation]="pathology.localisation"
+                            [prescripteur]="pathology.prescripteur"
+                            [pathologyType]="pathology.pathologyType"
+                            [createdAt]="pathology.createdAt"
+                            (bilanHeaderOutput)="onBilanHeaderChanged($event)">
+          </app-bilan-header>
           <app-bilan-articulaire-table [bilanArticulaires]="pathology.bilanArticulaires" (bilanArticulairesOutput)="onBilanArticulairesChanged($event)"></app-bilan-articulaire-table>
           <app-bilan-musculaire-table  [bilanMusculaires]="pathology.bilanMusculaires" (bilanMusculairesOutput)="onBilanMusculairesChanged($event)"></app-bilan-musculaire-table>
           <app-bilan-algique [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-algique>
@@ -21,6 +26,12 @@
             Sauvegarder
           </button>
           <button (click)="onClose()" mat-raised-button color="primary">Quitter</button>
+          <label style="margin-left: 5px; margin-right: 5px;">Découvert</label>
+          <mat-checkbox style="margin-right: 10px;" color="primary" [value]="pathology.discover"
+                        [(ngModel)]="pathology.discover" [checked]="pathology.discover"></mat-checkbox>
+          <label style="margin-right: 5px;">Traité</label>
+          <mat-checkbox color="primary" [value]="pathology.active" [(ngModel)]="pathology.active"
+                        [checked]="pathology.active"></mat-checkbox>
         </mat-dialog-actions>
       </mat-card>
     </div>

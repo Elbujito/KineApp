@@ -8,6 +8,8 @@ import { AlertService, PatientsService} from '../../shared/services/index';
 
 import { ConsultationConfirmDialogComponent } from '../consultation-confirm-dialog/consultation-confirm-dialog.component';
 
+import { BilanHeader } from '../models/index';
+
 @Component({
   selector: 'app-consultation',
   templateUrl: './consultation.component.html',
@@ -68,6 +70,26 @@ export class ConsultationComponent implements OnInit {
              this.pathology.bilanMusculaires = bilanMusculaires;
            });
          });
+   }
+
+   onBilanHeaderChanged(bilanHeader: BilanHeader)
+   {
+      this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
+      this.patient = patient;
+
+      let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
+      this.patient.pathologies[index].localisation = bilanHeader.localisation;
+      this.patient.pathologies[index].prescripteur = bilanHeader.prescripteur;
+      this.patient.pathologies[index].createdAt = bilanHeader.createdAt;
+      this.patient.pathologies[index].pathologyType = bilanHeader.pathologyType;
+        this.patientsService.updatePatient(this.patient).subscribe( patient => {
+          this.patient = patient;
+          this.pathology.localisation = bilanHeader.localisation;
+          this.pathology.prescripteur = bilanHeader.prescripteur;
+          this.pathology.createdAt =     bilanHeader.createdAt;
+          this.pathology.pathologyType = bilanHeader.pathologyType;
+        });
+      });
    }
 
 
