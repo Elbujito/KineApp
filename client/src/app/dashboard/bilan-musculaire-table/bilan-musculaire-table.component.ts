@@ -1,11 +1,12 @@
-import { OnInit, Input, Component, ViewChild, ChangeDetectorRef} from '@angular/core';
+import { OnInit, Input, Component, ViewChild, ChangeDetectorRef, Output, EventEmitter} from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
 
 import { State } from '../models/index';
-import { BilanMusculaire, Muscle, Pathology, Patient } from '../../shared/models/index';
-import { BilanMusculairesService, MusclesService, PatientsService } from '../../shared/services/index';
+import { BilanMusculaire, Muscle } from '../../shared/models/index';
+import { BilanMusculairesService, MusclesService } from '../../shared/services/index';
 
 @Component({
   selector: 'app-bilan-musculaire-table',
@@ -16,39 +17,47 @@ export class BilanMusculaireTableComponent implements OnInit {
 
   public states: State[] = [];
   public muscles: Muscle[] = [];
-  public pathology: Pathology;
-  public patient: Patient;
   public displayedColumns: string[] = ['date', 'muscle', 'cotation', 'remove', 'save'];
   public dataSource = new MatTableDataSource<BilanMusculaire>([]);
 
-  @Input('patient_id') patient_id: number;
-  @Input('pathology_id') pathology_id: number;
+  @Input('bilanMusculaires') bilanMusculaires: BilanMusculaire[];
+
+  @Output() bilanMusculairesOutput = new EventEmitter<BilanMusculaire[]>();
 
   constructor(private bilanMusculairesService: BilanMusculairesService,
-			  private musclesService: MusclesService,
-			  private patientsService: PatientsService,
+			  private musclesServices: MusclesService,
+
 			  private changeDetectorRefs: ChangeDetectorRef)
   {
+
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+      this.musclesServices.getMuscles().subscribe(muscles => {
+        this.muscles = muscles;
+        if(this.bilanMusculaires != undefined)
+        {
+          this.bilanMusculaires.forEach( (bilanMusculaire, index) => {
+              bilanMusculaire.formatedDate = new DatePipe('en-US').transform(bilanMusculaire.date, 'MM/dd/yyyy');
+              this.addNewState(bilanMusculaire, true);
+           });
+           this.dataSource.data = this.bilanMusculaires;
+         }
+         else
+         {
+          this.bilanMusculaires = [];
+         }
+      });
+  }
 
-    this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
-                  this.patient = patient;
-  		this.pathology = patient.pathologies.find(p => p.id === this.pathology_id);
-  		this.dataSource.data = this.pathology.bilanMusculaires;
-  		this.pathology.bilanMusculaires.forEach( (bilanMusculaire, index) => {
-                 let state = new State();
-                 state.index = index;
-                 state.isSaved = true;
-                 state.id = bilanMusculaire.id;
-                 this.states.push(state);
-       });
-     });
-
-	  this.musclesService.getMuscles().subscribe(muscles => {
-		  this.muscles = muscles;
-	  });
+  addNewState(bilanMusculaire: BilanMusculaire, isSaved: Boolean)
+  {
+    let state = new State();
+    state.index = this.bilanMusculaires.findIndex(ba => ba.id === bilanMusculaire.id);
+    state.isSaved = isSaved;
+    state.id = bilanMusculaire.id;
+    this.states.unshift(state);
   }
 
   applyFilter(event: Event) {
@@ -60,14 +69,9 @@ export class BilanMusculaireTableComponent implements OnInit {
   {
      let bilanMusculaire = new BilanMusculaire();
      this.bilanMusculairesService.addBilanMusculaire(bilanMusculaire).subscribe(result => {
-          bilanMusculaire = result;
-
-          let state = new State();
-          state.index = this.pathology.bilanMusculaires.unshift(bilanMusculaire) - 1;
-          state.isSaved = false;
-          state.id = bilanMusculaire.id;
-          this.states.unshift(state);
-          this.dataSource.data = this.pathology.bilanMusculaires;
+          this.bilanMusculaires.unshift(result);
+          this.addNewState(result, false);
+          this.dataSource.data = this.bilanMusculaires;
      });
   }
 
@@ -79,36 +83,26 @@ export class BilanMusculaireTableComponent implements OnInit {
 
   save(bilanMusculaire: BilanMusculaire)
   {
-    let index = this.pathology.bilanMusculaires.findIndex(ba => ba.id === bilanMusculaire.id);
+    let index = this.bilanMusculaires.findIndex(ba => ba.id === bilanMusculaire.id);
     let indexState = this.states.findIndex(s => s.id === bilanMusculaire.id);
-    this.states[indexState].isSaved = true;
-    this.pathology.bilanMusculaires[index] = bilanMusculaire;
 
-    let indexPathology = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
-    this.patient.pathologies[indexPathology] = this.pathology;
-    this.patientsService.updatePatient(this.patient).subscribe( patient => {
-         this.patient = patient;
-    });
+    this.bilanMusculaires[index].date = new Date(bilanMusculaire.formatedDate);
+    this.states[indexState].isSaved = true;
+    this.bilanMusculairesOutput.emit(this.bilanMusculaires);
   }
 
   remove(bilanMusculaire: BilanMusculaire)
   {
-      let index = this.pathology.bilanMusculaires.indexOf(bilanMusculaire);
-      if (index !== -1) {
-          this.pathology.bilanMusculaires.splice(index, 1);
-
-          let indexPathology = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
-          this.patient.pathologies[indexPathology] = this.pathology;
-
-          this.patientsService.updatePatient(this.patient).subscribe( patient => {
-              this.patient = patient;
-              this.dataSource.data = this.pathology.bilanMusculaires;
-          });
-      }
+    let index = this.bilanMusculaires.indexOf(bilanMusculaire);
+    if (index != -1) {
+      this.bilanMusculaires.splice(index, 1);
+      this.bilanMusculairesOutput.emit(this.bilanMusculaires);
+      this.dataSource.data = this.bilanMusculaires;
+    }
   }
 
   refresh() {
-    this.dataSource.data = this.pathology.bilanMusculaires;
+    this.dataSource.data = this.bilanMusculaires;
     this.changeDetectorRefs.detectChanges();
   }
 

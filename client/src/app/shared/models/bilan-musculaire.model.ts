@@ -6,7 +6,8 @@ export class BilanMusculaire {
         public date?: Date,
         public muscle?: Muscle,
         public cotation?: number,
-        public observation?: string
+        public observation?: string,
+        public formatedDate?: string
     )
     {
       this.date = new Date();

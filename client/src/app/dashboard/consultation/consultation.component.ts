@@ -1,9 +1,9 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, EventEmitter, Output} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from "@angular/material/dialog";
 
-import { Pathology, Patient} from '../../shared/models/index';
+import { Pathology, Patient, BilanArticulaire, BilanMusculaire} from '../../shared/models/index';
 import { AlertService, PatientsService} from '../../shared/services/index';
 
 import { ConsultationConfirmDialogComponent } from '../consultation-confirm-dialog/consultation-confirm-dialog.component';
@@ -19,6 +19,9 @@ export class ConsultationComponent implements OnInit {
   public pathology: Pathology = new Pathology();
   public patient_id: number;
   public pathology_id: number;
+
+  @Input('bilanArticulairesOutput') bilanArticulaires: BilanArticulaire[];
+  @Input('bilanMusculairesOutput') bilanMusculaires: BilanMusculaire[];
 
   constructor(private router: Router, private route: ActivatedRoute,private dialog: MatDialog,
               private patientsService: PatientsService,
@@ -36,6 +39,36 @@ export class ConsultationComponent implements OnInit {
           this.pathology = this.patient.pathologies.find( pathology => pathology.id === this.pathology_id);
        });
   }
+
+   onBilanArticulairesChanged(bilanArticulaires: BilanArticulaire[])
+   {
+      this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
+        this.patient = patient;
+
+        let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
+        this.patient.pathologies[index].bilanArticulaires = bilanArticulaires;
+
+        this.patientsService.updatePatient(this.patient).subscribe( patient => {
+          this.patient = patient;
+          this.pathology.bilanArticulaires = bilanArticulaires;
+        });
+      });
+   }
+
+   onBilanMusculairesChanged(bilanMusculaires: BilanMusculaire[])
+   {
+         this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
+           this.patient = patient;
+
+           let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
+           this.patient.pathologies[index].bilanMusculaires = bilanMusculaires;
+
+           this.patientsService.updatePatient(this.patient).subscribe( patient => {
+             this.patient = patient;
+             this.pathology.bilanMusculaires = bilanMusculaires;
+           });
+         });
+   }
 
 
   ngOnInit() {

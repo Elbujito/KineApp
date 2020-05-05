@@ -12,8 +12,8 @@
         </mat-card-header>
         <mat-card-content>
           <app-bilan-header [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-header>
-          <app-bilan-articulaire-table [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-articulaire-table>
-          <app-bilan-musculaire-table [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-musculaire-table>
+          <app-bilan-articulaire-table [bilanArticulaires]="pathology.bilanArticulaires" (bilanArticulairesOutput)="onBilanArticulairesChanged($event)"></app-bilan-articulaire-table>
+          <app-bilan-musculaire-table  [bilanMusculaires]="pathology.bilanMusculaires" (bilanMusculairesOutput)="onBilanMusculairesChanged($event)"></app-bilan-musculaire-table>
           <app-bilan-algique [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-algique>
         </mat-card-content>
         <mat-dialog-actions>

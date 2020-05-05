@@ -1,5 +1,6 @@
 import { OnInit, Input, Component} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { PathologyType, Pathology, Patient, Localisation, Prescripteur } from '../../shared/models/index';
 import { PatientsService, PathologiesService, PathologyTypesService, LocalisationsService, PrescripteursService } from '../../shared/services/index';
@@ -45,11 +46,11 @@ export class BilanHeaderComponent implements OnInit {
      this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
         this.patient = patient;
         this.pathology = this.patient.pathologies.find( pathology => pathology.id === this.pathology_id);
-
-         this.localisationName = this.pathology.localisation.name;
-         this.sousLocalisationName = this.pathology.localisation.sousLocalisation;
-         this.prescripteurName = this.pathology.prescripteur.name;
-         this.pathologyTypeName = this.pathology.pathologyType.name;
+        this.pathology.formatedCreatedAt= new DatePipe('en-US').transform( this.pathology.createdAt, 'dd/MM/yyyy');
+        this.localisationName = this.pathology.localisation.name;
+        this.sousLocalisationName = this.pathology.localisation.sousLocalisation;
+        this.prescripteurName = this.pathology.prescripteur.name;
+        this.pathologyTypeName = this.pathology.pathologyType.name;
      });
 
      this.pathologyTypesService.getPathologyTypes().subscribe(pathologyTypes => {
@@ -75,6 +76,7 @@ export class BilanHeaderComponent implements OnInit {
 
    onSave()
    {
+           this.pathology.createdAt = new Date(this.pathology.formatedCreatedAt);
            this.pathology.lastModification = new Date();
            this.pathology.localisation = this.localisations.find(l => l.name === this.localisationName);
            this.pathology.prescripteur = this.prescripteurs.find(p => p.name === this.prescripteurName);

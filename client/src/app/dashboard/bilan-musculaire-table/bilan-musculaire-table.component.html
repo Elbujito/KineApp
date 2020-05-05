@@ -9,22 +9,23 @@
       <mat-icon>playlist_add</mat-icon>
     </button>
   </div>
-  <div fxLayout="row" >
+  <div fxLayout="row">
     <div class="bm-container" fxLayout="column" style="width: 100%;">
       <table mat-table [dataSource]="dataSource"
              class="mat-elevation-z8">
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef> Date</th>
           <td mat-cell *matCellDef="let element">
-            <mat-form-field>
-              <input (input)="onChange(element)" type="date" matInput [value]="element.date" [(ngModel)]="element.date" [placeholder]="element.date | date: 'dd/MM/yyyy'">
-            </mat-form-field>
+              <mat-form-field>
+                <input (input)="onChange(element)" matInput [(value)]="element.formatedDate" [(ngModel)]="element.formatedDate" name="date" type="text" />
+              </mat-form-field>
           </td>
         </ng-container>
         <ng-container matColumnDef="muscle">
           <th mat-header-cell *matHeaderCellDef> Muscule</th>
           <td mat-cell *matCellDef="let element">
-            <mat-select (selectionChange)="onChange(element)" [placeholder]="element.muscle.name" [value]="element.muscle" [(ngModel)]="element.muscle">
+            <mat-select (selectionChange)="onChange(element)" [placeholder]="element.muscle.name"
+                        [value]="element.muscle" [(ngModel)]="element.muscle">
               <mat-option *ngFor="let muscle of muscles" [value]="muscle">{{muscle.name}}
               </mat-option>
             </mat-select>
@@ -33,7 +34,8 @@
         <ng-container matColumnDef="cotation">
           <th mat-header-cell *matHeaderCellDef> Cotation</th>
           <td mat-cell *matCellDef="let element">
-            <input (input)="onChange(element)" matInput type="number" [value]="element.cotation" [(ngModel)]="element.cotation">
+            <input (input)="onChange(element)" matInput type="number" [value]="element.cotation"
+                   [(ngModel)]="element.cotation">
           </td>
         </ng-container>
         <ng-container matColumnDef="remove">

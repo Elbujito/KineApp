@@ -1,4 +1,5 @@
 import { Mouvement } from './mouvement.model';
+import { DatePipe } from '@angular/common';
 
 export class BilanArticulaire {
     constructor(
@@ -6,7 +7,8 @@ export class BilanArticulaire {
         public date?: Date,
         public mouvement?: Mouvement,
         public amplitude?: number,
-        public observation?: string
+        public observation?: string,
+        public formatedDate?: string
     )
     {
           this.date = new Date();

@@ -1,11 +1,12 @@
-import { OnInit, Input, Component, ViewChild, ChangeDetectorRef} from '@angular/core';
+import { OnInit, Input, Component, ViewChild, ChangeDetectorRef, Output, EventEmitter} from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
 
 import { State } from '../models/index';
-import { BilanArticulaire, Mouvement, Pathology, Patient } from '../../shared/models/index';
-import { BilanArticulairesService, MouvementsService, PatientsService } from '../../shared/services/index';
+import { BilanArticulaire, Mouvement } from '../../shared/models/index';
+import { BilanArticulairesService, MouvementsService } from '../../shared/services/index';
 
 @Component({
   selector: 'app-bilan-articulaire-table',
@@ -16,39 +17,47 @@ export class BilanArticulaireTableComponent implements OnInit {
 
   public states: State[] = [];
   public mouvements: Mouvement[] = [];
-  public pathology: Pathology;
-  public patient: Patient;
   public displayedColumns: string[] = ['date', 'mouvement', 'amplitude', 'remove', 'save'];
   public dataSource = new MatTableDataSource<BilanArticulaire>([]);
 
-  @Input('patient_id') patient_id: number;
-  @Input('pathology_id') pathology_id: number;
+  @Input('bilanArticulaires') bilanArticulaires: BilanArticulaire[];
+
+  @Output() bilanArticulairesOutput = new EventEmitter<BilanArticulaire[]>();
 
   constructor(private bilanArticulairesService: BilanArticulairesService,
 			  private mouvementsServices: MouvementsService,
-			  private patientsService: PatientsService,
+
 			  private changeDetectorRefs: ChangeDetectorRef)
   {
+
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+      this.mouvementsServices.getMouvements().subscribe(mouvements => {
+        this.mouvements = mouvements;
+        if(this.bilanArticulaires != undefined)
+        {
+          this.bilanArticulaires.forEach( (bilanArticulaire, index) => {
+              bilanArticulaire.formatedDate = new DatePipe('en-US').transform(bilanArticulaire.date, 'MM/dd/yyyy');
+              this.addNewState(bilanArticulaire, true);
+           });
+           this.dataSource.data = this.bilanArticulaires;
+         }
+         else
+         {
+          this.bilanArticulaires = [];
+         }
+      });
+  }
 
-    this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
-                  this.patient = patient;
-  		this.pathology = patient.pathologies.find(p => p.id === this.pathology_id);
-  		this.dataSource.data = this.pathology.bilanArticulaires;
-  		this.pathology.bilanArticulaires.forEach( (bilanArticulaire, index) => {
-                 let state = new State();
-                 state.index = index;
-                 state.isSaved = true;
-                 state.id = bilanArticulaire.id;
-                 this.states.push(state);
-       });
-     });
-
-	  this.mouvementsServices.getMouvements().subscribe(mouvements => {
-		  this.mouvements = mouvements;
-	  });
+  addNewState(bilanArticulaire: BilanArticulaire, isSaved: Boolean)
+  {
+    let state = new State();
+    state.index = this.bilanArticulaires.findIndex(ba => ba.id === bilanArticulaire.id);
+    state.isSaved = isSaved;
+    state.id = bilanArticulaire.id;
+    this.states.unshift(state);
   }
 
   applyFilter(event: Event) {
@@ -60,14 +69,9 @@ export class BilanArticulaireTableComponent implements OnInit {
   {
      let bilanArticulaire = new BilanArticulaire();
      this.bilanArticulairesService.addBilanArticulaire(bilanArticulaire).subscribe(result => {
-          bilanArticulaire = result;
-
-          let state = new State();
-          state.index = this.pathology.bilanArticulaires.unshift(bilanArticulaire) - 1;
-          state.isSaved = false;
-          state.id = bilanArticulaire.id;
-          this.states.unshift(state);
-          this.dataSource.data = this.pathology.bilanArticulaires;
+          this.bilanArticulaires.unshift(result);
+          this.addNewState(result, false);
+          this.dataSource.data = this.bilanArticulaires;
      });
   }
 
@@ -79,36 +83,26 @@ export class BilanArticulaireTableComponent implements OnInit {
 
   save(bilanArticulaire: BilanArticulaire)
   {
-    let index = this.pathology.bilanArticulaires.findIndex(ba => ba.id === bilanArticulaire.id);
+    let index = this.bilanArticulaires.findIndex(ba => ba.id === bilanArticulaire.id);
     let indexState = this.states.findIndex(s => s.id === bilanArticulaire.id);
-    this.states[indexState].isSaved = true;
-    this.pathology.bilanArticulaires[index] = bilanArticulaire;
 
-    let indexPathology = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
-    this.patient.pathologies[indexPathology] = this.pathology;
-    this.patientsService.updatePatient(this.patient).subscribe( patient => {
-         this.patient = patient;
-    });
+    this.bilanArticulaires[index].date = new Date(bilanArticulaire.formatedDate);
+    this.states[indexState].isSaved = true;
+    this.bilanArticulairesOutput.emit(this.bilanArticulaires);
   }
 
   remove(bilanArticulaire: BilanArticulaire)
   {
-      let index = this.pathology.bilanArticulaires.indexOf(bilanArticulaire);
-      if (index !== -1) {
-          this.pathology.bilanArticulaires.splice(index, 1);
-
-          let indexPathology = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
-          this.patient.pathologies[indexPathology] = this.pathology;
-
-          this.patientsService.updatePatient(this.patient).subscribe( patient => {
-              this.patient = patient;
-              this.dataSource.data = this.pathology.bilanArticulaires;
-          });
-      }
+    let index = this.bilanArticulaires.indexOf(bilanArticulaire);
+    if (index != -1) {
+      this.bilanArticulaires.splice(index, 1);
+      this.bilanArticulairesOutput.emit(this.bilanArticulaires);
+      this.dataSource.data = this.bilanArticulaires;
+    }
   }
 
   refresh() {
-    this.dataSource.data = this.pathology.bilanArticulaires;
+    this.dataSource.data = this.bilanArticulaires;
     this.changeDetectorRefs.detectChanges();
   }
 

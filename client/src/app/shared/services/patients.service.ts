@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 
 import {environment} from '../../../environments/environment';
 
-import {Patient} from '../../shared/models/index';
+import { Patient, Pathology } from '../../shared/models/index';
 
 @Injectable()
 export class PatientsService {

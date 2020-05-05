@@ -17,6 +17,7 @@ export class Pathology {
         public localisation?: Localisation,
         public discover?: Boolean,
         public active?: Boolean,
+        public formatedCreatedAt?: string,
 		public bilanArticulaires?: BilanArticulaire[],
 		public bilanMusculaires?: BilanMusculaire[],
         public bilanAlgiques?: BilanAlgique[]
