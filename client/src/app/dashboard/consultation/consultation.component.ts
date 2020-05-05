@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectorRef, Input, EventEmitter, Output} from
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from "@angular/material/dialog";
 
-import { Pathology, Patient, BilanArticulaire, BilanMusculaire} from '../../shared/models/index';
+import { Pathology, Patient, BilanArticulaire, BilanMusculaire, BilanAlgique} from '../../shared/models/index';
 import { AlertService, PatientsService} from '../../shared/services/index';
 
 import { ConsultationConfirmDialogComponent } from '../consultation-confirm-dialog/consultation-confirm-dialog.component';
@@ -25,6 +25,7 @@ export class ConsultationComponent implements OnInit {
 
   @Input('bilanArticulairesOutput') bilanArticulaires: BilanArticulaire[];
   @Input('bilanMusculairesOutput') bilanMusculaires: BilanMusculaire[];
+  @Input('bilanAlgiqueOutput') bilanAlgique: BilanAlgique;
 
   constructor(private router: Router, private route: ActivatedRoute,private dialog: MatDialog,
               private patientsService: PatientsService,
@@ -100,6 +101,22 @@ export class ConsultationComponent implements OnInit {
       });
    }
 
+   onBilanAlgiquesChanged(bilanAlgiques: BilanAlgique[])
+   {
+         this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
+         this.patient = patient;
+
+         let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
+         this.patient.pathologies[index].bilanAlgiques = bilanAlgiques;
+
+           this.patientsService.updatePatient(this.patient).subscribe( patient => {
+             this.patient = patient;
+             this.pathology.bilanAlgiques = bilanAlgiques;
+             this.alertService.showToaster("La pathologie a été sauvergardé");
+           });
+         });
+   }
+
       onChange()
       {
          this.saved = false;
@@ -120,6 +137,7 @@ export class ConsultationComponent implements OnInit {
        this.patient.pathologies[index].active = this.pathology.active;
        this.patient.pathologies[index].observationArticulaire = this.pathology.observationArticulaire;
        this.patient.pathologies[index].observationMusculaire = this.pathology.observationMusculaire;
+       this.patient.pathologies[index].lastModification = new Date();
        this.patientsService.updatePatient(this.patient).subscribe( patient => {
             this.patient = patient;
             this.alertService.showToaster("La pathologie a été sauvergardé");

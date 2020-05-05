@@ -62,7 +62,7 @@
               </mat-form-field>
             </div>
           </div>
-          <app-bilan-algique [patient_id]="patient_id" [pathology_id]="pathology_id"></app-bilan-algique>
+          <app-bilan-algique [bilanAlgiques]="pathology.bilanAlgiques" (bilanAlgiquesOutput)="onBilanAlgiquesChanged($event)"></app-bilan-algique>
         </mat-card-content>
         <mat-dialog-actions>
           <button (click)="onClose()" style="color: white; background-color: #FF4081" mat-raised-button>Quitter</button>
