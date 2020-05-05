@@ -42,6 +42,10 @@ export class ConsultationComponent implements OnInit {
        });
   }
 
+  ngOnInit() {
+  }
+
+
    onBilanArticulairesChanged(bilanArticulaires: BilanArticulaire[])
    {
       this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
@@ -53,6 +57,7 @@ export class ConsultationComponent implements OnInit {
         this.patientsService.updatePatient(this.patient).subscribe( patient => {
           this.patient = patient;
           this.pathology.bilanArticulaires = bilanArticulaires;
+          this.alertService.showToaster("La pathologie a été sauvergardé");
         });
       });
    }
@@ -68,6 +73,7 @@ export class ConsultationComponent implements OnInit {
            this.patientsService.updatePatient(this.patient).subscribe( patient => {
              this.patient = patient;
              this.pathology.bilanMusculaires = bilanMusculaires;
+             this.alertService.showToaster("La pathologie a été sauvergardé");
            });
          });
    }
@@ -88,17 +94,24 @@ export class ConsultationComponent implements OnInit {
           this.pathology.prescripteur = bilanHeader.prescripteur;
           this.pathology.createdAt =     bilanHeader.createdAt;
           this.pathology.pathologyType = bilanHeader.pathologyType;
+          this.alertService.showToaster("La pathologie a été sauvergardé");
         });
       });
    }
 
-
-  ngOnInit() {
-  }
-
   onSave()
   {
-       this.alertService.showToaster("La pathologie a été sauvergardé");
+    this.patientsService.getPatientById(this.patient_id).subscribe(patient => {
+      this.patient = patient;
+       let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
+       this.patient.pathologies[index].name = this.pathology.name;
+       this.patient.pathologies[index].discover = this.pathology.discover;
+       this.patient.pathologies[index].active = this.pathology.active;
+       this.patientsService.updatePatient(this.patient).subscribe( patient => {
+            this.patient = patient;
+            this.alertService.showToaster("La pathologie a été sauvergardé");
+      });
+    });
   }
 
   onClose()
