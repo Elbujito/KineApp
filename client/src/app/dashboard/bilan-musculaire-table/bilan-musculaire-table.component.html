@@ -1,17 +1,16 @@
 <div class="bilan-musculaire" fxLayout="column">
-  <h2>Bilan musculaire</h2>
+  <h2 style="margin-left: 10px;">Bilan musculaire</h2>
   <div fxLayout="row">
-    <mat-form-field>
+    <mat-form-field style="margin-left: 10px; width: 94%;">
       <mat-label>Filter par muscle *</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="mouvement *">
+      <input matInput (keyup)="applyFilter($event)">
     </mat-form-field>
-    <button style="float: right;" class="add-bilanMusculaire" color="primary" (click)="addLine()"
-            type="button" mat-mini-fab>
+    <button color="primary" (click)="addLine()" type="button" mat-mini-fab>
       <mat-icon>playlist_add</mat-icon>
     </button>
   </div>
   <div fxLayout="row" >
-    <div class="ba-container" fxLayout="column" style="width: 100%;">
+    <div class="bm-container" fxLayout="column" style="width: 100%;">
       <table mat-table [dataSource]="dataSource"
              class="mat-elevation-z8">
         <ng-container matColumnDef="date">
