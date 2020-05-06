@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.Patient;
+import com.model.Patient;
 import com.repository.PatientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.Prescripteur;
+import com.model.Prescripteur;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

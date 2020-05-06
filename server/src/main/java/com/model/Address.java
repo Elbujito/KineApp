@@ -1,4 +1,4 @@
-package com.model.rest;
+package com.model;
 
 import java.util.Objects;
 

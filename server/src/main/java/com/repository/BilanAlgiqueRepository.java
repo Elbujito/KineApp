@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.BilanAlgique;
+import com.model.BilanAlgique;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

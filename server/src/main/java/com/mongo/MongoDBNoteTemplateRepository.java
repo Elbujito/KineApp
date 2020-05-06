@@ -11,7 +11,7 @@ import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.client.model.ReplaceOneModel;
 import com.mongodb.client.model.WriteModel;
 
-import com.model.rest.NoteTemplate;
+import com.model.NoteTemplate;
 import com.repository.NoteTemplateRepository;
 import org.bson.BsonDocument;
 import org.bson.BsonNull;

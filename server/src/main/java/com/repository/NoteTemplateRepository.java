@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.NoteTemplate;
+import com.model.NoteTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.Prescripteur;
+import com.model.Prescripteur;
 import com.repository.PrescripteurRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

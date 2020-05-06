@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.Mouvement;
+import com.model.Mouvement;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

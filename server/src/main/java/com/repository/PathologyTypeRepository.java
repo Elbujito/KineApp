@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.PathologyType;
+import com.model.PathologyType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

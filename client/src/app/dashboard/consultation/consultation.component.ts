@@ -55,10 +55,12 @@ export class ConsultationComponent implements OnInit {
 
         let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
         this.patient.pathologies[index].bilanArticulaires = bilanArticulaires;
+        this.patient.pathologies[index].lastModification = new Date();
 
         this.patientsService.updatePatient(this.patient).subscribe( patient => {
           this.patient = patient;
           this.pathology.bilanArticulaires = bilanArticulaires;
+          this.pathology.lastModification = this.patient.pathologies[index].lastModification;
           this.alertService.showToaster("La pathologie a été sauvergardé");
         });
       });
@@ -71,10 +73,12 @@ export class ConsultationComponent implements OnInit {
 
            let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
            this.patient.pathologies[index].bilanMusculaires = bilanMusculaires;
+           this.patient.pathologies[index].lastModification = new Date();
 
            this.patientsService.updatePatient(this.patient).subscribe( patient => {
              this.patient = patient;
              this.pathology.bilanMusculaires = bilanMusculaires;
+             this.pathology.lastModification = this.patient.pathologies[index].lastModification;
              this.alertService.showToaster("La pathologie a été sauvergardé");
            });
          });
@@ -90,12 +94,14 @@ export class ConsultationComponent implements OnInit {
       this.patient.pathologies[index].prescripteur = bilanHeader.prescripteur;
       this.patient.pathologies[index].createdAt = bilanHeader.createdAt;
       this.patient.pathologies[index].pathologyType = bilanHeader.pathologyType;
+      this.patient.pathologies[index].lastModification = new Date();
         this.patientsService.updatePatient(this.patient).subscribe( patient => {
           this.patient = patient;
           this.pathology.localisation = bilanHeader.localisation;
           this.pathology.prescripteur = bilanHeader.prescripteur;
           this.pathology.createdAt =     bilanHeader.createdAt;
           this.pathology.pathologyType = bilanHeader.pathologyType;
+          this.pathology.lastModification = this.patient.pathologies[index].lastModification;
           this.alertService.showToaster("La pathologie a été sauvergardé");
         });
       });
@@ -108,9 +114,11 @@ export class ConsultationComponent implements OnInit {
 
          let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
          this.patient.pathologies[index].bilanAlgiques = bilanAlgiques;
+         this.patient.pathologies[index].lastModification = new Date();
            this.patientsService.updatePatient(this.patient).subscribe( patient => {
              this.patient = patient;
              this.pathology.bilanAlgiques = bilanAlgiques;
+             this.pathology.lastModification = this.patient.pathologies[index].lastModification;
              this.alertService.showToaster("La pathologie a été sauvergardé");
            });
          });

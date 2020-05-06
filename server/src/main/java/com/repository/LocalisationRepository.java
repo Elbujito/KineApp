@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.Localisation;
+import com.model.Localisation;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

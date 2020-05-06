@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.NoteTemplate;
+import com.model.NoteTemplate;
 import com.repository.NoteTemplateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

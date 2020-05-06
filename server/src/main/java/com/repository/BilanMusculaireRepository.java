@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.BilanMusculaire;
+import com.model.BilanMusculaire;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

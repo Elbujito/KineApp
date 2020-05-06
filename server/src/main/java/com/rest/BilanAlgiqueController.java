@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.BilanAlgique;
+import com.model.BilanAlgique;
 import com.repository.BilanAlgiqueRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

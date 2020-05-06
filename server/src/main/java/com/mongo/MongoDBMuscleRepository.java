@@ -10,7 +10,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.client.model.ReplaceOneModel;
 import com.mongodb.client.model.WriteModel;
-import com.model.rest.Muscle;
+import com.model.Muscle;
 import com.repository.MuscleRepository;
 import org.bson.BsonDocument;
 import org.bson.BsonNull;

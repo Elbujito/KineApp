@@ -1,4 +1,4 @@
-package com.model.rest;
+package com.model;
 import org.bson.types.ObjectId;
 import java.io.Serializable;
 import java.util.Objects;

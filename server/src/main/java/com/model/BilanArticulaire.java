@@ -1,4 +1,4 @@
-package com.model.rest;
+package com.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

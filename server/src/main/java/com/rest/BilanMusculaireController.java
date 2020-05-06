@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.BilanMusculaire;
+import com.model.BilanMusculaire;
 import com.repository.BilanMusculaireRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

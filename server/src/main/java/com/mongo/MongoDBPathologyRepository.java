@@ -10,7 +10,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.client.model.ReplaceOneModel;
 import com.mongodb.client.model.WriteModel;
-import com.model.rest.Pathology;
+import com.model.Pathology;
 import com.repository.PathologyRepository;
 import org.bson.BsonDocument;
 import org.bson.BsonNull;

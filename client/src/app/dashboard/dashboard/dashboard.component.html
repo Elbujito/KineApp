@@ -22,9 +22,9 @@
               <th mat-header-cell *matHeaderCellDef> Date de début </th>
               <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd/MM/yyyy'}}</td>
             </ng-container>
-            <ng-container matColumnDef="lastModifcation">
+            <ng-container matColumnDef="lastModification">
               <th mat-header-cell *matHeaderCellDef> Dernière modification</th>
-              <td mat-cell *matCellDef="let element"> {{element.lastModifcation | date: 'dd/MM/yyyy'}}</td>
+              <td mat-cell *matCellDef="let element"> {{element.lastModification | date: 'dd/MM/yyyy'}}</td>
             </ng-container>
             <ng-container matColumnDef="active">
               <th mat-header-cell *matHeaderCellDef> Traité</th>

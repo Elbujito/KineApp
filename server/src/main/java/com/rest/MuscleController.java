@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.Muscle;
+import com.model.Muscle;
 import com.repository.MuscleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

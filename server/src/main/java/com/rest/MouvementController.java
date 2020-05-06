@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.Mouvement;
+import com.model.Mouvement;
 import com.repository.MouvementRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

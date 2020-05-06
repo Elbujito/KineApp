@@ -1,6 +1,6 @@
 package com.repository;
 
-import com.model.rest.Muscle;
+import com.model.Muscle;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

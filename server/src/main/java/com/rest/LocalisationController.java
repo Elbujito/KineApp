@@ -1,6 +1,6 @@
 package com.rest;
 
-import com.model.rest.Localisation;
+import com.model.Localisation;
 import com.repository.LocalisationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
