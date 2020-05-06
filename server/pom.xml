@@ -6,11 +6,8 @@
         <artifactId>medinotes</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.application.medinotes</groupId>
-    <artifactId>server</artifactId>
+    <artifactId>medinotes-server</artifactId>
     <packaging>bundle</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-
     <properties>
         <springboot.version>2.1.0.RELEASE</springboot.version>
         <spring-ldap.version>2.3.2.RELEASE</spring-ldap.version>
