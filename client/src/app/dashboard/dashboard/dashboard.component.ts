@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
-import { ViewChild, OnInit, Input, Component, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { ViewChild, OnInit, Input, Component, Output, EventEmitter, ChangeDetectorRef,OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,7 +15,7 @@ import {PathologyConfirmDialogComponent} from '../pathology/pathology-confirm-di
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnChanges{
 
   displayedColumns: string[] = ['pathologyType', 'name','createdAt','lastModification', 'active', 'launch', 'remove'];
   dataSource = new MatTableDataSource<Pathology>([]);
@@ -37,6 +37,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 	  this.refresh();
   }
+
+  ngOnChanges(changements: SimpleChanges) {
+      this.patient = changements.patient.currentValue;
+      this.dataSource.data = [];
+      this.refresh();
+  }
+
 
   launch(pathology: Pathology)
   {

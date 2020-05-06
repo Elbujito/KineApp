@@ -18,7 +18,6 @@ export class SearchBarComponent implements OnInit {
   patients: Patient[] = [];
   pathologyTypes: PathologyType[] = [];
   filteredPatients: Observable<Patient[]>;
-  patientSearch: Patient;
 
   @Output() patientOutput = new EventEmitter<Patient>();
 
@@ -37,29 +36,26 @@ export class SearchBarComponent implements OnInit {
                  this.pathologyTypes = pathologyTypes;
     });
 
-    this.filteredPatients = this.control.valueChanges.pipe(
+     this.filteredPatients = this.control.valueChanges
+        .pipe(
           startWith(''),
-          map(value => this._filter(value))
-    );
-  }
+          map(value => typeof value === 'string' ? value : value.displayedName),
+          map(displayedName => displayedName ? this._filter(displayedName) : this.patients.slice())
+     );
+   }
 
-  private _filter(value: string): Patient[] {
-    const filterValue = this._normalizeValue(value);
-    return this.patients.filter(patient => this._normalizeValue(patient.displayedName).includes(filterValue));
-  }
+    display(patient: Patient): string {
+      return patient && patient.displayedName ? patient.displayedName : '';
+    }
 
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
-
-  onPatientChanged(patient: Patient)
-  {
-    this.patientSearch = patient;
+    private _filter(displayedName: string): Patient[] {
+      const filterValue = displayedName.toLowerCase();
+      return this.patients.filter(p => p.displayedName.toLowerCase().indexOf(filterValue) === 0);
   }
 
   onSubmit() {
-    this.patientOutput.emit(this.patientSearch);
-    this.alertService.showToaster("Searching for your patient...");
+    this.patientOutput.emit(this.control.value);
+    this.alertService.showToaster("Recherche des pathologies...");
   }
 }
 
