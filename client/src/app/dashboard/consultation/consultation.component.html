@@ -8,10 +8,7 @@
           </mat-card-title>
           <mat-card-subtitle>
             {{patient.displayedName}}
-            <label style="margin-left: 5px; margin-right: 5px;">| Découvert</label>
-            <mat-checkbox (change)="onChange()" style="margin-right: 10px;" color="primary" [value]="pathology.discover"
-                          [(ngModel)]="pathology.discover" [checked]="pathology.discover"></mat-checkbox>
-            <label style="margin-right: 5px;">Traité</label>
+            <label style="margin-left: 10px; margin-right: 5px;">| Traité</label>
             <mat-checkbox (change)="onChange()" color="primary" [value]="pathology.active"
                           [(ngModel)]="pathology.active"
                           [checked]="pathology.active"></mat-checkbox>

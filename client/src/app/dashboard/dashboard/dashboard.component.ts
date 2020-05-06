@@ -17,7 +17,7 @@ import {PathologyDialogComponent} from '../pathology/pathology-dialog/pathology-
 
 export class DashboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['pathologyType', 'name','createdAt','lastModifcation', 'discover','active', 'launch'];
+  displayedColumns: string[] = ['pathologyType', 'name','createdAt','lastModifcation', 'active', 'launch'];
   dataSource = new MatTableDataSource<Pathology>([]);
 
   @Input('patientOutput') patient: Patient;
