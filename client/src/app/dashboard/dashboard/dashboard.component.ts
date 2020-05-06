@@ -8,7 +8,7 @@ import { Pathology, PathologyType, Patient } from '../../shared/models/index';
 import { PatientsService, PathologiesService, PathologyTypesService } from '../../shared/services/index';
 
 import {PathologyDialogComponent} from '../pathology/pathology-dialog/pathology-dialog.component';
-
+import {PathologyConfirmDialogComponent} from '../pathology/pathology-confirm-dialog/pathology-confirm-dialog.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,7 +17,7 @@ import {PathologyDialogComponent} from '../pathology/pathology-dialog/pathology-
 
 export class DashboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['pathologyType', 'name','createdAt','lastModification', 'active', 'launch'];
+  displayedColumns: string[] = ['pathologyType', 'name','createdAt','lastModification', 'active', 'launch', 'remove'];
   dataSource = new MatTableDataSource<Pathology>([]);
 
   @Input('patientOutput') patient: Patient;
@@ -79,4 +79,17 @@ export class DashboardComponent implements OnInit {
   		this.refresh();
   		});
     }
+
+     remove(pathology: Pathology)
+     {
+     console.log("pathology", pathology);
+    	  const dialogRef = this.dialog.open(PathologyConfirmDialogComponent, {
+    		  data: {dialogTitle: 'Supprimer cette pathologie '+ pathology.name +' ?',
+    		  pathology_id: pathology.id,
+    		  patient_id: this.patient.id}
+    		  });
+    	      dialogRef.afterClosed().subscribe(result => {
+    		  this.refresh();
+    		  });
+      }
 }

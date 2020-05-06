@@ -7,6 +7,7 @@ import { ConsultationComponent,
 		 DashboardComponent,
 		 SearchBarComponent,
 		 PathologyDialogComponent,
+		 PathologyConfirmDialogComponent,
 		 ConsultationConfirmDialogComponent,
 		 BilanArticulaireTableComponent,
 		 BilanMusculaireTableComponent,
@@ -28,12 +29,13 @@ import { MaterialModule } from '../material.module';
 	SearchBarComponent,
 	ConsultationComponent,
 	PathologyDialogComponent,
+	PathologyConfirmDialogComponent,
 	ConsultationConfirmDialogComponent,
 	BilanArticulaireTableComponent,
 	BilanMusculaireTableComponent,
 	BilanAlgiqueComponent,
 	BilanHeaderComponent
 	],
-  entryComponents: [PathologyDialogComponent, ConsultationConfirmDialogComponent]
+  entryComponents: [PathologyDialogComponent, PathologyConfirmDialogComponent, ConsultationConfirmDialogComponent]
 })
 export class DashboardModule { }

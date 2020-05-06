@@ -43,6 +43,7 @@ export class PathologiesService {
    }
 
   getPathologyById(pathology_id: number): Observable<Pathology> {
+    console.log("getPathologyById",pathology_id);
     return this.get('/pathology/'+pathology_id);
   }
 
