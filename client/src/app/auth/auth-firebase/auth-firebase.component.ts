@@ -31,7 +31,7 @@ export class AuthFirebaseComponent {
                     email: email,
                     uid: uid
                     });
-		this.authFirebaseService.onSuccess();
       }
+      this.authFirebaseService.onSuccess();
     }
 }
