@@ -67,7 +67,7 @@ export class PathologyDialogComponent implements OnInit {
 
       this.pathologiesService.addPathology(pathology).subscribe(result => {
         pathology = result;
-        this.patient.pathologies.push(pathology);
+        this.patient.pathologies.unshift(pathology);
         this.patientsService.updatePatient(this.patient).subscribe(result => { });
         this.dialogRef.close(true);
       });

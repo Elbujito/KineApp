@@ -124,6 +124,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button style="color: white; background-color: #FF4081;" *ngIf="!isReadOnly" mat-raised-button type="submit" (click)="onSubmit()" [disabled]="dialogForm.invalid">Save</button>
-  <button mat-raised-button color="primary" (click)="close()" mat-dialog-close>Cancel</button>
+  <button color="primary" *ngIf="!isReadOnly" mat-raised-button type="submit" (click)="onSubmit()" [disabled]="dialogForm.invalid">Sauvegarder</button>
+  <button mat-raised-button style="color: white; background-color: #FF4081;" (click)="close()" mat-dialog-close>Annuler</button>
 </mat-dialog-actions>

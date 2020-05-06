@@ -5,7 +5,7 @@
       <mat-card-content>
         <form #searchForm="ngForm" class="searchbar-form" (ngSubmit)="onSubmit()" fxLayout fxLayout.xs="column" fxLayoutAlign="center">
           <mat-form-field>
-            <input class="inputFiled" matInput placeholder="Sélectionner un patient " [formControl]="control" [matAutocomplete]="auto"
+            <input class="inputFiled" matInput placeholder="Rechercher un patient " [formControl]="control" [matAutocomplete]="auto"
                    id="displayedName" name="displayedName" ngModel required/>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let patient of filteredPatients | async"
@@ -14,11 +14,6 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-        <!-- <mat-list-item *ngFor="let pathologyType of pathologyTypes">
-          <mat-checkbox color="primary" style="margin:5px;" mat-fab>
-            {{ pathologyType.name }}
-          </mat-checkbox>
-        </mat-list-item> -->
         <button class="btnFind" mat-raised-button color="primary" type="submit" [disabled]="control.value.length == 0">Rechercher</button>
         </form>
       </mat-card-content>
