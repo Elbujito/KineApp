@@ -6,12 +6,7 @@ import {AuthProvider} from 'ngx-auth-firebaseui';
 
 import * as firebase from "firebase/app";
 
-import { AuthService, AuthFirebaseService} from '../../shared/services/index';
-import {
-    LoginPassword,
-    Connector,
-    ProductInformations
-} from '../../shared/models/index';
+import { AuthFirebaseService} from '../../shared/services/index';
 
 @Component({
   selector: 'app-firebase-auth',
@@ -19,24 +14,12 @@ import {
   styleUrls: ['./auth-firebase.component.css']
 })
 export class AuthFirebaseComponent {
-    loginPassword: LoginPassword;
     errorMsg: string = null;
-    connectors: Connector[];
-    productInformations: ProductInformations;
     providers = AuthProvider;
 
-  constructor(private router: Router, private authService: AuthService, private authFirebaseService: AuthFirebaseService) {}
+  constructor(private router: Router, private authFirebaseService: AuthFirebaseService) {}
 
    ngOnInit() {
-        this.loginPassword = {} as LoginPassword;
-
-        this.authService.getConnectors().subscribe(connectors => {
-            this.connectors = connectors;
-            this.loginPassword.connector = this.connectors[0].id;
-        });
-        if (this.authService.productInformations) {
-            this.productInformations = this.authService.productInformations;
-        }
     }
 
     onSuccess() {
@@ -48,19 +31,7 @@ export class AuthFirebaseComponent {
                     email: email,
                     uid: uid
                     });
+		this.authFirebaseService.onSuccess();
       }
-      this.loginOnServer();
-    }
-
-    loginOnServer()
-    {
-       this.loginPassword.login = firebase.auth().currentUser.email;
-       this.loginPassword.password = firebase.auth().currentUser.uid;
-       this.authService.login(this.loginPassword)
-       .subscribe( res => {
-          this.authFirebaseService.onSuccess();
-         },
-         (error) => { this.errorMsg = error;
-        });
     }
 }

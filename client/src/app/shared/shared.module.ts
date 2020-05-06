@@ -7,10 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { LayoutComponent, NotFoundComponent, HeaderComponent, FooterComponent} from './components/index';
-import { UsernamePipe, TitleCasePipeComponent } from './pipes/index';
+import { TitleCasePipeComponent } from './pipes/index';
 
 import { PathologyTypesService,
-		 AuthService,
 		 AuthFirebaseService,
 		 PatientsService ,
 		 NotesService,
@@ -27,7 +26,7 @@ import { PathologyTypesService,
 		 BilanAlgiquesService
 } from './services/index';
 
-import { LoggedGuard, LoggedOffGuard, AuthFirebaseGuard } from './guards/index';
+import { AuthFirebaseGuard } from './guards/index';
 
 import { MaterialModule } from '../material.module';
 
@@ -47,14 +46,10 @@ import { MaterialModule } from '../material.module';
 	  NotFoundComponent,
 	 	FooterComponent,
 		HeaderComponent,
-		UsernamePipe,
     TitleCasePipeComponent
   ],
   providers: [
-  	LoggedGuard,
-  	LoggedOffGuard,
   	AuthFirebaseGuard,
-  	AuthService,
   	PatientsService,
   	NotesService,
   	AlertService,
@@ -76,7 +71,6 @@ import { MaterialModule } from '../material.module';
     ReactiveFormsModule,
     FlexLayoutModule,
 	  NotFoundComponent,
-	  UsernamePipe,
   	TitleCasePipeComponent,
 	  FooterComponent,
 	  HeaderComponent

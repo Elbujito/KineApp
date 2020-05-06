@@ -9,7 +9,6 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { SubscriptionModule } from './subscription/subscription.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthServiceConfiguration } from './shared/models/index';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
@@ -37,16 +36,6 @@ const firebaseConfig = {
 
 export function getToken(): string {
     return localStorage.getItem('token');
-}
-
-export function authServiceConfiguration(): AuthServiceConfiguration {
-    return {
-        baseUrl: `${environment.apiUrl}/auth`,
-        productInformations: {
-            name: '',
-            version: ''
-        }
-    };
 }
 
 @NgModule({
@@ -79,7 +68,6 @@ export function authServiceConfiguration(): AuthServiceConfiguration {
 		NgxAuthFirebaseUIModule.forRoot(firebaseConfig)
     ],
     providers: [
-        { provide: AuthServiceConfiguration, useFactory: authServiceConfiguration }
     ],
     bootstrap: [AppComponent]
 })

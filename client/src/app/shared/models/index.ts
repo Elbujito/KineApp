@@ -1,4 +1,3 @@
-export * from './auth.model';
 export * from './patient.model';
 export * from './note.model';
 export * from './contact.model';

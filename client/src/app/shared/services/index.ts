@@ -1,4 +1,3 @@
-export * from './auth.service';
 export * from './patients.service';
 export * from './notes.service';
 export * from './alert.service';

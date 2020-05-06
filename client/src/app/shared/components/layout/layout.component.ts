@@ -5,7 +5,7 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { Subscription } from 'rxjs';
 import { LinkMenuItem } from 'ngx-auth-firebaseui';
 
-import { AuthService, AuthFirebaseService, AlertService } from '../../services/index';
+import { AuthFirebaseService, AlertService } from '../../services/index';
 
 @Component({
     selector: 'app-layout',
@@ -22,7 +22,7 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(private router: Router,
         private media: MediaMatcher, private changeDetectorRef: ChangeDetectorRef,
-        private service: AuthService, private authFirebaseService : AuthFirebaseService,
+        private authFirebaseService : AuthFirebaseService,
         private alertService: AlertService
 ) {
 
@@ -46,7 +46,6 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     onLogout() {
-       this.service.logout();
        this.authFirebaseService.logout();
        this.showToaster("Logout...");
     }

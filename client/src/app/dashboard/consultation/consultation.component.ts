@@ -108,7 +108,6 @@ export class ConsultationComponent implements OnInit {
 
          let index = this.patient.pathologies.findIndex(p => p.id === this.pathology_id);
          this.patient.pathologies[index].bilanAlgiques = bilanAlgiques;
-
            this.patientsService.updatePatient(this.patient).subscribe( patient => {
              this.patient = patient;
              this.pathology.bilanAlgiques = bilanAlgiques;
