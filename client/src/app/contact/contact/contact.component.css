@@ -1,0 +1,34 @@
+.full-width {
+  width: 100%;
+}
+
+.mat-card
+{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.contact-page
+ {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: url(../../../assets/img/landing_3.jpg) no-repeat center center fixed;
+  overflow: auto;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh !important;
+}
+
+.cancelbtn
+{
+  background-color: #AA00FF;
+  color: white;
+}
+
+.cancelbtn:hover
+{
+    background-color: #6A1B9A;
+}
+
+

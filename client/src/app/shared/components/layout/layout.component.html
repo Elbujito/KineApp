@@ -1,0 +1,70 @@
+<div class="navbar-container" [class.com-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="navbar" color="primary">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a class="navbar-brand" matTooltip="Go back to home page" [routerLink]="['/']">
+      <h1>
+        MédiNotes
+      </h1>
+    </a>
+    <span class="navbar-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
+      <mat-icon matBadge="1" matBadgeColor="warn">notifications</mat-icon>
+    </button>
+    <mat-menu style="margin-right: 10px;" #notificationMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
+      <a mat-menu-item>
+        <span>Application en cours de développement</span>
+      </a>
+    </mat-menu>
+    <ngx-auth-firebaseui-avatar (onSignOut)="onLogout()"></ngx-auth-firebaseui-avatar>
+  </mat-toolbar>
+  <mat-sidenav-container class="navbar-sidenav-container">
+    <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
+
+      <mat-nav-list>
+        <h3 mat-subheader>Home</h3>
+
+        <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
+          <mat-icon mat-list-icon>
+            dashboard
+          </mat-icon>
+          <p mat-line>Dashboard</p>
+        </a>
+        <a mat-list-item [routerLink]="['/patient']" routerLinkActive="active">
+          <mat-icon mat-list-icon>
+            people
+          </mat-icon>
+          <p mat-line>Patients</p>
+        </a>
+        <a mat-list-item [routerLink]="['/configuration']" routerLinkActive="active">
+          <mat-icon mat-list-icon>
+            settings
+          </mat-icon>
+          <p mat-line>Configurations</p>
+        </a>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Resources</h3>
+        <a mat-list-item [routerLink]="['/profile']" routerLinkActive="active">
+          <mat-icon mat-list-icon>person
+          </mat-icon>
+          <p mat-line>Profile</p>
+        </a>
+        <a id="push-bottom" mat-list-item [routerLink]="['/help']" routerLinkActive="active">
+          <mat-icon mat-list-icon>
+            info_outline
+          </mat-icon>
+          <p mat-line>Help</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+      <div class="progress-bar-container">
+        <mat-progress-bar color="accent" mode="indeterminate">
+        </mat-progress-bar>
+      </div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

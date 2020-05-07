@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.kinesolution.com/api/'
+  apiUrl: 'https://medinotes.com/'
 };

@@ -1,0 +1,60 @@
+.abonner>button:hover
+{
+    background-color: #6A1B9A;
+}
+
+.loginButton>button
+{
+ background-color: transparent;
+ color: white;
+ transform: scale(1.1);
+}
+
+.abonner>button
+{
+  background-color: #AA00FF;
+  color: white;
+  transform: scale(1.1);
+}
+
+.loginButton>button:hover
+{
+  background-color: rgba(255, 255, 255, .4);
+}
+
+.imgMain
+{
+ border-radius: 30px;
+ width: 40px !important;
+
+}
+
+.bgTitle:hover
+{
+  cursor: pointer;
+}
+
+.imgMain:hover
+{
+  cursor: pointer;
+}
+
+.buttonMain
+{
+  margin-left: 10px;
+  color: white;
+  border-style: none;
+}
+
+.buttonMain>button
+{
+margin-left: 20px;
+transform: scale(1.2);
+}
+
+.mat-button:hover
+{
+    color: #AA00FF;
+    font-weight: bold;
+}
+

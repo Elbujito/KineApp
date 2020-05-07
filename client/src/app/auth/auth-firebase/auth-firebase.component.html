@@ -1,0 +1,18 @@
+<section>
+  <div class="login-background">
+    <div style="margin-bottom: 110px;">
+      <app-header></app-header>
+    </div>
+    <div style="margin-top: 80px;" class="bgauth">
+      <div class="auth-conf">
+        <ngx-auth-firebaseui
+          [guestEnabled]="false"
+          (onSuccess)="onSuccess()"
+
+          [providers]="[providers.Google]"
+          appearance="legacy">
+        </ngx-auth-firebaseui>
+      </div>
+    </div>
+  </div>
+</section>

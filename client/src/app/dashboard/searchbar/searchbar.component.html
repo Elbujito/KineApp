@@ -1,0 +1,20 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+    <mat-card class="search-card">
+      <h2>Rechercher un patient</h2>
+      <mat-card-content>
+        <form #searchForm="ngForm" class="searchbar-form" (ngSubmit)="onSubmit()" fxLayout fxLayout.xs="column" fxLayoutAlign="center">
+          <mat-form-field>
+            <input class="inputFiled" matInput placeholder="Rechercher un patient " type="text" matInput [formControl]="control" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">
+              <mat-option *ngFor="let patient of filteredPatients | async" [value]="patient">
+                {{patient.displayedName}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        <button class="btnFind" mat-raised-button color="primary" type="submit">Rechercher</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

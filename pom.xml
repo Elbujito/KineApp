@@ -8,15 +8,15 @@
         <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.application.kine</groupId>
-    <artifactId>kine</artifactId>
+    <groupId>com.application.medinotes</groupId>
+    <artifactId>medinotes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>kine</name>
-    <description>Demo Kine Application</description>
+    <name>medinotes</name>
+    <description>MédiNotes Application</description>
     <packaging>pom</packaging>
     <modules>
         <module>client</module>
-        <module>server</module>
+		<module>server</module>
         <module>doc</module>
     </modules>
     <properties>

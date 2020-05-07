@@ -1,0 +1,16 @@
+.header-bilan-bg
+{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #EEEEEE;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.header-bilan
+{
+  width: 92%;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

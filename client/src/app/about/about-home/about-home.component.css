@@ -1,0 +1,42 @@
+.page-about {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: url(../../../assets/img/landing_3.jpg) no-repeat center center fixed;
+  overflow: auto;
+   max-width: 100%;
+   width: 100%;
+   min-height: 100vh !important;
+}
+
+.bgcontainer
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.mat-card
+{
+  border-color: #E0E0E0;
+  border-radius: 5px;
+  border: solid 0.1em;
+  width: 300px;
+  text-align: center;
+  align-items: center;
+  color: #E0E0E0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.bp
+{
+  margin-top: 10px;
+  padding: 10px;
+  border-color: #E0E0E0;
+  border-radius: 5px;
+  border: solid 0.1em;
+  text-align: center;
+  align-items: center;
+  color: #E0E0E0;
+  background-color: rgba(0, 0, 0, .4);
+}

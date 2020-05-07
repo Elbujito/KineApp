@@ -1,0 +1,69 @@
+.page-subscription {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: url(../../../assets/img/landing_3.jpg) no-repeat center center fixed;
+  overflow: auto;
+   max-width: 100%;
+   width: 100%;
+   min-height: 100vh !important;
+}
+
+.mat-list-icon {
+  color: green;
+}
+
+.mat-card-title
+{
+    text-align: center;
+}
+
+.mat-card-subtitle
+{
+    text-align: center;
+}
+
+.mat-card-content
+{
+
+  background-color: #EEEEEE;
+}
+
+.mat-line
+{
+}
+
+.bgcontainer
+{
+  margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.mat-card
+{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  border-color: #E0E0E0;
+  border-radius: 5px;
+  border: solid 0.1em;
+  width: 350px;
+
+}
+
+.mat-button
+{
+  background-color: #AA00FF;
+  color: white;
+}
+
+.mat-button:hover
+{
+  background-color: #6A1B9A;
+}
+
+.bgcarousel
+{
+  margin-top: 20px;
+}

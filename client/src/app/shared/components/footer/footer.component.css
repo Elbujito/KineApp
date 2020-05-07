@@ -1,0 +1,23 @@
+.bg{
+ position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  background-color: 	#909090;
+  color: white;
+  font-size: 12px;
+}
+
+.icon {
+  padding: 0 14px;
+}
+
+mat-icon {
+  color:rgba(255,255,255,.87);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

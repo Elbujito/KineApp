@@ -1,0 +1,18 @@
+<div class="bilan-algique">
+  <div>
+    <h2>Bilan algique</h2>
+  </div>
+  <div style="margin-bottom: 10px;" fxLayout="row" fxLayoutAlign="center center">
+    <mat-radio-group (change)="onChange()" aria-labelledby="bilan-algique-group-label"
+                     class="bilan-algique-group"
+                     [(ngModel)]="douleur">
+      <mat-radio-button color="primary" style="margin-right: 5px;" class="douleur-radio-button"
+                        *ngFor="let douleur of douleurs" [value]="douleur">
+        {{douleur}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <button style="margin-left: 10px; float: right;" *ngIf="!isSaved()" color="primary" (click)="save()" mat-mini-fab>
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</div>
